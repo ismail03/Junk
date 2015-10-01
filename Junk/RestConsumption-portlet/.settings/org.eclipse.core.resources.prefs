@@ -1,0 +1,9 @@
+eclipse.preferences.version=1
+encoding//docroot/WEB-INF/src/NET/webserviceX/www/Country.java=UTF-8
+encoding//docroot/WEB-INF/src/NET/webserviceX/www/CountryLocator.java=UTF-8
+encoding//docroot/WEB-INF/src/NET/webserviceX/www/CountrySoap.java=UTF-8
+encoding//docroot/WEB-INF/src/NET/webserviceX/www/CountrySoapStub.java=UTF-8
+encoding//docroot/WEB-INF/src/com/ismail/Helloworld.java=UTF-8
+encoding//docroot/WEB-INF/src/com/ismail/HelloworldService.java=UTF-8
+encoding//docroot/WEB-INF/src/com/ismail/HelloworldServiceLocator.java=UTF-8
+encoding//docroot/WEB-INF/src/com/ismail/HelloworldSoapBindingStub.java=UTF-8

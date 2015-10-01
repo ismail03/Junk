@@ -1,0 +1,17 @@
+
+<nav id="main">
+    <div class="container">
+      <ul class="clearfix">
+      
+      #foreach ($nav_item in $nav_items)
+     #set ($nav_item_css_class = "")
+      #if ($nav_item.isSelected())
+				
+				#set ($nav_item_css_class = "active")
+			#end
+      		 <li class="$nav_item_css_class"><a href="$nav_item.getURL()" title="$nav_item.getName()">$nav_item.getName()</a></li>
+      #end
+        
+      </ul>
+    </div>
+  </nav>

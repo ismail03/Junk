@@ -1,0 +1,50 @@
+%!Adobe-FontList 1.13
+%Locale:0x409
+
+%BeginFont
+Handler:DirectoryHandler
+FontType:Invalid
+OutlineFileName:\\192.168.1.114\projects\Brigade Group\Pinnacle\html-new\images\Font\.DS_Store
+FileModTime:1339669810
+%EndFont
+
+%BeginFont
+Handler:DirectoryHandler
+FontType:Invalid
+OutlineFileName:\\192.168.1.114\projects\Brigade Group\Pinnacle\html-new\images\Font\fontawesome-webfont.eot
+FileModTime:1339593716
+%EndFont
+
+%BeginFont
+Handler:DirectoryHandler
+FontType:Invalid
+OutlineFileName:\\192.168.1.114\projects\Brigade Group\Pinnacle\html-new\images\Font\fontawesome-webfont.svg
+FileModTime:1339593716
+%EndFont
+
+%BeginFont
+Handler:DirectoryHandler
+FontType:TrueType
+FontName:FontAwesome
+FamilyName:FontAwesome
+StyleName:Regular
+FullName:FontAwesome Regular
+MenuName:FontAwesome
+StyleBits:0
+WritingScript:Roman
+OutlineFileName:\\192.168.1.114\projects\Brigade Group\Pinnacle\html-new\images\Font\fontawesome-webfont.ttf
+DataFormat:sfntData
+FileLength:68476
+FileModTime:1339593716
+WeightClass:400
+WidthClass:5
+AngleClass:0
+%EndFont
+
+%BeginFont
+Handler:DirectoryHandler
+FontType:Invalid
+OutlineFileName:\\192.168.1.114\projects\Brigade Group\Pinnacle\html-new\images\Font\fontawesome-webfont.woff
+FileModTime:1339593716
+%EndFont
+

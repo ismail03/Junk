@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+
+#parse ($init)
+
+<html class="$root_css_class" dir="#language ("lang.dir")" lang="$w3c_language_id">
+
+<head>
+
+<title>Bhima Jewellers</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="MobileOptimized" content="width">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+<!--[if lt IE 9]>
+	<link href="css/ie.css" rel="stylesheet" type="text/css" media="all">
+	<script type="text/javascript" src="js/modernizr.custom.js"></script>
+<![endif]-->
+
+	$theme.include($top_head_include)
+</head>
+
+<body>
+
+
+
+$theme.include($body_top_include)
+
+#if ($is_signed_in && $permissionChecker.isOmniadmin())
+	#dockbar()
+#end
+
+<!-- <div class="container-fluid" id="wrapper">
+	<header id="banner" role="banner"> -->
+		
+
+		#if (!$is_signed_in)
+			<a data-redirect="$is_login_redirect_required" href="$sign_in_url" id="sign-in" rel="nofollow">$sign_in_text</a>
+		#end
+
+		
+<!--	</header> 
+
+	
+
+	
+</div> -->
+			<header>
+						 #set ($VOID = $velocityPortletPreferences.setValue('groupId', $themeDisplay.getScopeGroupId().toString()))
+						#set ($VOID = $velocityPortletPreferences.setValue('articleId', '13221'))
+						#set ($VOID = $velocityPortletPreferences.setValue('portletSetupShowBorders', 'false'))
+						#set ($portlet_id = '56')
+						#set ($my_portlet_id = "${portlet_id}_INSTANCE_1234")
+						$theme.runtime($my_portlet_id, "", $velocityPortletPreferences.toString())
+						$velocityPortletPreferences.reset()
+						
+						
+						
+									#parse ("$full_templates_path/navigation.vm")	
+			</header>
+		#if ($selectable)
+			$theme.include($content_include)
+		#else
+			$portletDisplay.recycle()
+
+			$portletDisplay.setTitle($the_title)
+
+			$theme.wrapPortlet("portlet.vm", $content_include)
+		#end
+					 #set ($VOID = $velocityPortletPreferences.setValue('groupId', $themeDisplay.getScopeGroupId().toString()))
+					#set ($VOID = $velocityPortletPreferences.setValue('articleId', '13112'))
+					#set ($VOID = $velocityPortletPreferences.setValue('portletSetupShowBorders', 'false'))
+					#set ($portlet_id = '56')
+					#set ($my_portlet_id = "${portlet_id}_INSTANCE_1235")
+					$theme.runtime($my_portlet_id, "", $velocityPortletPreferences.toString())
+					$velocityPortletPreferences.reset()
+					$theme.include($body_bottom_include)
+					
+			
+
+$theme.include($bottom_include)
+<script type="text/javascript" src="$javascript_folder/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" src="$javascript_folder/bootstrap.min.js"></script>
+<script type="text/javascript" src="$javascript_folder/jquery.flexslider.js"></script>
+<script type="text/javascript" src="$javascript_folder/common.js"></script>
+</body>
+
+</html>

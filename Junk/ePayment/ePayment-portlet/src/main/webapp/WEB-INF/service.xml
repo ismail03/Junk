@@ -1,0 +1,652 @@
+<?xml version="1.0"?>
+<!DOCTYPE service-builder PUBLIC "-//Liferay//DTD Service Builder 6.2.0//EN" "http://www.liferay.com/dtd/liferay-service-builder_6_2_0.dtd">
+
+<service-builder package-path="com.stc.echannels.epayments">
+	<author>ahmed_fadlus</author>
+	<namespace>epayments</namespace>
+	<entity name="PaymentChannel" cache-enabled="false" local-service="true" remote-service="true" table="PAYMENT_CHANNELS" session-factory="anotherSessionFactory" tx-manager="anotherTransactionManager" data-source="anotherDataSource">
+		<!-- PK fields -->
+		<column db-name="TRANS_ID" name="transId" type="String" primary="true"></column>
+		<!-- Audit fields -->
+		<column db-name="last_update_timestamp" name="lastUpdateTimestamp" type="Date"></column>
+		<column db-name="last_update_userid" name="lastUpdateUserid" type="String"></column>
+		<column db-name="last_update_username" name="lastUpdateUsername" type="String"></column>
+		<column db-name="active" name="active" type="String"></column>
+		<column db-name="status" name="status" type="String"></column>
+		<column db-name="effective_timestamp" name="effectiveTimestamp" type="Date"></column>
+		<column db-name="CLIENT_IP" name="clientIp" type="String"></column>
+		<column db-name="SERVER_IP" name="serverIp" type="String"></column>
+		<column db-name="USER_AGENT" name="userAgent" type="String"></column>
+		<column db-name="OPERATION" name="operation" type="String"></column>
+		<!-- Other fields -->
+		<column name="channelId" db-name="channel_Id" type="long"></column>
+		<column db-name="channel_type" name="channelType" type="String"></column>
+		<column db-name="descriptive_name_en" name="descriptiveNameEn" type="String"></column>
+		<column db-name="descriptive_name_ar" name="descriptiveNameAr" type="String"></column>
+		<!-- Order -->
+		<order by="asc">
+			<order-column name="channelType"></order-column>
+		</order>
+		<!-- Finder methods -->
+		<finder name="ChannelId" return-type="Collection">
+			<finder-column name="channelId"></finder-column>
+			<finder-column name="status"></finder-column>
+		</finder>
+		<finder name="Status" return-type="Collection">
+			<finder-column name="status"></finder-column>
+		</finder>
+		<finder name="ChannelType" return-type="Collection">
+			<finder-column name="channelType"></finder-column>
+			<finder-column name="status"></finder-column>
+		</finder>
+		<finder name="ChannelEnAndStatus" return-type="Collection">
+			<finder-column name="descriptiveNameEn"></finder-column>
+			<finder-column name="status"></finder-column>
+		</finder>
+		<finder name="ChannelArAndStatus" return-type="Collection">
+			<finder-column name="descriptiveNameAr"></finder-column>
+			<finder-column name="status"></finder-column>
+		</finder>
+		<!--  <reference entity="AuditUtil" package-path="com.stc.echannels.epayments.service.impl" ></reference>
+        -->
+	</entity>
+	<entity name="CardGroup" cache-enabled="false" local-service="true" remote-service="true" table="IN_CARD_GROUPS" session-factory="anotherSessionFactory" tx-manager="anotherTransactionManager" data-source="anotherDataSource">
+		<!-- PK fields -->
+		<column db-name="TRANS_ID" name="transId" type="String" primary="true"></column>
+		<!-- Audit fields -->
+		<column db-name="last_update_timestamp" name="lastUpdateTimestamp" type="Date"></column>
+		<column db-name="last_update_userid" name="lastUpdateUserid" type="String"></column>
+		<column db-name="last_update_username" name="lastUpdateUsername" type="String"></column>
+		<column db-name="active" name="active" type="String"></column>
+		<column db-name="effective_timestamp" name="effectiveTimestamp" type="Date"></column>
+		<column db-name="CLIENT_IP" name="clientIp" type="String"></column>
+		<column db-name="SERVER_IP" name="serverIp" type="String"></column>
+		<column db-name="USER_AGENT" name="userAgent" type="String"></column>
+		<column db-name="OPERATION" name="operation" type="String"></column>
+		<!-- Other fields -->
+		<column name="cardGroupId" db-name="CARD_GROUP" type="String"></column>
+		<column db-name="CARD_VALUE" name="cardValue" type="long"></column>
+		<column db-name="PROMOTION_VALUE" name="promotionValue" type="long"></column>
+		<column db-name="IN_PAYMENT_SYSTEM" name="inPaymentSystem" type="String"></column>
+		<column db-name="SERVICE_ID" name="serviceId" type="long"></column>
+		<!-- Order -->
+		<order by="asc">
+			<order-column name="cardGroupId"></order-column>
+		</order>
+		<!-- Finder methods-->
+		<finder name="CardGroupId" return-type="Collection">
+			<finder-column name="cardGroupId"></finder-column>
+			<finder-column name="active"></finder-column>
+		</finder>
+		<finder name="Active" return-type="Collection">
+			<finder-column name="active"></finder-column>
+		</finder>
+		<finder name="CardValue_InPaymentSystem" return-type="Collection">
+			<finder-column name="cardValue"></finder-column>
+			<finder-column name="inPaymentSystem"></finder-column>
+			<finder-column name="active"></finder-column>
+		</finder>
+	</entity>
+	<entity table="PAYMENT_SYSTEMS" cache-enabled="false" name="PaymentSystem" local-service="true" remote-service="true" session-factory="anotherSessionFactory" tx-manager="anotherTransactionManager" data-source="anotherDataSource">
+		<!-- PK fields -->
+		<column name="paymentSystemId" db-name="IN_PAYMENT_SYSTEM" type="long" primary="true"></column>
+		<!-- Audit fields -->
+		<column db-name="last_update_timestamp" name="lastUpdateTimestamp" type="Date"></column>
+		<column db-name="last_update_userid" name="lastUpdateUserid" type="String"></column>
+		<column db-name="last_update_username" name="lastUpdateUsername" type="String"></column>
+		<column db-name="active" name="active" type="String"></column>
+		<column db-name="effective_timestamp" name="effectiveTimestamp" type="Date"></column>
+		<!-- Other fields -->
+		<column db-name="system_name" name="systemName" type="String"></column>
+		<column db-name="date_format" name="dateFormat" type="String"></column>
+		<!-- Order -->
+		<order by="asc">
+			<order-column name="paymentSystemId"></order-column>
+		</order>
+		<!-- Finder methods -->
+		<finder name="Active" return-type="Collection">
+			<finder-column name="active"></finder-column>
+		</finder>
+	</entity>
+	<entity table="BANK_CODES_MAP" cache-enabled="false" name="Bank" local-service="true" remote-service="true" session-factory="anotherSessionFactory" tx-manager="anotherTransactionManager" data-source="anotherDataSource">
+		<!-- PK fields		-->
+		<column name="transId" db-name="TRANS_ID" type="String" primary="true"></column>
+		<!-- Audit fields -->
+		<column db-name="last_update_timestamp" name="lastUpdateTimestamp" type="Date"></column>
+		<column db-name="last_update_userid" name="lastUpdateUserid" type="String"></column>
+		<column db-name="last_update_username" name="lastUpdateUsername" type="String"></column>
+		<column db-name="active" name="active" type="String"></column>
+		<column db-name="effective_timestamp" name="effectiveTimestamp" type="Date"></column>
+		<column db-name="status" name="status" type="String"></column>
+		<column db-name="CLIENT_IP" name="clientIp" type="String"></column>
+		<column db-name="SERVER_IP" name="serverIp" type="String"></column>
+		<column db-name="USER_AGENT" name="userAgent" type="String"></column>
+		<column db-name="OPERATION" name="operation" type="String"></column>
+		<!-- Other fields -->
+		<column name="bankId" db-name="BANK_ID" type="String"></column>
+		<column name="stcCode" db-name="STC_BANK_CODE" type="String"></column>
+		<column name="nameEn" db-name="BANK_NAME_EN" type="String"></column>
+		<column name="nameAr" db-name="BANK_NAME_AR" type="String"></column>
+		<column name="comments" db-name="COMMENTS" type="String"></column>
+		<!-- Order -->
+		<order by="asc">
+			<order-column name="bankId"></order-column>
+		</order>
+		<finder name="BankId" return-type="Collection">
+			<finder-column name="bankId"></finder-column>
+			<finder-column name="status"></finder-column>
+		</finder>
+		<finder name="Status" return-type="Collection">
+			<finder-column name="status"></finder-column>
+		</finder>
+		<finder name="StcCode" return-type="Collection">
+			<finder-column name="stcCode"></finder-column>
+			<finder-column name="status"></finder-column>
+		</finder>
+	</entity>
+	<entity table="BRANCH_CODES_MAP" cache-enabled="false" name="BankBranch" local-service="true" remote-service="true" session-factory="anotherSessionFactory" tx-manager="anotherTransactionManager" data-source="anotherDataSource">
+		<!-- PK fields		-->
+		<column name="transId" db-name="TRANS_ID" type="String" primary="true"></column>
+		<column name="stcBranchCode" db-name="STC_BRANCH_CODE" type="String"></column>
+		<column name="bankId" db-name="BANK_ID" type="String" ></column>
+		<column name="channelId" db-name="PAYMENT_CHANNEL_ID" type="long" ></column>
+		<!-- Audit fields -->
+		<column db-name="last_update_timestamp" name="lastUpdateTimestamp" type="Date"></column>
+		<column db-name="last_update_userid" name="lastUpdateUserid" type="String"></column>
+		<column db-name="last_update_username" name="lastUpdateUsername" type="String"></column>
+		<column db-name="active" name="active" type="String"></column>
+		<column db-name="status" name="status" type="String"></column>
+		<column db-name="effective_timestamp" name="effectiveTimestamp" type="Date"></column>
+		<column db-name="CLIENT_IP" name="clientIp" type="String"></column>
+		<column db-name="SERVER_IP" name="serverIp" type="String"></column>
+		<column db-name="USER_AGENT" name="userAgent" type="String"></column>
+		<column db-name="OPERATION" name="operation" type="String"></column>
+		<!-- Order -->
+		<order by="asc">
+			<order-column name="bankId"></order-column>
+			<order-column name="channelId"></order-column>
+			<order-column name="stcBranchCode"></order-column>			
+		</order>
+		<!-- Finder methods -->
+		<finder name="Status" return-type="Collection">
+			<finder-column name="status"></finder-column>
+		</finder>
+		<finder name="BankId" return-type="Collection">
+			<finder-column name="bankId"></finder-column>
+			<finder-column name="status"></finder-column>
+		</finder>
+		<finder name="BankPaymentChannel" return-type="Collection">
+			<finder-column name="bankId"></finder-column>
+			<finder-column name="channelId"></finder-column>
+			<finder-column name="status"></finder-column>
+		</finder>
+		<finder name="BranchCode" return-type="Collection">
+			<finder-column name="stcBranchCode"></finder-column>
+			<finder-column name="active"></finder-column>
+		</finder>
+		<finder name="BranchCodeAndStatus" return-type="Collection">
+			<finder-column name="stcBranchCode"></finder-column>
+			<finder-column name="status"></finder-column>
+		</finder>
+	</entity>
+	<entity name="BusinessSrv" cache-enabled="false" local-service="true" remote-service="true" table="SERVICES" session-factory="anotherSessionFactory" tx-manager="anotherTransactionManager" data-source="anotherDataSource">
+		<!-- PK fields -->
+		<column name="serviceId" db-name="service_Id" type="long" primary="true"></column>
+		<!-- Audit fields -->
+		<column db-name="last_update_timestamp" name="lastUpdateTimestamp" type="Date"></column>
+		<column db-name="last_update_userid" name="lastUpdateUserid" type="String"></column>
+		<column db-name="last_update_username" name="lastUpdateUsername" type="String"></column>
+		<column db-name="status" name="status" type="String"></column>
+		<column db-name="effective_timestamp" name="effectiveTimestamp" type="Date"></column>
+		<!-- Other fields -->
+		<column db-name="ref_mask" name="refMask" type="String"></column>
+		<column db-name="service_type" name="serviceType" type="String"></column>
+		<column db-name="service_name_en" name="serviceNameEn" type="String"></column>
+		<column db-name="service_name_ar" name="serviceNameAr" type="String"></column>
+		<!-- Order -->
+		<order by="asc">
+			<order-column name="serviceId"></order-column>
+		</order>
+		<!-- Finder methods -->
+		<finder name="Status" return-type="Collection">
+			<finder-column name="status"></finder-column>
+		</finder>
+	</entity>
+	<entity name="SystemConfig" cache-enabled="false" local-service="true" remote-service="true" table="SYSTEM_CONFIG_MGR" session-factory="anotherSessionFactory" tx-manager="anotherTransactionManager" data-source="anotherDataSource">
+		<!-- PK fields		-->
+		<column name="transId" db-name="TRANS_ID" type="String" primary="true"></column>
+		<!-- Audit fields -->
+		<column db-name="last_update_timestamp" name="lastUpdateTimestamp" type="Date"></column>
+		<column db-name="last_update_userid" name="lastUpdateUserid" type="String"></column>
+		<column db-name="last_update_username" name="lastUpdateUsername" type="String"></column>
+		<column db-name="status" name="status" type="String"></column>
+		<column db-name="effective_timestamp" name="effectiveTimestamp" type="Date"></column>
+		<column db-name="CLIENT_IP" name="clientIp" type="String"></column>
+		<column db-name="SERVER_IP" name="serverIp" type="String"></column>
+		<column db-name="USER_AGENT" name="userAgent" type="String"></column>
+		<column db-name="OPERATION" name="operation" type="String"></column>
+		<!-- Other fields -->
+		<column name="serviceId" db-name="service_Id" type="long"></column>
+		<column name="bankId" db-name="bank_Id" type="String"></column>
+		<column db-name="config_code" name="config" type="String"></column>
+		<!-- Order -->
+		<order by="asc">
+			<order-column name="serviceId"></order-column>
+			<order-column name="bankId"></order-column>
+		</order>
+		<finder name="Status" return-type="Collection">
+			<finder-column name="status"></finder-column>
+		</finder>
+		<finder name="ServiceId" return-type="Collection">
+			<finder-column name="serviceId"></finder-column>
+			<finder-column name="status"></finder-column>
+		</finder>
+		<finder name="BankId" return-type="Collection">
+			<finder-column name="serviceId"></finder-column>
+			<finder-column name="bankId"></finder-column>
+			<finder-column name="status"></finder-column>
+		</finder>
+	</entity>
+	<entity table="NOTIF_PARAMS" cache-enabled="false" name="NotifParam" local-service="true" remote-service="true" session-factory="anotherSessionFactory" tx-manager="anotherTransactionManager" data-source="anotherDataSource">
+		<!-- PK fields -->
+		<column name="notifParamId" db-name="NOTIF_PARAM_ID" type="long" primary="true"></column>
+		<!-- Audit fields -->
+		<!-- Other fields -->
+		<column db-name="NOTIF_NAME_AR" name="nameAr" type="String"></column>
+		<column db-name="NOTIF_NAME_EN" name="nameEn" type="String"></column>
+		<column db-name="NOTIF_PARAM_NAME" name="paramName" type="String"></column>
+		<!-- Order -->
+		<order by="asc">
+			<order-column name="paramName"></order-column>
+		</order>
+		<finder name="NotifParamId" return-type="Collection">
+			<finder-column name="notifParamId"></finder-column>
+		</finder>
+		<finder name="NameEn" return-type="Collection">
+			<finder-column name="nameEn"></finder-column>
+		</finder>
+		<finder name="NameAr" return-type="Collection">
+			<finder-column name="nameAr"></finder-column>
+		</finder>
+	</entity>
+	<entity table="NOTIF_PARAMS_SERVICES" cache-enabled="false" name="NotifParamSrv" local-service="true" remote-service="true" session-factory="anotherSessionFactory" tx-manager="anotherTransactionManager" data-source="anotherDataSource">
+		<!-- PK fields -->
+		<column name="notifParamId" db-name="NOTIF_PARAM_ID" type="long" primary="true"></column>
+		<column name="serviceId" db-name="SERVICE_ID" type="long" primary="true"></column>
+		<!-- Audit fields -->
+		<!-- Other fields -->
+		<!-- Order -->
+		<order by="asc">
+			<order-column name="notifParamId"></order-column>
+		</order>
+		<finder name="ServiceId" return-type="Collection">
+			<finder-column name="serviceId"></finder-column>
+		</finder>
+	</entity>
+	<entity name="NotifConfig" cache-enabled="false" local-service="true" remote-service="true" table="NOTIF_CONFIG_MGR" session-factory="anotherSessionFactory" tx-manager="anotherTransactionManager" data-source="anotherDataSource">
+		<!-- PK fields		-->
+		
+		<column db-name="NOTIF_ID" name="notifId" type="long" primary="true"></column>
+		<!-- Audit fields -->
+		<column name="transId" db-name="TRANS_ID" type="String"></column>
+		<column db-name="last_update_timestamp" name="lastUpdateTimestamp" type="Date"></column>
+		<column db-name="last_update_userid" name="lastUpdateUserid" type="String"></column>
+		<column db-name="last_update_username" name="lastUpdateUsername" type="String"></column>
+		<column db-name="status" name="status" type="String"></column>
+		<column db-name="active" name="active" type="String"></column>
+		<column db-name="effective_timestamp" name="effectiveTimestamp" type="Date"></column>
+		<column db-name="CLIENT_IP" name="clientIp" type="String"></column>
+		<column db-name="SERVER_IP" name="serverIp" type="String"></column>
+		<column db-name="USER_AGENT" name="userAgent" type="String"></column>
+		<column db-name="OPERATION" name="operation" type="String"></column>
+		<!-- Other fields -->
+		<column db-name="ENABLED" name="enabled" type="String"></column>
+		<column db-name="NOTIF_MSG_EN" name="msgEn" type="String"></column>
+		<column db-name="NOTIF_MSG_AR" name="msgAr" type="String"></column>
+		<column db-name="NOTIF_PARAM_1" name="param1" type="String"></column>
+		<column db-name="NOTIF_PARAM_2" name="param2" type="String"></column>
+		<column db-name="NOTIF_PARAM_3" name="param3" type="String"></column>
+		<column db-name="NOTIF_PARAM_4" name="param4" type="String"></column>
+		<column db-name="NOTIF_PARAM_5" name="param5" type="String"></column>
+		<column db-name="DESCRIPTIVE_NAME_EN" name="decriptiveNameEn" type="String"></column>
+		<column db-name="DESCRIPTIVE_NAME_Ar" name="decriptiveNameAr" type="String"></column>
+		<column db-name="NOTIF_NAME" name="notifName" type="String"></column>
+		<column db-name="SERVICE_ID" name="serviceId" type="long"></column>
+		<!-- Order -->
+		<order by="asc">
+			<order-column name="notifName"></order-column>
+		</order>
+		<finder name="Status" return-type="Collection">
+			<finder-column name="status"></finder-column>
+		</finder>
+		<finder name="ServiceId" return-type="Collection">
+			<finder-column name="serviceId"></finder-column>
+			<finder-column name="status"></finder-column>
+		</finder>
+		<finder name="NotifId" return-type="Collection">
+			<finder-column name="notifId"></finder-column>
+			<finder-column name="status"></finder-column>
+		</finder>
+	</entity>
+	<entity table="SADAD_RECON_LOG" cache-enabled="false" name="ReconLog" local-service="true" remote-service="true" session-factory="anotherSessionFactory" tx-manager="anotherTransactionManager" data-source="anotherDataSource">
+		<!-- PK fields -->
+		<column name="paymentSystemTransId" db-name="PMT_SYSTEM_TRANS_ID" type="String" primary="true"></column>
+		<!-- <column name="epayTransId" db-name="EPAY_TRANS_ID" type="String" primary="true"/> -->
+		<!-- Audit fields -->
+		<!-- Other fields -->
+		<column name="bankTransId" db-name="BANK_TRANS_ID" type="long"></column>
+		<column name="transAmount" db-name="TRANS_AMT" type="double"></column>
+		<column name="paymentMethod" db-name="PAYMENT_METHOD" type="String"></column>
+		<column name="paymentChannel" db-name="PAYMENT_CHANNEL" type="String"></column>
+		<column name="pmtBankId" db-name="PMT_BANK_ID" type="String"></column>
+		<column name="bankTransDate" db-name="BANK_TRANS_DATE" type="Date"></column>
+		<column name="beneficiaryServiceNo" db-name="BENEFICIARY_SERVICENO" type="String"></column>
+		<column name="serviceId" db-name="SERVICE_ID" type="long"></column>
+		<column name="paymentStatus" db-name="PAYMENT_STATUS" type="String"></column>
+		<!-- Order -->
+		<order by="asc">
+			<order-column name="paymentChannel"></order-column>
+		</order>
+	</entity>
+	<entity table="IN_RECHARGES_HISTORY" cache-enabled="false" name="InRechargeHistory" local-service="true" remote-service="true" session-factory="anotherSessionFactory" tx-manager="anotherTransactionManager" data-source="anotherDataSource">
+		<!-- PK fields -->
+		<column name="msisdn" db-name="MSISDN" type="String" primary="true"></column>
+		<!-- Audit fields -->
+		<!-- Other fields -->
+		<!-- When transaction ID is part of primary key as per table spec, the Payment Reconciliation report
+		     fails, saying that transactionId is an unknown field... -->
+		<column name="transactionId" db-name="TRANSACTION_ID" type="String"></column>
+		<column name="cardGroup" db-name="CARD_GROUP" type="String"></column>
+		<column name="serviceClass" db-name="SERVICE_CLASS" type="String"></column>
+		<!-- Order -->
+		<order by="asc">
+			<order-column name="serviceClass"></order-column>
+		</order>
+	</entity>
+	<entity table="REFUND_LOG" cache-enabled="false" name="RefundLog" local-service="true" remote-service="true" session-factory="anotherSessionFactory" tx-manager="anotherTransactionManager" data-source="anotherDataSource">
+		<!-- PK fields -->
+		<column name="refundId" db-name="REFUND_ID" type="String"></column>
+		<column name="epayTransId" db-name="EPAY_TRANS_ID" type="String" primary="true"></column>
+		<!-- Audit fields -->
+		<!-- Other fields -->
+		<column name="amount" db-name="AMOUNT" type="double"></column>
+		<column name="submissionDate" db-name="SUBMISSION_DATE" type="Date"></column>
+		<column name="approvalDate" db-name="APPROVAL_DATE" type="Date"></column>
+		<column name="status" db-name="STATUS" type="String"></column>
+		<!-- Order -->
+		<order by="asc">
+			<order-column name="submissionDate"></order-column>
+		</order>
+	</entity>
+	<entity table="REFUND_RECON_LOG" cache-enabled="false" name="RefundReconLog" local-service="true" remote-service="true" session-factory="anotherSessionFactory" tx-manager="anotherTransactionManager" data-source="anotherDataSource">
+		<!-- PK fields -->
+		<column name="batchId" db-name="BATCH_ID" type="String" primary="true"></column>
+		<column name="serviceId" db-name="SERVICE_ID" type="long"></column>
+		<!-- Audit fields -->
+		<!-- Other fields -->
+		<column name="refundId" db-name="REFUND_ID" type="String"></column>
+		<column name="pmtBankId" db-name="PMT_BANK_ID" type="String"></column>
+		<column name="pmtSystemRefundTransId" db-name="PMT_SYSTEM_REFUND_TRANS_ID" type="String"></column>
+		<column name="bankRefundTransId" db-name="BANK_REFUND_TRANS_ID" type="String"></column>
+		<column name="effDt" db-name="EFF_DT" type="Date"></column>
+		<column name="processDate" db-name="PROCESS_DATE" type="Date"></column>
+		<column name="refundAmount" db-name="REFUND_AMOUNT" type="double"></column>
+		<column name="refundStatusCode" db-name="REFUND_STATUS_CODE" type="String"></column>
+		<!-- Order -->
+		<order by="asc">
+			<order-column name="processDate"></order-column>
+		</order>
+	</entity>
+	<entity table="TRANSACTION_STATUS" cache-enabled="false" name="TransactionStatus" local-service="true" remote-service="true" session-factory="anotherSessionFactory" tx-manager="anotherTransactionManager" data-source="anotherDataSource">
+		<!-- PK fields -->
+		<column name="id" db-name="ID" type="long" primary="true"></column>
+		<!-- Audit fields -->
+		<!-- Other fields -->
+		<column name="description" db-name="DESCRIPTION" type="String"></column>
+		<column name="descriptiveNameEn" db-name="DESCRIPTIVE_NAME_EN" type="String"></column>
+		<column name="descriptiveNameAr" db-name="DESCRIPTIVE_NAME_AR" type="String"></column>
+		<!-- Order -->
+		<order by="asc">
+			<order-column name="id"></order-column>
+		</order>
+		<!-- finder name="Name" return-type="Collection">
+                <finder-column name="name" />
+        </finder>  -->
+	</entity>
+	<entity table="PAYMENT_METHODS" cache-enabled="false" name="PaymentMethod" local-service="true" remote-service="true" session-factory="anotherSessionFactory" tx-manager="anotherTransactionManager" data-source="anotherDataSource">
+		<!-- PK fields -->
+		<column name="pmtMethodId" db-name="PMT_METHOD_Id" type="long" primary="true"></column>
+		<!-- Audit fields -->
+		<column db-name="status" name="status" type="String"></column>
+		<column db-name="last_update_timestamp" name="lastUpdateTimestamp" type="Date"></column>
+		<column db-name="last_update_userid" name="lastUpdateUserid" type="String"></column>
+		<column db-name="last_update_username" name="lastUpdateUsername" type="String"></column>
+		<column db-name="effective_timestamp" name="effectiveTimestamp" type="Date"></column>
+		<column db-name="CLIENT_IP" name="clientIp" type="String"></column>
+		<column db-name="SERVER_IP" name="serverIp" type="String"></column>
+		<column db-name="USER_AGENT" name="userAgent" type="String"></column>
+		<column db-name="OPERATION" name="operation" type="String"></column>
+		<!-- Other fields -->
+		<column db-name="DESCRIPTIVE_NAME_EN" name="descriptiveNameEn" type="String"></column>
+		<column db-name="DESCRIPTIVE_NAME_Ar" name="descriptiveNameAr" type="String"></column>
+		<column name="pmtMethodIdType" db-name="PMT_METHOD_ID_TYPE" type="String"></column>
+		<!-- Order -->
+		<order by="asc">
+			<order-column name="pmtMethodId"></order-column>
+		</order>
+		<finder name="PmtMethodId" return-type="Collection">
+			<finder-column name="pmtMethodId"></finder-column>
+			<finder-column name="status"></finder-column>
+		</finder>
+		<finder name="PmtMethodIdType" return-type="Collection">
+			<finder-column name="pmtMethodIdType"></finder-column>
+			<finder-column name="status"></finder-column>
+		</finder>
+		<finder name="Status" return-type="Collection">
+			<finder-column name="status"></finder-column>
+		</finder>
+	</entity>
+	<!--  ADDED NEW -->
+	<entity name="PaymentRule" cache-enabled="false" local-service="true" remote-service="true" table="PAYMENT_RULES" session-factory="anotherSessionFactory" tx-manager="anotherTransactionManager" data-source="anotherDataSource">
+		<!-- PK fields -->
+		<column db-name="RULE_ID" name="ruleId" type="long" primary="true"></column>
+		<column db-name="TRANS_ID" name="transId" type="String" primary="true"></column>
+		<column db-name="RULE_NAME" name="ruleName" type="String"></column>
+		<column db-name="VALUE" name="value" type="String"></column>
+		<column db-name="DESCRIPTION_EN" name="descriptionEN" type="String"></column>
+		<column db-name="DESCRIPTION_AR" name="descriptionAR" type="String"></column>
+		<column db-name="IS_EDITABLE" name="isEditable" type="String"></column>
+		<column db-name="REFUND_ON_VIOLATION" name="refundOnViolation" type="String"></column>
+		<column db-name="RULE_CATEGORY" name="ruleCategory" type="String"></column>
+		<column db-name="CLIENT_IP" name="clientIP" type="String"></column>
+		<column db-name="SERVER_IP" name="serverIP" type="String"></column>
+		<column db-name="USER_AGENT" name="userAgent" type="String"></column>
+		<column db-name="OPERATION" name="operation" type="String"></column>
+		<column db-name="IS_LIST" name="isList" type="String"></column>
+		<!-- FK fields -->
+		<column db-name="SERVICE_TYPE_ID" name="serviceTypeId" type="long"></column>
+		<!-- Audit fields -->
+		<column db-name="last_update_timestamp" name="lastUpdateTimestamp" type="Date"></column>
+		<column db-name="last_update_userid" name="lastUpdateUserid" type="String"></column>
+		<column db-name="last_update_username" name="lastUpdateUsername" type="String"></column>
+		<column db-name="status" name="status" type="String"></column>
+		<column db-name="effective_timestamp" name="effectiveTimestamp" type="Date"></column>
+		<!-- Order -->
+		<order by="asc">
+			<order-column name="ruleName"></order-column>
+		</order>
+		<!-- Finder methods -->
+		<finder name="RuleCategoryAndStatus" return-type="Collection">
+			<finder-column name="ruleCategory"></finder-column>
+			<finder-column name="status"></finder-column>
+		</finder>
+		<finder name="RuleIdAndTransId" return-type="PaymentRule">
+			<finder-column name="ruleId"></finder-column>
+			<finder-column name="transId"></finder-column>
+		</finder>
+	</entity>
+	<entity name="SrvTypes" cache-enabled="false" local-service="true" remote-service="true" table="SERVICE_TYPES" session-factory="anotherSessionFactory" tx-manager="anotherTransactionManager" data-source="anotherDataSource">
+		<!-- PK fields -->
+		<column db-name="SERVICE_TYPE_ID" name="serviceTypeId" type="long" primary="true"></column>
+		<column db-name="SERVICE_TYPE_NAME" name="serviceTypeName" type="String"></column>
+		<column db-name="SERVICE_NAME_EN" name="serviceNameEN" type="String"></column>
+		<column db-name="SERVICE_NAME_AR" name="serviceNameAR" type="String"></column>
+	</entity>
+	<entity name="BizRuleConfig" cache-enabled="false" local-service="true" remote-service="true" table="BIZ_RULE_CONFIG" session-factory="anotherSessionFactory" tx-manager="anotherTransactionManager" data-source="anotherDataSource">
+		<!-- PK fields -->
+		<column db-name="BIZ_RULE_ID" name="bizRuleId" type="long" primary="true"></column>
+		<column db-name="SERVICE_ID" name="serviceId" type="long"></column>
+		<column db-name="CHANNEL_ID" name="channelId" type="long"></column>
+		<column db-name="PMT_METHOD_ID" name="pmtMethodId" type="long"></column>
+		<column db-name="CUSTOM_VALUE" name="customValue" type="String"></column>
+		<column db-name="RULE_ID" name="ruleId" type="long"></column>
+		<column db-name="TRANS_ID" name="transId" type="String"></column>
+		<column db-name="CLIENT_IP" name="clientIP" type="String"></column>
+		<column db-name="SERVER_IP" name="serverIP" type="String"></column>
+		<column db-name="USER_AGENT" name="userAgent" type="String"></column>
+		<column db-name="OPERATION" name="operation" type="String"></column>
+		<!-- FK fields -->
+		<!-- Audit fields -->
+		<column db-name="last_update_timestamp" name="lastUpdateTimestamp" type="Date"></column>
+		<column db-name="last_update_userid" name="lastUpdateUserid" type="String"></column>
+		<column db-name="last_update_username" name="lastUpdateUsername" type="String"></column>
+		<column db-name="status" name="status" type="String"></column>
+		<column db-name="effective_timestamp" name="effectiveTimestamp" type="Date"></column>
+	</entity>
+	<entity name="EPayAccessControl" cache-enabled="false" local-service="true" remote-service="true" table="EPAY_ACCESS_CONTROL" session-factory="anotherSessionFactory" tx-manager="anotherTransactionManager" data-source="anotherDataSource">
+		<!-- PK field -->
+		<column db-name="EPAY_CONFIG_ID" name="epayCofignId" type="long" primary="true"></column>
+		<!-- FK fields -->
+		<column db-name="SERVICE_ID" name="serviceId" type="long"></column>
+		<column db-name="SERVICE_TYPE_ID" name="serviceTypeId" type="long"></column>
+		<column db-name="CHANNEL_ID" name="channelId" type="long"></column>
+		<column db-name="PMT_METHOD_ID" name="pmtMethodId" type="long"></column>
+		<column db-name="TRANS_ID" name="transId" type="String"></column>
+		<column db-name="CLIENT_IP" name="clientIP" type="String"></column>
+		<column db-name="SERVER_IP" name="serverIP" type="String"></column>
+		<column db-name="USER_AGENT" name="userAgent" type="String"></column>
+		<column db-name="OPERATION" name="operation" type="String"></column>
+		<!-- Audit fields -->
+		<column db-name="last_update_timestamp" name="lastUpdateTimestamp" type="Date"></column>
+		<column db-name="last_update_userid" name="lastUpdateUserid" type="String"></column>
+		<column db-name="last_update_username" name="lastUpdateUsername" type="String"></column>
+		<column db-name="status" name="status" type="String"></column>
+		<column db-name="effective_timestamp" name="effectiveTimestamp" type="Date"></column>
+		
+		<finder name="ServiceId" return-type="Collection"> <finder-column name="serviceId" /> </finder>
+		<finder name="serviceIdAndstatus" return-type="Collection">
+		<finder-column name="serviceId"></finder-column>
+		<finder-column name="status"></finder-column>
+		</finder>
+	</entity>
+	
+	<entity name="PaymentChannelSrvsMap" cache-enabled="false" local-service="true" remote-service="true" table="PAYMENT_CHANNEL_SERVICES_MAP" session-factory="anotherSessionFactory" tx-manager="anotherTransactionManager" data-source="anotherDataSource">
+		<column db-name="ID" name="id" type="String" primary="true"></column>
+		<column db-name="SERVICE_ID" name="serviceId" type="long"></column>
+		<column db-name="CHANNEL_ID" name="channelId" type="long"></column>
+		<finder name="ServiceId" return-type="Collection"> <finder-column name="serviceId" /> </finder>
+	</entity>
+	
+	<entity name="PaymentMethodSrvsMap" cache-enabled="false" local-service="true" remote-service="true" table="PAYMENT_METHOD_SERVICES_MAP" session-factory="anotherSessionFactory" tx-manager="anotherTransactionManager" data-source="anotherDataSource">
+		<column db-name="ID" name="id" type="String" primary="true"></column>
+		<column db-name="SERVICE_ID" name="serviceId" type="long"></column>
+		<column db-name="PMT_METHOD_ID" name="paymentMethodId" type="long"></column>
+		<finder name="ServiceId" return-type="Collection"> <finder-column name="serviceId" /> </finder>
+	</entity>
+	
+	<entity name="SrvTypeSrvsMap" cache-enabled="false" local-service="true" remote-service="true" table="SERVICE_TYPE_SERVICES_MAP" session-factory="anotherSessionFactory" tx-manager="anotherTransactionManager" data-source="anotherDataSource">
+		<column db-name="ID" name="id" type="String" primary="true"></column>
+		<column db-name="SERVICE_ID" name="serviceId" type="long"></column>
+		<column db-name="SERVICE_TYPE_ID" name="serviceTypeId" type="long"></column>
+		<finder name="ServiceId" return-type="Collection"> <finder-column name="serviceId" /> </finder>
+	</entity>
+   <entity name="PaymentTransactions" cache-enabled="false" local-service="true" remote-service="true" table="PAYMENT_TRANSACTIONS" session-factory="anotherSessionFactory" tx-manager="anotherTransactionManager" data-source="anotherDataSource">
+		<column db-name="EPAY_TRANS_ID" name="epayTransId" type="String"  primary="true"></column>
+		<column db-name="TRANS_AMOUNT " name="transAmount" type="long" ></column>
+		<column db-name="TRANS_VALUE" name="transValue" type="String" ></column>
+		<column db-name="TRANS_AMT_CHK_DIGIT" name="transAmotChkDigit" type="long" ></column>
+		<column db-name="PROCESSOR_REFERENCE" name="processorReference" type="String" ></column>
+		<column db-name="CHANNEL_ID" name="channelId" type="long" ></column>
+		<column db-name="PMT_BANK_ID" name="pmtBankId" type="String" ></column>
+		<column db-name="PMT_BRANCH_ID" name="pmtBranchId" type="String" ></column>
+		<column db-name="TRANS_PROCESS_DATE" name="transProcessDate" type="Date" ></column>
+		<column db-name="BATCH_ID" name="batchId" type="String" ></column>
+		<column db-name="SERVICE_ID" name="serviceId" type="long" ></column>
+		<column db-name="APPLIED_DATE" name="appliedDate" type="Date" ></column>
+		<column db-name="APPLIED_AMOUNT" name="appliedAmount" type="long" ></column>
+		<column db-name="PROCESS_STATUS" name="processStatus" type="String" ></column>
+		<column db-name="NOTIFICATION_NUMBER" name="notificationNumber" type="String" ></column>
+		<column db-name="CURRENCY_CODE" name="currencyCode" type="String" ></column>
+		<column db-name="CONFIRMATION_NUMBER" name="confirmationNumber" type="String" ></column> 
+		<column db-name="PMT_RECEIVED_DATE" name="pmtRecievedDate" type="Date" ></column>
+		<column db-name="REASON_CODE" name="reasonCode" type="String" ></column>
+		<column db-name="EVENT_TYPE_ID" name="eventTypeId" type="long" ></column>
+		<column db-name="PMT_METHOD_ID" name="pmtMethodId" type="long" ></column>
+		<column db-name="PMT_TYPE" name="pmtType" type="String" ></column>
+		<column db-name="RPM_ID" name="rpmId" type="String" ></column>
+		<column db-name="NATIVE_REASON_CODE" name="nativeReasonCode" type="String" ></column>
+		<column db-name="FEE_ID" name="feeId" type="long" ></column>
+		<column db-name="REQUEST_LOCATION" name="requestLocation" type="String" ></column>
+		<column db-name="PROFILE_ID" name="profileId" type="String" ></column>
+		<column db-name="SENDER_ID " name="senderId" type="String" ></column>
+		<column db-name="LAST4DIGITS" name="last4Digits" type="String" ></column>
+		<column db-name="CARD_TYPE " name="cardType" type="String" ></column>
+		<column db-name="EXPIRY_DATE" name="expiryDate" type="Date" ></column>
+		<column db-name="SOURCE_TRANS_TYPE" name="sourceTransType" type="String" ></column>
+		<finder name="ChannelId" return-type="Collection">
+			<finder-column name="channelId"></finder-column>
+		</finder>
+		<finder name="PmtBankId" return-type="Collection">
+			<finder-column name="pmtBankId"></finder-column>
+		</finder>
+		<finder name="PmtBranchId" return-type="Collection">
+			<finder-column name="pmtBranchId"></finder-column>
+		</finder>
+	</entity>
+	
+   <entity name="PaymentTransactionDetails" cache-enabled="false" local-service="true" remote-service="true" table="PAYMENT_TRANSACTION_DETAILS" session-factory="anotherSessionFactory" tx-manager="anotherTransactionManager" data-source="anotherDataSource">
+		<column db-name="EPAY_TRANS_ID" name="epayTransId" type="String"  primary="true"></column>
+		<column db-name="EPAY_INSTANCE_ID" name="epayInstanceId" type="String" primary="true" ></column>
+		<column db-name="ACCOUNT_NUMBER  " name="accountNumber" type="String"  ></column>
+		<column db-name="SERVICE_TYPE_ID " name="serviceTypeId" type="long"  ></column>
+		<column db-name="TRANS_AMOUNT " name="transAmount" type="long"  ></column>
+		<column db-name="TRANS_VALUE" name="transValue" type="String"  ></column>
+		<column db-name="PROCESS_DATE" name="processDate" type="Date"  ></column>
+		<column db-name="SERVICE_NUMBER" name="serviceNumber" type="String"  ></column>
+		<column db-name="ID_TYPE " name="idType" type="String"  ></column>
+		<column db-name="RECIPIENT_ID " name="recipientId" type="String"  ></column>
+		<column db-name="RECIPIENT_ID_TYPE" name="recipientIdType" type="String"  ></column>
+		<column db-name="NOTIFICATION_NUMBER" name="notificationNumber" type="String"  ></column>
+		<column db-name="PROCESS_STATUS" name="processStatus" type="String"  ></column>
+		<column db-name="SERVICE_CATEGORY" name="serviceCategory" type="String"  ></column>
+		<column db-name="REASON_CODE" name="reasonCode" type="String"  ></column>
+		<column db-name="NATIVE_REASON_CODE " name="nativeReasonCode" type="String"  ></column>
+	</entity>
+	 <entity name="BankServices" cache-enabled="false" local-service="true" remote-service="true" table="BANK_SERVICES_MAP" session-factory="anotherSessionFactory" tx-manager="anotherTransactionManager" data-source="anotherDataSource">
+		<column db-name="BANK_ID" name="bankid" type="String" ></column>
+		<column db-name="SERVICE_ID" name="serviceid" type="long"  ></column>
+		<column db-name="ID" name="id" type="String" primary="true" ></column>
+		<finder return-type="Collection" name="bankid">
+		<finder-column name="bankid"></finder-column>
+		</finder>
+		<finder return-type="Collection" name="serviceid">
+		<finder-column name="serviceid"></finder-column>
+		</finder>
+		<finder return-type="Collection"  name="serviceidAndBankid">
+		<finder-column name="serviceid"></finder-column>
+		<finder-column name="bankid"></finder-column>
+		</finder>
+	</entity>
+	
+	 <entity name="PaymentChannelSr" cache-enabled="false" local-service="true" remote-service="true" table="PAYMENT_CHANNEL_SERVICES_MAP" session-factory="anotherSessionFactory" tx-manager="anotherTransactionManager" data-source="anotherDataSource">
+		<column db-name="CHANNEL_ID" name="channelid" type="long" ></column>
+		<column db-name="SERVICE_ID" name="serviceid" type="long"  ></column>
+		<column db-name="ID" name="id" type="String" primary="true" ></column>
+		<finder return-type="Collection" name="channelid">
+		<finder-column name="channelid"></finder-column>
+		</finder>
+		<finder return-type="Collection" name="serviceid">
+		<finder-column name="serviceid"></finder-column>
+		</finder>
+	</entity>
+</service-builder>

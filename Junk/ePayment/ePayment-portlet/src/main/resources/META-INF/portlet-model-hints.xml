@@ -1,0 +1,362 @@
+<?xml version="1.0"?>
+
+<model-hints>
+	<model name="com.stc.echannels.epayments.model.Bank">
+		<field name="transId" type="String" />
+		<field name="lastUpdateTimestamp" type="Date" />
+		<field name="lastUpdateUserid" type="String" />
+		<field name="lastUpdateUsername" type="String" />
+		<field name="active" type="String" />
+		<field name="effectiveTimestamp" type="Date" />
+		<field name="status" type="String" />
+		<field name="clientIp" type="String" />
+		<field name="serverIp" type="String" />
+		<field name="userAgent" type="String">
+			<hint name="max-length">200</hint>
+		</field>
+		<field name="operation" type="String" />
+		<field name="bankId" type="String" />
+		<field name="stcCode" type="String" />
+		<field name="nameEn" type="String" />
+		<field name="nameAr" type="String" />
+		<field name="comments" type="String" />
+	</model>
+	<model name="com.stc.echannels.epayments.model.BankBranch">
+		<field name="transId" type="String" />
+		<field name="stcBranchCode" type="String" />
+		<field name="bankId" type="String" />
+		<field name="channelId" type="long" />
+		<field name="lastUpdateTimestamp" type="Date" />
+		<field name="lastUpdateUserid" type="String" />
+		<field name="lastUpdateUsername" type="String" />
+		<field name="active" type="String" />
+		<field name="status" type="String" />
+		<field name="effectiveTimestamp" type="Date" />
+		<field name="clientIp" type="String" />
+		<field name="serverIp" type="String" />
+		<field name="userAgent" type="String">
+			<hint name="max-length">200</hint>
+		</field>
+		<field name="operation" type="String" />
+	</model>
+	<model name="com.stc.echannels.epayments.model.BankServices">
+		<field name="bankid" type="String" />
+		<field name="serviceid" type="long" />
+		<field name="id" type="String" />
+	</model>
+	<model name="com.stc.echannels.epayments.model.BizRuleConfig">
+		<field name="bizRuleId" type="long" />
+		<field name="serviceId" type="long" />
+		<field name="channelId" type="long" />
+		<field name="pmtMethodId" type="long" />
+		<field name="customValue" type="String" />
+		<field name="ruleId" type="long" />
+		<field name="transId" type="String" />
+		<field name="clientIP" type="String" />
+		<field name="serverIP" type="String" />
+		<field name="userAgent" type="String" />
+		<field name="operation" type="String" />
+		<field name="lastUpdateTimestamp" type="Date" />
+		<field name="lastUpdateUserid" type="String" />
+		<field name="lastUpdateUsername" type="String" />
+		<field name="status" type="String" />
+		<field name="effectiveTimestamp" type="Date" />
+	</model>
+	<model name="com.stc.echannels.epayments.model.BusinessSrv">
+		<field name="serviceId" type="long" />
+		<field name="lastUpdateTimestamp" type="Date" />
+		<field name="lastUpdateUserid" type="String" />
+		<field name="lastUpdateUsername" type="String" />
+		<field name="status" type="String" />
+		<field name="effectiveTimestamp" type="Date" />
+		<field name="refMask" type="String" />
+		<field name="serviceType" type="String" />
+		<field name="serviceNameEn" type="String" />
+		<field name="serviceNameAr" type="String" />
+	</model>
+	<model name="com.stc.echannels.epayments.model.CardGroup">
+		<field name="transId" type="String" />
+		<field name="lastUpdateTimestamp" type="Date" />
+		<field name="lastUpdateUserid" type="String" />
+		<field name="lastUpdateUsername" type="String" />
+		<field name="active" type="String" />
+		<field name="effectiveTimestamp" type="Date" />
+		<field name="clientIp" type="String" />
+		<field name="serverIp" type="String" />
+		<field name="userAgent" type="String">
+			<hint name="max-length">200</hint>
+		</field>
+		<field name="operation" type="String" />
+		<field name="cardGroupId" type="String" />
+		<field name="cardValue" type="long" />
+		<field name="promotionValue" type="long" />
+		<field name="inPaymentSystem" type="String" />
+		<field name="serviceId" type="long" />
+	</model>
+	<model name="com.stc.echannels.epayments.model.EPayAccessControl">
+		<field name="epayCofignId" type="long" />
+		<field name="serviceId" type="long" />
+		<field name="serviceTypeId" type="long" />
+		<field name="channelId" type="long" />
+		<field name="pmtMethodId" type="long" />
+		<field name="transId" type="String" />
+		<field name="clientIP" type="String" />
+		<field name="serverIP" type="String" />
+		<field name="userAgent" type="String" />
+		<field name="operation" type="String" />
+		<field name="lastUpdateTimestamp" type="Date" />
+		<field name="lastUpdateUserid" type="String" />
+		<field name="lastUpdateUsername" type="String" />
+		<field name="status" type="String" />
+		<field name="effectiveTimestamp" type="Date" />
+	</model>
+	<model name="com.stc.echannels.epayments.model.InRechargeHistory">
+		<field name="msisdn" type="String" />
+		<field name="transactionId" type="String" />
+		<field name="cardGroup" type="String" />
+		<field name="serviceClass" type="String" />
+	</model>
+	<model name="com.stc.echannels.epayments.model.NotifConfig">
+		<field name="notifId" type="long" />
+		<field name="transId" type="String" />
+		<field name="lastUpdateTimestamp" type="Date" />
+		<field name="lastUpdateUserid" type="String" />
+		<field name="lastUpdateUsername" type="String" />
+		<field name="status" type="String" />
+		<field name="active" type="String" />
+		<field name="effectiveTimestamp" type="Date" />
+		<field name="clientIp" type="String" />
+		<field name="serverIp" type="String" />
+		<field name="userAgent" type="String">
+			<hint name="max-length">200</hint>
+		</field>
+		<field name="operation" type="String" />
+		<field name="enabled" type="String" />
+		<field name="msgEn" type="String">
+			<hint name="max-length">200</hint>
+		</field>
+		<field name="msgAr" type="String">
+			<hint name="max-length">200</hint>
+		</field>
+		<field name="param1" type="String" />
+		<field name="param2" type="String" />
+		<field name="param3" type="String" />
+		<field name="param4" type="String" />
+		<field name="param5" type="String" />
+		<field name="decriptiveNameEn" type="String" />
+		<field name="decriptiveNameAr" type="String" />
+		<field name="notifName" type="String" />
+		<field name="serviceId" type="long" />
+	</model>
+	<model name="com.stc.echannels.epayments.model.NotifParam">
+		<field name="notifParamId" type="long" />
+		<field name="nameAr" type="String" />
+		<field name="nameEn" type="String" />
+		<field name="paramName" type="String" />
+	</model>
+	<model name="com.stc.echannels.epayments.model.NotifParamSrv">
+		<field name="notifParamId" type="long" />
+		<field name="serviceId" type="long" />
+	</model>
+	<model name="com.stc.echannels.epayments.model.PaymentChannel">
+		<field name="transId" type="String" />
+		<field name="lastUpdateTimestamp" type="Date" />
+		<field name="lastUpdateUserid" type="String" />
+		<field name="lastUpdateUsername" type="String" />
+		<field name="active" type="String" />
+		<field name="status" type="String" />
+		<field name="effectiveTimestamp" type="Date" />
+		<field name="clientIp" type="String" />
+		<field name="serverIp" type="String" />
+		<field name="userAgent" type="String">
+			<hint name="max-length">200</hint>
+		</field>
+		<field name="operation" type="String" />
+		<field name="channelId" type="long" />
+		<field name="channelType" type="String" />
+		<field name="descriptiveNameEn" type="String" />
+		<field name="descriptiveNameAr" type="String" />
+	</model>
+	<model name="com.stc.echannels.epayments.model.PaymentChannelSr">
+		<field name="channelid" type="long" />
+		<field name="serviceid" type="long" />
+		<field name="id" type="String" />
+	</model>
+	<model name="com.stc.echannels.epayments.model.PaymentChannelSrvsMap">
+		<field name="id" type="String" />
+		<field name="serviceId" type="long" />
+		<field name="channelId" type="long" />
+	</model>
+	<model name="com.stc.echannels.epayments.model.PaymentMethod">
+		<field name="pmtMethodId" type="long" />
+		<field name="status" type="String" />
+		<field name="lastUpdateTimestamp" type="Date" />
+		<field name="lastUpdateUserid" type="String" />
+		<field name="lastUpdateUsername" type="String" />
+		<field name="effectiveTimestamp" type="Date" />
+		<field name="clientIp" type="String" />
+		<field name="serverIp" type="String" />
+		<field name="userAgent" type="String" />
+		<field name="operation" type="String" />
+		<field name="descriptiveNameEn" type="String" />
+		<field name="descriptiveNameAr" type="String" />
+		<field name="pmtMethodIdType" type="String" />
+	</model>
+	<model name="com.stc.echannels.epayments.model.PaymentMethodSrvsMap">
+		<field name="id" type="String" />
+		<field name="serviceId" type="long" />
+		<field name="paymentMethodId" type="long" />
+	</model>
+	<model name="com.stc.echannels.epayments.model.PaymentRule">
+		<field name="ruleId" type="long" />
+		<field name="transId" type="String" />
+		<field name="ruleName" type="String" />
+		<field name="value" type="String" />
+		<field name="descriptionEN" type="String" />
+		<field name="descriptionAR" type="String" />
+		<field name="isEditable" type="String" />
+		<field name="refundOnViolation" type="String" />
+		<field name="ruleCategory" type="String" />
+		<field name="clientIP" type="String" />
+		<field name="serverIP" type="String" />
+		<field name="userAgent" type="String" />
+		<field name="operation" type="String" />
+		<field name="isList" type="String" />
+		<field name="serviceTypeId" type="long" />
+		<field name="lastUpdateTimestamp" type="Date" />
+		<field name="lastUpdateUserid" type="String" />
+		<field name="lastUpdateUsername" type="String" />
+		<field name="status" type="String" />
+		<field name="effectiveTimestamp" type="Date" />
+	</model>
+	<model name="com.stc.echannels.epayments.model.PaymentSystem">
+		<field name="paymentSystemId" type="long" />
+		<field name="lastUpdateTimestamp" type="Date" />
+		<field name="lastUpdateUserid" type="String" />
+		<field name="lastUpdateUsername" type="String" />
+		<field name="active" type="String" />
+		<field name="effectiveTimestamp" type="Date" />
+		<field name="systemName" type="String" />
+		<field name="dateFormat" type="String" />
+	</model>
+	<model name="com.stc.echannels.epayments.model.PaymentTransactionDetails">
+		<field name="epayTransId" type="String" />
+		<field name="epayInstanceId" type="String" />
+		<field name="accountNumber" type="String" />
+		<field name="serviceTypeId" type="long" />
+		<field name="transAmount" type="long" />
+		<field name="transValue" type="String" />
+		<field name="processDate" type="Date" />
+		<field name="serviceNumber" type="String" />
+		<field name="idType" type="String" />
+		<field name="recipientId" type="String" />
+		<field name="recipientIdType" type="String" />
+		<field name="notificationNumber" type="String" />
+		<field name="processStatus" type="String" />
+		<field name="serviceCategory" type="String" />
+		<field name="reasonCode" type="String" />
+		<field name="nativeReasonCode" type="String" />
+	</model>
+	<model name="com.stc.echannels.epayments.model.PaymentTransactions">
+		<field name="epayTransId" type="String" />
+		<field name="transAmount" type="long" />
+		<field name="transValue" type="String" />
+		<field name="transAmotChkDigit" type="long" />
+		<field name="processorReference" type="String" />
+		<field name="channelId" type="long" />
+		<field name="pmtBankId" type="String" />
+		<field name="pmtBranchId" type="String" />
+		<field name="transProcessDate" type="Date" />
+		<field name="batchId" type="String" />
+		<field name="serviceId" type="long" />
+		<field name="appliedDate" type="Date" />
+		<field name="appliedAmount" type="long" />
+		<field name="processStatus" type="String" />
+		<field name="notificationNumber" type="String" />
+		<field name="currencyCode" type="String" />
+		<field name="confirmationNumber" type="String" />
+		<field name="pmtRecievedDate" type="Date" />
+		<field name="reasonCode" type="String" />
+		<field name="eventTypeId" type="long" />
+		<field name="pmtMethodId" type="long" />
+		<field name="pmtType" type="String" />
+		<field name="rpmId" type="String" />
+		<field name="nativeReasonCode" type="String" />
+		<field name="feeId" type="long" />
+		<field name="requestLocation" type="String" />
+		<field name="profileId" type="String" />
+		<field name="senderId" type="String" />
+		<field name="last4Digits" type="String" />
+		<field name="cardType" type="String" />
+		<field name="expiryDate" type="Date" />
+		<field name="sourceTransType" type="String" />
+	</model>
+	<model name="com.stc.echannels.epayments.model.ReconLog">
+		<field name="paymentSystemTransId" type="String" />
+		<field name="bankTransId" type="long" />
+		<field name="transAmount" type="double" />
+		<field name="paymentMethod" type="String" />
+		<field name="paymentChannel" type="String" />
+		<field name="pmtBankId" type="String" />
+		<field name="bankTransDate" type="Date" />
+		<field name="beneficiaryServiceNo" type="String" />
+		<field name="serviceId" type="long" />
+		<field name="paymentStatus" type="String" />
+	</model>
+	<model name="com.stc.echannels.epayments.model.RefundLog">
+		<field name="refundId" type="String" />
+		<field name="epayTransId" type="String" />
+		<field name="amount" type="double" />
+		<field name="submissionDate" type="Date" />
+		<field name="approvalDate" type="Date" />
+		<field name="status" type="String" />
+	</model>
+	<model name="com.stc.echannels.epayments.model.RefundReconLog">
+		<field name="batchId" type="String" />
+		<field name="serviceId" type="long" />
+		<field name="refundId" type="String" />
+		<field name="pmtBankId" type="String" />
+		<field name="pmtSystemRefundTransId" type="String" />
+		<field name="bankRefundTransId" type="String" />
+		<field name="effDt" type="Date" />
+		<field name="processDate" type="Date" />
+		<field name="refundAmount" type="double" />
+		<field name="refundStatusCode" type="String" />
+	</model>
+	<model name="com.stc.echannels.epayments.model.SrvTypes">
+		<field name="serviceTypeId" type="long" />
+		<field name="serviceTypeName" type="String" />
+		<field name="serviceNameEN" type="String" />
+		<field name="serviceNameAR" type="String" />
+	</model>
+	<model name="com.stc.echannels.epayments.model.SrvTypeSrvsMap">
+		<field name="id" type="String" />
+		<field name="serviceId" type="long" />
+		<field name="serviceTypeId" type="long" />
+	</model>
+	<model name="com.stc.echannels.epayments.model.SystemConfig">
+		<field name="transId" type="String" />
+		<field name="lastUpdateTimestamp" type="Date" />
+		<field name="lastUpdateUserid" type="String" />
+		<field name="lastUpdateUsername" type="String" />
+		<field name="status" type="String" />
+		<field name="effectiveTimestamp" type="Date" />
+		<field name="clientIp" type="String" />
+		<field name="serverIp" type="String" />
+		<field name="userAgent" type="String">
+			<hint name="max-length">200</hint>
+		</field>
+		<field name="operation" type="String" />
+		<field name="serviceId" type="long" />
+		<field name="bankId" type="String" />
+		<field name="config" type="String">
+			<hint name="max-length">200</hint>
+		</field>
+	</model>
+	<model name="com.stc.echannels.epayments.model.TransactionStatus">
+		<field name="id" type="long" />
+		<field name="description" type="String" />
+		<field name="descriptiveNameEn" type="String" />
+		<field name="descriptiveNameAr" type="String" />
+	</model>
+</model-hints>

@@ -1,0 +1,426 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping default-lazy="false" auto-import="false">
+	<import class="com.stc.echannels.epayments.model.Bank" />
+	<import class="com.stc.echannels.epayments.model.BankBranch" />
+	<import class="com.stc.echannels.epayments.model.BankServices" />
+	<import class="com.stc.echannels.epayments.model.BizRuleConfig" />
+	<import class="com.stc.echannels.epayments.model.BusinessSrv" />
+	<import class="com.stc.echannels.epayments.model.CardGroup" />
+	<import class="com.stc.echannels.epayments.model.EPayAccessControl" />
+	<import class="com.stc.echannels.epayments.model.InRechargeHistory" />
+	<import class="com.stc.echannels.epayments.model.NotifConfig" />
+	<import class="com.stc.echannels.epayments.model.NotifParam" />
+	<import class="com.stc.echannels.epayments.model.NotifParamSrv" />
+	<import class="com.stc.echannels.epayments.model.PaymentChannel" />
+	<import class="com.stc.echannels.epayments.model.PaymentChannelSr" />
+	<import class="com.stc.echannels.epayments.model.PaymentChannelSrvsMap" />
+	<import class="com.stc.echannels.epayments.model.PaymentMethod" />
+	<import class="com.stc.echannels.epayments.model.PaymentMethodSrvsMap" />
+	<import class="com.stc.echannels.epayments.model.PaymentRule" />
+	<import class="com.stc.echannels.epayments.model.PaymentSystem" />
+	<import class="com.stc.echannels.epayments.model.PaymentTransactionDetails" />
+	<import class="com.stc.echannels.epayments.model.PaymentTransactions" />
+	<import class="com.stc.echannels.epayments.model.ReconLog" />
+	<import class="com.stc.echannels.epayments.model.RefundLog" />
+	<import class="com.stc.echannels.epayments.model.RefundReconLog" />
+	<import class="com.stc.echannels.epayments.model.SrvTypes" />
+	<import class="com.stc.echannels.epayments.model.SrvTypeSrvsMap" />
+	<import class="com.stc.echannels.epayments.model.SystemConfig" />
+	<import class="com.stc.echannels.epayments.model.TransactionStatus" />
+	<class name="com.stc.echannels.epayments.model.impl.BankImpl" table="BANK_CODES_MAP">
+		<id name="transId" column="TRANS_ID" type="java.lang.String">
+			<generator class="assigned" />
+		</id>
+		<property name="lastUpdateTimestamp" type="org.hibernate.type.TimestampType" column="last_update_timestamp" />
+		<property name="lastUpdateUserid" type="com.liferay.portal.dao.orm.hibernate.StringType" column="last_update_userid" />
+		<property name="lastUpdateUsername" type="com.liferay.portal.dao.orm.hibernate.StringType" column="last_update_username" />
+		<property name="active" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property name="effectiveTimestamp" type="org.hibernate.type.TimestampType" column="effective_timestamp" />
+		<property name="status" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property name="clientIp" type="com.liferay.portal.dao.orm.hibernate.StringType" column="CLIENT_IP" />
+		<property name="serverIp" type="com.liferay.portal.dao.orm.hibernate.StringType" column="SERVER_IP" />
+		<property name="userAgent" type="com.liferay.portal.dao.orm.hibernate.StringType" column="USER_AGENT" />
+		<property name="operation" type="com.liferay.portal.dao.orm.hibernate.StringType" column="OPERATION" />
+		<property name="bankId" type="com.liferay.portal.dao.orm.hibernate.StringType" column="BANK_ID" />
+		<property name="stcCode" type="com.liferay.portal.dao.orm.hibernate.StringType" column="STC_BANK_CODE" />
+		<property name="nameEn" type="com.liferay.portal.dao.orm.hibernate.StringType" column="BANK_NAME_EN" />
+		<property name="nameAr" type="com.liferay.portal.dao.orm.hibernate.StringType" column="BANK_NAME_AR" />
+		<property name="comments" type="com.liferay.portal.dao.orm.hibernate.StringType" column="COMMENTS" />
+	</class>
+	<class name="com.stc.echannels.epayments.model.impl.BankBranchImpl" table="BRANCH_CODES_MAP">
+		<id name="transId" column="TRANS_ID" type="java.lang.String">
+			<generator class="assigned" />
+		</id>
+		<property name="stcBranchCode" type="com.liferay.portal.dao.orm.hibernate.StringType" column="STC_BRANCH_CODE" />
+		<property name="bankId" type="com.liferay.portal.dao.orm.hibernate.StringType" column="BANK_ID" />
+		<property name="channelId" type="com.liferay.portal.dao.orm.hibernate.LongType" column="PAYMENT_CHANNEL_ID" />
+		<property name="lastUpdateTimestamp" type="org.hibernate.type.TimestampType" column="last_update_timestamp" />
+		<property name="lastUpdateUserid" type="com.liferay.portal.dao.orm.hibernate.StringType" column="last_update_userid" />
+		<property name="lastUpdateUsername" type="com.liferay.portal.dao.orm.hibernate.StringType" column="last_update_username" />
+		<property name="active" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property name="status" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property name="effectiveTimestamp" type="org.hibernate.type.TimestampType" column="effective_timestamp" />
+		<property name="clientIp" type="com.liferay.portal.dao.orm.hibernate.StringType" column="CLIENT_IP" />
+		<property name="serverIp" type="com.liferay.portal.dao.orm.hibernate.StringType" column="SERVER_IP" />
+		<property name="userAgent" type="com.liferay.portal.dao.orm.hibernate.StringType" column="USER_AGENT" />
+		<property name="operation" type="com.liferay.portal.dao.orm.hibernate.StringType" column="OPERATION" />
+	</class>
+	<class name="com.stc.echannels.epayments.model.impl.BankServicesImpl" table="BANK_SERVICES_MAP">
+		<id name="id" column="ID" type="java.lang.String">
+			<generator class="assigned" />
+		</id>
+		<property name="bankid" type="com.liferay.portal.dao.orm.hibernate.StringType" column="BANK_ID" />
+		<property name="serviceid" type="com.liferay.portal.dao.orm.hibernate.LongType" column="SERVICE_ID" />
+	</class>
+	<class name="com.stc.echannels.epayments.model.impl.BizRuleConfigImpl" table="BIZ_RULE_CONFIG">
+		<id name="bizRuleId" column="BIZ_RULE_ID" type="long">
+			<generator class="assigned" />
+		</id>
+		<property name="serviceId" type="com.liferay.portal.dao.orm.hibernate.LongType" column="SERVICE_ID" />
+		<property name="channelId" type="com.liferay.portal.dao.orm.hibernate.LongType" column="CHANNEL_ID" />
+		<property name="pmtMethodId" type="com.liferay.portal.dao.orm.hibernate.LongType" column="PMT_METHOD_ID" />
+		<property name="customValue" type="com.liferay.portal.dao.orm.hibernate.StringType" column="CUSTOM_VALUE" />
+		<property name="ruleId" type="com.liferay.portal.dao.orm.hibernate.LongType" column="RULE_ID" />
+		<property name="transId" type="com.liferay.portal.dao.orm.hibernate.StringType" column="TRANS_ID" />
+		<property name="clientIP" type="com.liferay.portal.dao.orm.hibernate.StringType" column="CLIENT_IP" />
+		<property name="serverIP" type="com.liferay.portal.dao.orm.hibernate.StringType" column="SERVER_IP" />
+		<property name="userAgent" type="com.liferay.portal.dao.orm.hibernate.StringType" column="USER_AGENT" />
+		<property name="operation" type="com.liferay.portal.dao.orm.hibernate.StringType" column="OPERATION" />
+		<property name="lastUpdateTimestamp" type="org.hibernate.type.TimestampType" column="last_update_timestamp" />
+		<property name="lastUpdateUserid" type="com.liferay.portal.dao.orm.hibernate.StringType" column="last_update_userid" />
+		<property name="lastUpdateUsername" type="com.liferay.portal.dao.orm.hibernate.StringType" column="last_update_username" />
+		<property name="status" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property name="effectiveTimestamp" type="org.hibernate.type.TimestampType" column="effective_timestamp" />
+	</class>
+	<class name="com.stc.echannels.epayments.model.impl.BusinessSrvImpl" table="SERVICES">
+		<id name="serviceId" column="service_Id" type="long">
+			<generator class="assigned" />
+		</id>
+		<property name="lastUpdateTimestamp" type="org.hibernate.type.TimestampType" column="last_update_timestamp" />
+		<property name="lastUpdateUserid" type="com.liferay.portal.dao.orm.hibernate.StringType" column="last_update_userid" />
+		<property name="lastUpdateUsername" type="com.liferay.portal.dao.orm.hibernate.StringType" column="last_update_username" />
+		<property name="status" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property name="effectiveTimestamp" type="org.hibernate.type.TimestampType" column="effective_timestamp" />
+		<property name="refMask" type="com.liferay.portal.dao.orm.hibernate.StringType" column="ref_mask" />
+		<property name="serviceType" type="com.liferay.portal.dao.orm.hibernate.StringType" column="service_type" />
+		<property name="serviceNameEn" type="com.liferay.portal.dao.orm.hibernate.StringType" column="service_name_en" />
+		<property name="serviceNameAr" type="com.liferay.portal.dao.orm.hibernate.StringType" column="service_name_ar" />
+	</class>
+	<class name="com.stc.echannels.epayments.model.impl.CardGroupImpl" table="IN_CARD_GROUPS">
+		<id name="transId" column="TRANS_ID" type="java.lang.String">
+			<generator class="assigned" />
+		</id>
+		<property name="lastUpdateTimestamp" type="org.hibernate.type.TimestampType" column="last_update_timestamp" />
+		<property name="lastUpdateUserid" type="com.liferay.portal.dao.orm.hibernate.StringType" column="last_update_userid" />
+		<property name="lastUpdateUsername" type="com.liferay.portal.dao.orm.hibernate.StringType" column="last_update_username" />
+		<property name="active" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property name="effectiveTimestamp" type="org.hibernate.type.TimestampType" column="effective_timestamp" />
+		<property name="clientIp" type="com.liferay.portal.dao.orm.hibernate.StringType" column="CLIENT_IP" />
+		<property name="serverIp" type="com.liferay.portal.dao.orm.hibernate.StringType" column="SERVER_IP" />
+		<property name="userAgent" type="com.liferay.portal.dao.orm.hibernate.StringType" column="USER_AGENT" />
+		<property name="operation" type="com.liferay.portal.dao.orm.hibernate.StringType" column="OPERATION" />
+		<property name="cardGroupId" type="com.liferay.portal.dao.orm.hibernate.StringType" column="CARD_GROUP" />
+		<property name="cardValue" type="com.liferay.portal.dao.orm.hibernate.LongType" column="CARD_VALUE" />
+		<property name="promotionValue" type="com.liferay.portal.dao.orm.hibernate.LongType" column="PROMOTION_VALUE" />
+		<property name="inPaymentSystem" type="com.liferay.portal.dao.orm.hibernate.StringType" column="IN_PAYMENT_SYSTEM" />
+		<property name="serviceId" type="com.liferay.portal.dao.orm.hibernate.LongType" column="SERVICE_ID" />
+	</class>
+	<class name="com.stc.echannels.epayments.model.impl.EPayAccessControlImpl" table="EPAY_ACCESS_CONTROL">
+		<id name="epayCofignId" column="EPAY_CONFIG_ID" type="long">
+			<generator class="assigned" />
+		</id>
+		<property name="serviceId" type="com.liferay.portal.dao.orm.hibernate.LongType" column="SERVICE_ID" />
+		<property name="serviceTypeId" type="com.liferay.portal.dao.orm.hibernate.LongType" column="SERVICE_TYPE_ID" />
+		<property name="channelId" type="com.liferay.portal.dao.orm.hibernate.LongType" column="CHANNEL_ID" />
+		<property name="pmtMethodId" type="com.liferay.portal.dao.orm.hibernate.LongType" column="PMT_METHOD_ID" />
+		<property name="transId" type="com.liferay.portal.dao.orm.hibernate.StringType" column="TRANS_ID" />
+		<property name="clientIP" type="com.liferay.portal.dao.orm.hibernate.StringType" column="CLIENT_IP" />
+		<property name="serverIP" type="com.liferay.portal.dao.orm.hibernate.StringType" column="SERVER_IP" />
+		<property name="userAgent" type="com.liferay.portal.dao.orm.hibernate.StringType" column="USER_AGENT" />
+		<property name="operation" type="com.liferay.portal.dao.orm.hibernate.StringType" column="OPERATION" />
+		<property name="lastUpdateTimestamp" type="org.hibernate.type.TimestampType" column="last_update_timestamp" />
+		<property name="lastUpdateUserid" type="com.liferay.portal.dao.orm.hibernate.StringType" column="last_update_userid" />
+		<property name="lastUpdateUsername" type="com.liferay.portal.dao.orm.hibernate.StringType" column="last_update_username" />
+		<property name="status" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property name="effectiveTimestamp" type="org.hibernate.type.TimestampType" column="effective_timestamp" />
+	</class>
+	<class name="com.stc.echannels.epayments.model.impl.InRechargeHistoryImpl" table="IN_RECHARGES_HISTORY">
+		<id name="msisdn" column="MSISDN" type="java.lang.String">
+			<generator class="assigned" />
+		</id>
+		<property name="transactionId" type="com.liferay.portal.dao.orm.hibernate.StringType" column="TRANSACTION_ID" />
+		<property name="cardGroup" type="com.liferay.portal.dao.orm.hibernate.StringType" column="CARD_GROUP" />
+		<property name="serviceClass" type="com.liferay.portal.dao.orm.hibernate.StringType" column="SERVICE_CLASS" />
+	</class>
+	<class name="com.stc.echannels.epayments.model.impl.NotifConfigImpl" table="NOTIF_CONFIG_MGR">
+		<id name="notifId" column="NOTIF_ID" type="long">
+			<generator class="assigned" />
+		</id>
+		<property name="transId" type="com.liferay.portal.dao.orm.hibernate.StringType" column="TRANS_ID" />
+		<property name="lastUpdateTimestamp" type="org.hibernate.type.TimestampType" column="last_update_timestamp" />
+		<property name="lastUpdateUserid" type="com.liferay.portal.dao.orm.hibernate.StringType" column="last_update_userid" />
+		<property name="lastUpdateUsername" type="com.liferay.portal.dao.orm.hibernate.StringType" column="last_update_username" />
+		<property name="status" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property name="active" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property name="effectiveTimestamp" type="org.hibernate.type.TimestampType" column="effective_timestamp" />
+		<property name="clientIp" type="com.liferay.portal.dao.orm.hibernate.StringType" column="CLIENT_IP" />
+		<property name="serverIp" type="com.liferay.portal.dao.orm.hibernate.StringType" column="SERVER_IP" />
+		<property name="userAgent" type="com.liferay.portal.dao.orm.hibernate.StringType" column="USER_AGENT" />
+		<property name="operation" type="com.liferay.portal.dao.orm.hibernate.StringType" column="OPERATION" />
+		<property name="enabled" type="com.liferay.portal.dao.orm.hibernate.StringType" column="ENABLED" />
+		<property name="msgEn" type="com.liferay.portal.dao.orm.hibernate.StringType" column="NOTIF_MSG_EN" />
+		<property name="msgAr" type="com.liferay.portal.dao.orm.hibernate.StringType" column="NOTIF_MSG_AR" />
+		<property name="param1" type="com.liferay.portal.dao.orm.hibernate.StringType" column="NOTIF_PARAM_1" />
+		<property name="param2" type="com.liferay.portal.dao.orm.hibernate.StringType" column="NOTIF_PARAM_2" />
+		<property name="param3" type="com.liferay.portal.dao.orm.hibernate.StringType" column="NOTIF_PARAM_3" />
+		<property name="param4" type="com.liferay.portal.dao.orm.hibernate.StringType" column="NOTIF_PARAM_4" />
+		<property name="param5" type="com.liferay.portal.dao.orm.hibernate.StringType" column="NOTIF_PARAM_5" />
+		<property name="decriptiveNameEn" type="com.liferay.portal.dao.orm.hibernate.StringType" column="DESCRIPTIVE_NAME_EN" />
+		<property name="decriptiveNameAr" type="com.liferay.portal.dao.orm.hibernate.StringType" column="DESCRIPTIVE_NAME_Ar" />
+		<property name="notifName" type="com.liferay.portal.dao.orm.hibernate.StringType" column="NOTIF_NAME" />
+		<property name="serviceId" type="com.liferay.portal.dao.orm.hibernate.LongType" column="SERVICE_ID" />
+	</class>
+	<class name="com.stc.echannels.epayments.model.impl.NotifParamImpl" table="NOTIF_PARAMS">
+		<id name="notifParamId" column="NOTIF_PARAM_ID" type="long">
+			<generator class="assigned" />
+		</id>
+		<property name="nameAr" type="com.liferay.portal.dao.orm.hibernate.StringType" column="NOTIF_NAME_AR" />
+		<property name="nameEn" type="com.liferay.portal.dao.orm.hibernate.StringType" column="NOTIF_NAME_EN" />
+		<property name="paramName" type="com.liferay.portal.dao.orm.hibernate.StringType" column="NOTIF_PARAM_NAME" />
+	</class>
+	<class name="com.stc.echannels.epayments.model.impl.NotifParamSrvImpl" table="NOTIF_PARAMS_SERVICES">
+		<composite-id name="primaryKey" class="com.stc.echannels.epayments.service.persistence.NotifParamSrvPK">
+			<key-property name="notifParamId" column="NOTIF_PARAM_ID" type="com.liferay.portal.dao.orm.hibernate.LongType" />
+			<key-property name="serviceId" column="SERVICE_ID" type="com.liferay.portal.dao.orm.hibernate.LongType" />
+		</composite-id>
+	</class>
+	<class name="com.stc.echannels.epayments.model.impl.PaymentChannelImpl" table="PAYMENT_CHANNELS">
+		<id name="transId" column="TRANS_ID" type="java.lang.String">
+			<generator class="assigned" />
+		</id>
+		<property name="lastUpdateTimestamp" type="org.hibernate.type.TimestampType" column="last_update_timestamp" />
+		<property name="lastUpdateUserid" type="com.liferay.portal.dao.orm.hibernate.StringType" column="last_update_userid" />
+		<property name="lastUpdateUsername" type="com.liferay.portal.dao.orm.hibernate.StringType" column="last_update_username" />
+		<property name="active" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property name="status" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property name="effectiveTimestamp" type="org.hibernate.type.TimestampType" column="effective_timestamp" />
+		<property name="clientIp" type="com.liferay.portal.dao.orm.hibernate.StringType" column="CLIENT_IP" />
+		<property name="serverIp" type="com.liferay.portal.dao.orm.hibernate.StringType" column="SERVER_IP" />
+		<property name="userAgent" type="com.liferay.portal.dao.orm.hibernate.StringType" column="USER_AGENT" />
+		<property name="operation" type="com.liferay.portal.dao.orm.hibernate.StringType" column="OPERATION" />
+		<property name="channelId" type="com.liferay.portal.dao.orm.hibernate.LongType" column="channel_Id" />
+		<property name="channelType" type="com.liferay.portal.dao.orm.hibernate.StringType" column="channel_type" />
+		<property name="descriptiveNameEn" type="com.liferay.portal.dao.orm.hibernate.StringType" column="descriptive_name_en" />
+		<property name="descriptiveNameAr" type="com.liferay.portal.dao.orm.hibernate.StringType" column="descriptive_name_ar" />
+	</class>
+	<class name="com.stc.echannels.epayments.model.impl.PaymentChannelSrImpl" table="PAYMENT_CHANNEL_SERVICES_MAP">
+		<id name="id" column="ID" type="java.lang.String">
+			<generator class="assigned" />
+		</id>
+		<property name="channelid" type="com.liferay.portal.dao.orm.hibernate.LongType" column="CHANNEL_ID" />
+		<property name="serviceid" type="com.liferay.portal.dao.orm.hibernate.LongType" column="SERVICE_ID" />
+	</class>
+	<class name="com.stc.echannels.epayments.model.impl.PaymentChannelSrvsMapImpl" table="PAYMENT_CHANNEL_SERVICES_MAP">
+		<id name="id" column="ID" type="java.lang.String">
+			<generator class="assigned" />
+		</id>
+		<property name="serviceId" type="com.liferay.portal.dao.orm.hibernate.LongType" column="SERVICE_ID" />
+		<property name="channelId" type="com.liferay.portal.dao.orm.hibernate.LongType" column="CHANNEL_ID" />
+	</class>
+	<class name="com.stc.echannels.epayments.model.impl.PaymentMethodImpl" table="PAYMENT_METHODS">
+		<id name="pmtMethodId" column="PMT_METHOD_Id" type="long">
+			<generator class="assigned" />
+		</id>
+		<property name="status" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property name="lastUpdateTimestamp" type="org.hibernate.type.TimestampType" column="last_update_timestamp" />
+		<property name="lastUpdateUserid" type="com.liferay.portal.dao.orm.hibernate.StringType" column="last_update_userid" />
+		<property name="lastUpdateUsername" type="com.liferay.portal.dao.orm.hibernate.StringType" column="last_update_username" />
+		<property name="effectiveTimestamp" type="org.hibernate.type.TimestampType" column="effective_timestamp" />
+		<property name="clientIp" type="com.liferay.portal.dao.orm.hibernate.StringType" column="CLIENT_IP" />
+		<property name="serverIp" type="com.liferay.portal.dao.orm.hibernate.StringType" column="SERVER_IP" />
+		<property name="userAgent" type="com.liferay.portal.dao.orm.hibernate.StringType" column="USER_AGENT" />
+		<property name="operation" type="com.liferay.portal.dao.orm.hibernate.StringType" column="OPERATION" />
+		<property name="descriptiveNameEn" type="com.liferay.portal.dao.orm.hibernate.StringType" column="DESCRIPTIVE_NAME_EN" />
+		<property name="descriptiveNameAr" type="com.liferay.portal.dao.orm.hibernate.StringType" column="DESCRIPTIVE_NAME_Ar" />
+		<property name="pmtMethodIdType" type="com.liferay.portal.dao.orm.hibernate.StringType" column="PMT_METHOD_ID_TYPE" />
+	</class>
+	<class name="com.stc.echannels.epayments.model.impl.PaymentMethodSrvsMapImpl" table="PAYMENT_METHOD_SERVICES_MAP">
+		<id name="id" column="ID" type="java.lang.String">
+			<generator class="assigned" />
+		</id>
+		<property name="serviceId" type="com.liferay.portal.dao.orm.hibernate.LongType" column="SERVICE_ID" />
+		<property name="paymentMethodId" type="com.liferay.portal.dao.orm.hibernate.LongType" column="PMT_METHOD_ID" />
+	</class>
+	<class name="com.stc.echannels.epayments.model.impl.PaymentRuleImpl" table="PAYMENT_RULES">
+		<composite-id name="primaryKey" class="com.stc.echannels.epayments.service.persistence.PaymentRulePK">
+			<key-property name="ruleId" column="RULE_ID" type="com.liferay.portal.dao.orm.hibernate.LongType" />
+			<key-property name="transId" column="TRANS_ID" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		</composite-id>
+		<property name="ruleName" type="com.liferay.portal.dao.orm.hibernate.StringType" column="RULE_NAME" />
+		<property name="value" type="com.liferay.portal.dao.orm.hibernate.StringType" column="VALUE" />
+		<property name="descriptionEN" type="com.liferay.portal.dao.orm.hibernate.StringType" column="DESCRIPTION_EN" />
+		<property name="descriptionAR" type="com.liferay.portal.dao.orm.hibernate.StringType" column="DESCRIPTION_AR" />
+		<property name="isEditable" type="com.liferay.portal.dao.orm.hibernate.StringType" column="IS_EDITABLE" />
+		<property name="refundOnViolation" type="com.liferay.portal.dao.orm.hibernate.StringType" column="REFUND_ON_VIOLATION" />
+		<property name="ruleCategory" type="com.liferay.portal.dao.orm.hibernate.StringType" column="RULE_CATEGORY" />
+		<property name="clientIP" type="com.liferay.portal.dao.orm.hibernate.StringType" column="CLIENT_IP" />
+		<property name="serverIP" type="com.liferay.portal.dao.orm.hibernate.StringType" column="SERVER_IP" />
+		<property name="userAgent" type="com.liferay.portal.dao.orm.hibernate.StringType" column="USER_AGENT" />
+		<property name="operation" type="com.liferay.portal.dao.orm.hibernate.StringType" column="OPERATION" />
+		<property name="isList" type="com.liferay.portal.dao.orm.hibernate.StringType" column="IS_LIST" />
+		<property name="serviceTypeId" type="com.liferay.portal.dao.orm.hibernate.LongType" column="SERVICE_TYPE_ID" />
+		<property name="lastUpdateTimestamp" type="org.hibernate.type.TimestampType" column="last_update_timestamp" />
+		<property name="lastUpdateUserid" type="com.liferay.portal.dao.orm.hibernate.StringType" column="last_update_userid" />
+		<property name="lastUpdateUsername" type="com.liferay.portal.dao.orm.hibernate.StringType" column="last_update_username" />
+		<property name="status" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property name="effectiveTimestamp" type="org.hibernate.type.TimestampType" column="effective_timestamp" />
+	</class>
+	<class name="com.stc.echannels.epayments.model.impl.PaymentSystemImpl" table="PAYMENT_SYSTEMS">
+		<id name="paymentSystemId" column="IN_PAYMENT_SYSTEM" type="long">
+			<generator class="assigned" />
+		</id>
+		<property name="lastUpdateTimestamp" type="org.hibernate.type.TimestampType" column="last_update_timestamp" />
+		<property name="lastUpdateUserid" type="com.liferay.portal.dao.orm.hibernate.StringType" column="last_update_userid" />
+		<property name="lastUpdateUsername" type="com.liferay.portal.dao.orm.hibernate.StringType" column="last_update_username" />
+		<property name="active" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property name="effectiveTimestamp" type="org.hibernate.type.TimestampType" column="effective_timestamp" />
+		<property name="systemName" type="com.liferay.portal.dao.orm.hibernate.StringType" column="system_name" />
+		<property name="dateFormat" type="com.liferay.portal.dao.orm.hibernate.StringType" column="date_format" />
+	</class>
+	<class name="com.stc.echannels.epayments.model.impl.PaymentTransactionDetailsImpl" table="PAYMENT_TRANSACTION_DETAILS">
+		<composite-id name="primaryKey" class="com.stc.echannels.epayments.service.persistence.PaymentTransactionDetailsPK">
+			<key-property name="epayTransId" column="EPAY_TRANS_ID" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+			<key-property name="epayInstanceId" column="EPAY_INSTANCE_ID" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		</composite-id>
+		<property name="accountNumber" type="com.liferay.portal.dao.orm.hibernate.StringType" column="ACCOUNT_NUMBER  " />
+		<property name="serviceTypeId" type="com.liferay.portal.dao.orm.hibernate.LongType" column="SERVICE_TYPE_ID " />
+		<property name="transAmount" type="com.liferay.portal.dao.orm.hibernate.LongType" column="TRANS_AMOUNT " />
+		<property name="transValue" type="com.liferay.portal.dao.orm.hibernate.StringType" column="TRANS_VALUE" />
+		<property name="processDate" type="org.hibernate.type.TimestampType" column="PROCESS_DATE" />
+		<property name="serviceNumber" type="com.liferay.portal.dao.orm.hibernate.StringType" column="SERVICE_NUMBER" />
+		<property name="idType" type="com.liferay.portal.dao.orm.hibernate.StringType" column="ID_TYPE " />
+		<property name="recipientId" type="com.liferay.portal.dao.orm.hibernate.StringType" column="RECIPIENT_ID " />
+		<property name="recipientIdType" type="com.liferay.portal.dao.orm.hibernate.StringType" column="RECIPIENT_ID_TYPE" />
+		<property name="notificationNumber" type="com.liferay.portal.dao.orm.hibernate.StringType" column="NOTIFICATION_NUMBER" />
+		<property name="processStatus" type="com.liferay.portal.dao.orm.hibernate.StringType" column="PROCESS_STATUS" />
+		<property name="serviceCategory" type="com.liferay.portal.dao.orm.hibernate.StringType" column="SERVICE_CATEGORY" />
+		<property name="reasonCode" type="com.liferay.portal.dao.orm.hibernate.StringType" column="REASON_CODE" />
+		<property name="nativeReasonCode" type="com.liferay.portal.dao.orm.hibernate.StringType" column="NATIVE_REASON_CODE " />
+	</class>
+	<class name="com.stc.echannels.epayments.model.impl.PaymentTransactionsImpl" table="PAYMENT_TRANSACTIONS">
+		<id name="epayTransId" column="EPAY_TRANS_ID" type="java.lang.String">
+			<generator class="assigned" />
+		</id>
+		<property name="transAmount" type="com.liferay.portal.dao.orm.hibernate.LongType" column="TRANS_AMOUNT " />
+		<property name="transValue" type="com.liferay.portal.dao.orm.hibernate.StringType" column="TRANS_VALUE" />
+		<property name="transAmotChkDigit" type="com.liferay.portal.dao.orm.hibernate.LongType" column="TRANS_AMT_CHK_DIGIT" />
+		<property name="processorReference" type="com.liferay.portal.dao.orm.hibernate.StringType" column="PROCESSOR_REFERENCE" />
+		<property name="channelId" type="com.liferay.portal.dao.orm.hibernate.LongType" column="CHANNEL_ID" />
+		<property name="pmtBankId" type="com.liferay.portal.dao.orm.hibernate.StringType" column="PMT_BANK_ID" />
+		<property name="pmtBranchId" type="com.liferay.portal.dao.orm.hibernate.StringType" column="PMT_BRANCH_ID" />
+		<property name="transProcessDate" type="org.hibernate.type.TimestampType" column="TRANS_PROCESS_DATE" />
+		<property name="batchId" type="com.liferay.portal.dao.orm.hibernate.StringType" column="BATCH_ID" />
+		<property name="serviceId" type="com.liferay.portal.dao.orm.hibernate.LongType" column="SERVICE_ID" />
+		<property name="appliedDate" type="org.hibernate.type.TimestampType" column="APPLIED_DATE" />
+		<property name="appliedAmount" type="com.liferay.portal.dao.orm.hibernate.LongType" column="APPLIED_AMOUNT" />
+		<property name="processStatus" type="com.liferay.portal.dao.orm.hibernate.StringType" column="PROCESS_STATUS" />
+		<property name="notificationNumber" type="com.liferay.portal.dao.orm.hibernate.StringType" column="NOTIFICATION_NUMBER" />
+		<property name="currencyCode" type="com.liferay.portal.dao.orm.hibernate.StringType" column="CURRENCY_CODE" />
+		<property name="confirmationNumber" type="com.liferay.portal.dao.orm.hibernate.StringType" column="CONFIRMATION_NUMBER" />
+		<property name="pmtRecievedDate" type="org.hibernate.type.TimestampType" column="PMT_RECEIVED_DATE" />
+		<property name="reasonCode" type="com.liferay.portal.dao.orm.hibernate.StringType" column="REASON_CODE" />
+		<property name="eventTypeId" type="com.liferay.portal.dao.orm.hibernate.LongType" column="EVENT_TYPE_ID" />
+		<property name="pmtMethodId" type="com.liferay.portal.dao.orm.hibernate.LongType" column="PMT_METHOD_ID" />
+		<property name="pmtType" type="com.liferay.portal.dao.orm.hibernate.StringType" column="PMT_TYPE" />
+		<property name="rpmId" type="com.liferay.portal.dao.orm.hibernate.StringType" column="RPM_ID" />
+		<property name="nativeReasonCode" type="com.liferay.portal.dao.orm.hibernate.StringType" column="NATIVE_REASON_CODE" />
+		<property name="feeId" type="com.liferay.portal.dao.orm.hibernate.LongType" column="FEE_ID" />
+		<property name="requestLocation" type="com.liferay.portal.dao.orm.hibernate.StringType" column="REQUEST_LOCATION" />
+		<property name="profileId" type="com.liferay.portal.dao.orm.hibernate.StringType" column="PROFILE_ID" />
+		<property name="senderId" type="com.liferay.portal.dao.orm.hibernate.StringType" column="SENDER_ID " />
+		<property name="last4Digits" type="com.liferay.portal.dao.orm.hibernate.StringType" column="LAST4DIGITS" />
+		<property name="cardType" type="com.liferay.portal.dao.orm.hibernate.StringType" column="CARD_TYPE " />
+		<property name="expiryDate" type="org.hibernate.type.TimestampType" column="EXPIRY_DATE" />
+		<property name="sourceTransType" type="com.liferay.portal.dao.orm.hibernate.StringType" column="SOURCE_TRANS_TYPE" />
+	</class>
+	<class name="com.stc.echannels.epayments.model.impl.ReconLogImpl" table="SADAD_RECON_LOG">
+		<id name="paymentSystemTransId" column="PMT_SYSTEM_TRANS_ID" type="java.lang.String">
+			<generator class="assigned" />
+		</id>
+		<property name="bankTransId" type="com.liferay.portal.dao.orm.hibernate.LongType" column="BANK_TRANS_ID" />
+		<property name="transAmount" type="com.liferay.portal.dao.orm.hibernate.DoubleType" column="TRANS_AMT" />
+		<property name="paymentMethod" type="com.liferay.portal.dao.orm.hibernate.StringType" column="PAYMENT_METHOD" />
+		<property name="paymentChannel" type="com.liferay.portal.dao.orm.hibernate.StringType" column="PAYMENT_CHANNEL" />
+		<property name="pmtBankId" type="com.liferay.portal.dao.orm.hibernate.StringType" column="PMT_BANK_ID" />
+		<property name="bankTransDate" type="org.hibernate.type.TimestampType" column="BANK_TRANS_DATE" />
+		<property name="beneficiaryServiceNo" type="com.liferay.portal.dao.orm.hibernate.StringType" column="BENEFICIARY_SERVICENO" />
+		<property name="serviceId" type="com.liferay.portal.dao.orm.hibernate.LongType" column="SERVICE_ID" />
+		<property name="paymentStatus" type="com.liferay.portal.dao.orm.hibernate.StringType" column="PAYMENT_STATUS" />
+	</class>
+	<class name="com.stc.echannels.epayments.model.impl.RefundLogImpl" table="REFUND_LOG">
+		<id name="epayTransId" column="EPAY_TRANS_ID" type="java.lang.String">
+			<generator class="assigned" />
+		</id>
+		<property name="refundId" type="com.liferay.portal.dao.orm.hibernate.StringType" column="REFUND_ID" />
+		<property name="amount" type="com.liferay.portal.dao.orm.hibernate.DoubleType" column="AMOUNT" />
+		<property name="submissionDate" type="org.hibernate.type.TimestampType" column="SUBMISSION_DATE" />
+		<property name="approvalDate" type="org.hibernate.type.TimestampType" column="APPROVAL_DATE" />
+		<property name="status" type="com.liferay.portal.dao.orm.hibernate.StringType" column="STATUS" />
+	</class>
+	<class name="com.stc.echannels.epayments.model.impl.RefundReconLogImpl" table="REFUND_RECON_LOG">
+		<id name="batchId" column="BATCH_ID" type="java.lang.String">
+			<generator class="assigned" />
+		</id>
+		<property name="serviceId" type="com.liferay.portal.dao.orm.hibernate.LongType" column="SERVICE_ID" />
+		<property name="refundId" type="com.liferay.portal.dao.orm.hibernate.StringType" column="REFUND_ID" />
+		<property name="pmtBankId" type="com.liferay.portal.dao.orm.hibernate.StringType" column="PMT_BANK_ID" />
+		<property name="pmtSystemRefundTransId" type="com.liferay.portal.dao.orm.hibernate.StringType" column="PMT_SYSTEM_REFUND_TRANS_ID" />
+		<property name="bankRefundTransId" type="com.liferay.portal.dao.orm.hibernate.StringType" column="BANK_REFUND_TRANS_ID" />
+		<property name="effDt" type="org.hibernate.type.TimestampType" column="EFF_DT" />
+		<property name="processDate" type="org.hibernate.type.TimestampType" column="PROCESS_DATE" />
+		<property name="refundAmount" type="com.liferay.portal.dao.orm.hibernate.DoubleType" column="REFUND_AMOUNT" />
+		<property name="refundStatusCode" type="com.liferay.portal.dao.orm.hibernate.StringType" column="REFUND_STATUS_CODE" />
+	</class>
+	<class name="com.stc.echannels.epayments.model.impl.SrvTypesImpl" table="SERVICE_TYPES">
+		<id name="serviceTypeId" column="SERVICE_TYPE_ID" type="long">
+			<generator class="assigned" />
+		</id>
+		<property name="serviceTypeName" type="com.liferay.portal.dao.orm.hibernate.StringType" column="SERVICE_TYPE_NAME" />
+		<property name="serviceNameEN" type="com.liferay.portal.dao.orm.hibernate.StringType" column="SERVICE_NAME_EN" />
+		<property name="serviceNameAR" type="com.liferay.portal.dao.orm.hibernate.StringType" column="SERVICE_NAME_AR" />
+	</class>
+	<class name="com.stc.echannels.epayments.model.impl.SrvTypeSrvsMapImpl" table="SERVICE_TYPE_SERVICES_MAP">
+		<id name="id" column="ID" type="java.lang.String">
+			<generator class="assigned" />
+		</id>
+		<property name="serviceId" type="com.liferay.portal.dao.orm.hibernate.LongType" column="SERVICE_ID" />
+		<property name="serviceTypeId" type="com.liferay.portal.dao.orm.hibernate.LongType" column="SERVICE_TYPE_ID" />
+	</class>
+	<class name="com.stc.echannels.epayments.model.impl.SystemConfigImpl" table="SYSTEM_CONFIG_MGR">
+		<id name="transId" column="TRANS_ID" type="java.lang.String">
+			<generator class="assigned" />
+		</id>
+		<property name="lastUpdateTimestamp" type="org.hibernate.type.TimestampType" column="last_update_timestamp" />
+		<property name="lastUpdateUserid" type="com.liferay.portal.dao.orm.hibernate.StringType" column="last_update_userid" />
+		<property name="lastUpdateUsername" type="com.liferay.portal.dao.orm.hibernate.StringType" column="last_update_username" />
+		<property name="status" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property name="effectiveTimestamp" type="org.hibernate.type.TimestampType" column="effective_timestamp" />
+		<property name="clientIp" type="com.liferay.portal.dao.orm.hibernate.StringType" column="CLIENT_IP" />
+		<property name="serverIp" type="com.liferay.portal.dao.orm.hibernate.StringType" column="SERVER_IP" />
+		<property name="userAgent" type="com.liferay.portal.dao.orm.hibernate.StringType" column="USER_AGENT" />
+		<property name="operation" type="com.liferay.portal.dao.orm.hibernate.StringType" column="OPERATION" />
+		<property name="serviceId" type="com.liferay.portal.dao.orm.hibernate.LongType" column="service_Id" />
+		<property name="bankId" type="com.liferay.portal.dao.orm.hibernate.StringType" column="bank_Id" />
+		<property name="config" type="com.liferay.portal.dao.orm.hibernate.StringType" column="config_code" />
+	</class>
+	<class name="com.stc.echannels.epayments.model.impl.TransactionStatusImpl" table="TRANSACTION_STATUS">
+		<id name="id" column="ID" type="long">
+			<generator class="assigned" />
+		</id>
+		<property name="description" type="com.liferay.portal.dao.orm.hibernate.StringType" column="DESCRIPTION" />
+		<property name="descriptiveNameEn" type="com.liferay.portal.dao.orm.hibernate.StringType" column="DESCRIPTIVE_NAME_EN" />
+		<property name="descriptiveNameAr" type="com.liferay.portal.dao.orm.hibernate.StringType" column="DESCRIPTIVE_NAME_AR" />
+	</class>
+</hibernate-mapping>

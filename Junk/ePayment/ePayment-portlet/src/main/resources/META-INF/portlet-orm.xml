@@ -1,0 +1,1183 @@
+<?xml version="1.0"?>
+
+<entity-mappings xmlns="http://java.sun.com/xml/ns/persistence/orm" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="1.0" xsi:schemaLocation="http://java.sun.com/xml/ns/persistence/orm http://java.sun.com/xml/ns/persistence/orm_1_0.xsd">
+	<persistence-unit-metadata>
+		<xml-mapping-metadata-complete/>
+		<persistence-unit-defaults>
+			<access>PROPERTY</access>
+		</persistence-unit-defaults>
+	</persistence-unit-metadata>
+	<mapped-superclass class="com.stc.echannels.epayments.model.impl.BankModelImpl">
+		<attributes>
+			<id name="transId">
+				<column name="TRANS_ID" />
+			</id>
+			<basic name="lastUpdateTimestamp">
+				<column name="LAST_UPDATE_TIMESTAMP" />
+				<temporal>TIMESTAMP</temporal>
+			</basic>
+			<basic name="lastUpdateUserid">
+				<column name="LAST_UPDATE_USERID" />
+			</basic>
+			<basic name="lastUpdateUsername">
+				<column name="LAST_UPDATE_USERNAME" />
+			</basic>
+			<basic name="active" />
+			<basic name="effectiveTimestamp">
+				<column name="EFFECTIVE_TIMESTAMP" />
+				<temporal>TIMESTAMP</temporal>
+			</basic>
+			<basic name="status" />
+			<basic name="clientIp">
+				<column name="CLIENT_IP" />
+			</basic>
+			<basic name="serverIp">
+				<column name="SERVER_IP" />
+			</basic>
+			<basic name="userAgent">
+				<column name="USER_AGENT" />
+			</basic>
+			<basic name="operation">
+				<column name="OPERATION" />
+			</basic>
+			<basic name="bankId">
+				<column name="BANK_ID" />
+			</basic>
+			<basic name="stcCode">
+				<column name="STC_BANK_CODE" />
+			</basic>
+			<basic name="nameEn">
+				<column name="BANK_NAME_EN" />
+			</basic>
+			<basic name="nameAr">
+				<column name="BANK_NAME_AR" />
+			</basic>
+			<basic name="comments">
+				<column name="COMMENTS" />
+			</basic>
+			<transient name="modelAttributes" />
+			<transient name="primaryKey" />
+			<transient name="primaryKeyObj" />
+		</attributes>
+	</mapped-superclass>
+	<mapped-superclass class="com.stc.echannels.epayments.model.impl.BankBranchModelImpl">
+		<attributes>
+			<id name="transId">
+				<column name="TRANS_ID" />
+			</id>
+			<basic name="stcBranchCode">
+				<column name="STC_BRANCH_CODE" />
+			</basic>
+			<basic name="bankId">
+				<column name="BANK_ID" />
+			</basic>
+			<basic name="channelId">
+				<column name="PAYMENT_CHANNEL_ID" />
+			</basic>
+			<basic name="lastUpdateTimestamp">
+				<column name="LAST_UPDATE_TIMESTAMP" />
+				<temporal>TIMESTAMP</temporal>
+			</basic>
+			<basic name="lastUpdateUserid">
+				<column name="LAST_UPDATE_USERID" />
+			</basic>
+			<basic name="lastUpdateUsername">
+				<column name="LAST_UPDATE_USERNAME" />
+			</basic>
+			<basic name="active" />
+			<basic name="status" />
+			<basic name="effectiveTimestamp">
+				<column name="EFFECTIVE_TIMESTAMP" />
+				<temporal>TIMESTAMP</temporal>
+			</basic>
+			<basic name="clientIp">
+				<column name="CLIENT_IP" />
+			</basic>
+			<basic name="serverIp">
+				<column name="SERVER_IP" />
+			</basic>
+			<basic name="userAgent">
+				<column name="USER_AGENT" />
+			</basic>
+			<basic name="operation">
+				<column name="OPERATION" />
+			</basic>
+			<transient name="modelAttributes" />
+			<transient name="primaryKey" />
+			<transient name="primaryKeyObj" />
+		</attributes>
+	</mapped-superclass>
+	<mapped-superclass class="com.stc.echannels.epayments.model.impl.BankServicesModelImpl">
+		<attributes>
+			<id name="id">
+				<column name="ID" />
+			</id>
+			<basic name="bankid">
+				<column name="BANK_ID" />
+			</basic>
+			<basic name="serviceid">
+				<column name="SERVICE_ID" />
+			</basic>
+			<transient name="modelAttributes" />
+			<transient name="primaryKey" />
+			<transient name="primaryKeyObj" />
+		</attributes>
+	</mapped-superclass>
+	<mapped-superclass class="com.stc.echannels.epayments.model.impl.BizRuleConfigModelImpl">
+		<attributes>
+			<id name="bizRuleId">
+				<column name="BIZ_RULE_ID" />
+			</id>
+			<basic name="serviceId">
+				<column name="SERVICE_ID" />
+			</basic>
+			<basic name="channelId">
+				<column name="CHANNEL_ID" />
+			</basic>
+			<basic name="pmtMethodId">
+				<column name="PMT_METHOD_ID" />
+			</basic>
+			<basic name="customValue">
+				<column name="CUSTOM_VALUE" />
+			</basic>
+			<basic name="ruleId">
+				<column name="RULE_ID" />
+			</basic>
+			<basic name="transId">
+				<column name="TRANS_ID" />
+			</basic>
+			<basic name="clientIP">
+				<column name="CLIENT_IP" />
+			</basic>
+			<basic name="serverIP">
+				<column name="SERVER_IP" />
+			</basic>
+			<basic name="userAgent">
+				<column name="USER_AGENT" />
+			</basic>
+			<basic name="operation">
+				<column name="OPERATION" />
+			</basic>
+			<basic name="lastUpdateTimestamp">
+				<column name="LAST_UPDATE_TIMESTAMP" />
+				<temporal>TIMESTAMP</temporal>
+			</basic>
+			<basic name="lastUpdateUserid">
+				<column name="LAST_UPDATE_USERID" />
+			</basic>
+			<basic name="lastUpdateUsername">
+				<column name="LAST_UPDATE_USERNAME" />
+			</basic>
+			<basic name="status" />
+			<basic name="effectiveTimestamp">
+				<column name="EFFECTIVE_TIMESTAMP" />
+				<temporal>TIMESTAMP</temporal>
+			</basic>
+			<transient name="modelAttributes" />
+			<transient name="primaryKey" />
+			<transient name="primaryKeyObj" />
+		</attributes>
+	</mapped-superclass>
+	<mapped-superclass class="com.stc.echannels.epayments.model.impl.BusinessSrvModelImpl">
+		<attributes>
+			<id name="serviceId">
+				<column name="SERVICE_ID" />
+			</id>
+			<basic name="lastUpdateTimestamp">
+				<column name="LAST_UPDATE_TIMESTAMP" />
+				<temporal>TIMESTAMP</temporal>
+			</basic>
+			<basic name="lastUpdateUserid">
+				<column name="LAST_UPDATE_USERID" />
+			</basic>
+			<basic name="lastUpdateUsername">
+				<column name="LAST_UPDATE_USERNAME" />
+			</basic>
+			<basic name="status" />
+			<basic name="effectiveTimestamp">
+				<column name="EFFECTIVE_TIMESTAMP" />
+				<temporal>TIMESTAMP</temporal>
+			</basic>
+			<basic name="refMask">
+				<column name="REF_MASK" />
+			</basic>
+			<basic name="serviceType">
+				<column name="SERVICE_TYPE" />
+			</basic>
+			<basic name="serviceNameEn">
+				<column name="SERVICE_NAME_EN" />
+			</basic>
+			<basic name="serviceNameAr">
+				<column name="SERVICE_NAME_AR" />
+			</basic>
+			<transient name="modelAttributes" />
+			<transient name="primaryKey" />
+			<transient name="primaryKeyObj" />
+		</attributes>
+	</mapped-superclass>
+	<mapped-superclass class="com.stc.echannels.epayments.model.impl.CardGroupModelImpl">
+		<attributes>
+			<id name="transId">
+				<column name="TRANS_ID" />
+			</id>
+			<basic name="lastUpdateTimestamp">
+				<column name="LAST_UPDATE_TIMESTAMP" />
+				<temporal>TIMESTAMP</temporal>
+			</basic>
+			<basic name="lastUpdateUserid">
+				<column name="LAST_UPDATE_USERID" />
+			</basic>
+			<basic name="lastUpdateUsername">
+				<column name="LAST_UPDATE_USERNAME" />
+			</basic>
+			<basic name="active" />
+			<basic name="effectiveTimestamp">
+				<column name="EFFECTIVE_TIMESTAMP" />
+				<temporal>TIMESTAMP</temporal>
+			</basic>
+			<basic name="clientIp">
+				<column name="CLIENT_IP" />
+			</basic>
+			<basic name="serverIp">
+				<column name="SERVER_IP" />
+			</basic>
+			<basic name="userAgent">
+				<column name="USER_AGENT" />
+			</basic>
+			<basic name="operation">
+				<column name="OPERATION" />
+			</basic>
+			<basic name="cardGroupId">
+				<column name="CARD_GROUP" />
+			</basic>
+			<basic name="cardValue">
+				<column name="CARD_VALUE" />
+			</basic>
+			<basic name="promotionValue">
+				<column name="PROMOTION_VALUE" />
+			</basic>
+			<basic name="inPaymentSystem">
+				<column name="IN_PAYMENT_SYSTEM" />
+			</basic>
+			<basic name="serviceId">
+				<column name="SERVICE_ID" />
+			</basic>
+			<transient name="modelAttributes" />
+			<transient name="primaryKey" />
+			<transient name="primaryKeyObj" />
+		</attributes>
+	</mapped-superclass>
+	<mapped-superclass class="com.stc.echannels.epayments.model.impl.EPayAccessControlModelImpl">
+		<attributes>
+			<id name="epayCofignId">
+				<column name="EPAY_CONFIG_ID" />
+			</id>
+			<basic name="serviceId">
+				<column name="SERVICE_ID" />
+			</basic>
+			<basic name="serviceTypeId">
+				<column name="SERVICE_TYPE_ID" />
+			</basic>
+			<basic name="channelId">
+				<column name="CHANNEL_ID" />
+			</basic>
+			<basic name="pmtMethodId">
+				<column name="PMT_METHOD_ID" />
+			</basic>
+			<basic name="transId">
+				<column name="TRANS_ID" />
+			</basic>
+			<basic name="clientIP">
+				<column name="CLIENT_IP" />
+			</basic>
+			<basic name="serverIP">
+				<column name="SERVER_IP" />
+			</basic>
+			<basic name="userAgent">
+				<column name="USER_AGENT" />
+			</basic>
+			<basic name="operation">
+				<column name="OPERATION" />
+			</basic>
+			<basic name="lastUpdateTimestamp">
+				<column name="LAST_UPDATE_TIMESTAMP" />
+				<temporal>TIMESTAMP</temporal>
+			</basic>
+			<basic name="lastUpdateUserid">
+				<column name="LAST_UPDATE_USERID" />
+			</basic>
+			<basic name="lastUpdateUsername">
+				<column name="LAST_UPDATE_USERNAME" />
+			</basic>
+			<basic name="status" />
+			<basic name="effectiveTimestamp">
+				<column name="EFFECTIVE_TIMESTAMP" />
+				<temporal>TIMESTAMP</temporal>
+			</basic>
+			<transient name="modelAttributes" />
+			<transient name="primaryKey" />
+			<transient name="primaryKeyObj" />
+		</attributes>
+	</mapped-superclass>
+	<mapped-superclass class="com.stc.echannels.epayments.model.impl.InRechargeHistoryModelImpl">
+		<attributes>
+			<id name="msisdn">
+				<column name="MSISDN" />
+			</id>
+			<basic name="transactionId">
+				<column name="TRANSACTION_ID" />
+			</basic>
+			<basic name="cardGroup">
+				<column name="CARD_GROUP" />
+			</basic>
+			<basic name="serviceClass">
+				<column name="SERVICE_CLASS" />
+			</basic>
+			<transient name="modelAttributes" />
+			<transient name="primaryKey" />
+			<transient name="primaryKeyObj" />
+		</attributes>
+	</mapped-superclass>
+	<mapped-superclass class="com.stc.echannels.epayments.model.impl.NotifConfigModelImpl">
+		<attributes>
+			<id name="notifId">
+				<column name="NOTIF_ID" />
+			</id>
+			<basic name="transId">
+				<column name="TRANS_ID" />
+			</basic>
+			<basic name="lastUpdateTimestamp">
+				<column name="LAST_UPDATE_TIMESTAMP" />
+				<temporal>TIMESTAMP</temporal>
+			</basic>
+			<basic name="lastUpdateUserid">
+				<column name="LAST_UPDATE_USERID" />
+			</basic>
+			<basic name="lastUpdateUsername">
+				<column name="LAST_UPDATE_USERNAME" />
+			</basic>
+			<basic name="status" />
+			<basic name="active" />
+			<basic name="effectiveTimestamp">
+				<column name="EFFECTIVE_TIMESTAMP" />
+				<temporal>TIMESTAMP</temporal>
+			</basic>
+			<basic name="clientIp">
+				<column name="CLIENT_IP" />
+			</basic>
+			<basic name="serverIp">
+				<column name="SERVER_IP" />
+			</basic>
+			<basic name="userAgent">
+				<column name="USER_AGENT" />
+			</basic>
+			<basic name="operation">
+				<column name="OPERATION" />
+			</basic>
+			<basic name="enabled">
+				<column name="ENABLED" />
+			</basic>
+			<basic name="msgEn">
+				<column name="NOTIF_MSG_EN" />
+			</basic>
+			<basic name="msgAr">
+				<column name="NOTIF_MSG_AR" />
+			</basic>
+			<basic name="param1">
+				<column name="NOTIF_PARAM_1" />
+			</basic>
+			<basic name="param2">
+				<column name="NOTIF_PARAM_2" />
+			</basic>
+			<basic name="param3">
+				<column name="NOTIF_PARAM_3" />
+			</basic>
+			<basic name="param4">
+				<column name="NOTIF_PARAM_4" />
+			</basic>
+			<basic name="param5">
+				<column name="NOTIF_PARAM_5" />
+			</basic>
+			<basic name="decriptiveNameEn">
+				<column name="DESCRIPTIVE_NAME_EN" />
+			</basic>
+			<basic name="decriptiveNameAr">
+				<column name="DESCRIPTIVE_NAME_AR" />
+			</basic>
+			<basic name="notifName">
+				<column name="NOTIF_NAME" />
+			</basic>
+			<basic name="serviceId">
+				<column name="SERVICE_ID" />
+			</basic>
+			<transient name="modelAttributes" />
+			<transient name="primaryKey" />
+			<transient name="primaryKeyObj" />
+		</attributes>
+	</mapped-superclass>
+	<mapped-superclass class="com.stc.echannels.epayments.model.impl.NotifParamModelImpl">
+		<attributes>
+			<id name="notifParamId">
+				<column name="NOTIF_PARAM_ID" />
+			</id>
+			<basic name="nameAr">
+				<column name="NOTIF_NAME_AR" />
+			</basic>
+			<basic name="nameEn">
+				<column name="NOTIF_NAME_EN" />
+			</basic>
+			<basic name="paramName">
+				<column name="NOTIF_PARAM_NAME" />
+			</basic>
+			<transient name="modelAttributes" />
+			<transient name="primaryKey" />
+			<transient name="primaryKeyObj" />
+		</attributes>
+	</mapped-superclass>
+	<mapped-superclass class="com.stc.echannels.epayments.model.impl.NotifParamSrvModelImpl">
+		<id-class class="com.stc.echannels.epayments.service.persistence.NotifParamSrvPK" />
+		<attributes>
+			<id name="notifParamId">
+				<column name="NOTIF_PARAM_ID" />
+			</id>
+			<id name="serviceId">
+				<column name="SERVICE_ID" />
+			</id>
+			<transient name="modelAttributes" />
+			<transient name="primaryKey" />
+			<transient name="primaryKeyObj" />
+		</attributes>
+	</mapped-superclass>
+	<mapped-superclass class="com.stc.echannels.epayments.model.impl.PaymentChannelModelImpl">
+		<attributes>
+			<id name="transId">
+				<column name="TRANS_ID" />
+			</id>
+			<basic name="lastUpdateTimestamp">
+				<column name="LAST_UPDATE_TIMESTAMP" />
+				<temporal>TIMESTAMP</temporal>
+			</basic>
+			<basic name="lastUpdateUserid">
+				<column name="LAST_UPDATE_USERID" />
+			</basic>
+			<basic name="lastUpdateUsername">
+				<column name="LAST_UPDATE_USERNAME" />
+			</basic>
+			<basic name="active" />
+			<basic name="status" />
+			<basic name="effectiveTimestamp">
+				<column name="EFFECTIVE_TIMESTAMP" />
+				<temporal>TIMESTAMP</temporal>
+			</basic>
+			<basic name="clientIp">
+				<column name="CLIENT_IP" />
+			</basic>
+			<basic name="serverIp">
+				<column name="SERVER_IP" />
+			</basic>
+			<basic name="userAgent">
+				<column name="USER_AGENT" />
+			</basic>
+			<basic name="operation">
+				<column name="OPERATION" />
+			</basic>
+			<basic name="channelId">
+				<column name="CHANNEL_ID" />
+			</basic>
+			<basic name="channelType">
+				<column name="CHANNEL_TYPE" />
+			</basic>
+			<basic name="descriptiveNameEn">
+				<column name="DESCRIPTIVE_NAME_EN" />
+			</basic>
+			<basic name="descriptiveNameAr">
+				<column name="DESCRIPTIVE_NAME_AR" />
+			</basic>
+			<transient name="modelAttributes" />
+			<transient name="primaryKey" />
+			<transient name="primaryKeyObj" />
+		</attributes>
+	</mapped-superclass>
+	<mapped-superclass class="com.stc.echannels.epayments.model.impl.PaymentChannelSrModelImpl">
+		<attributes>
+			<id name="id">
+				<column name="ID" />
+			</id>
+			<basic name="channelid">
+				<column name="CHANNEL_ID" />
+			</basic>
+			<basic name="serviceid">
+				<column name="SERVICE_ID" />
+			</basic>
+			<transient name="modelAttributes" />
+			<transient name="primaryKey" />
+			<transient name="primaryKeyObj" />
+		</attributes>
+	</mapped-superclass>
+	<mapped-superclass class="com.stc.echannels.epayments.model.impl.PaymentChannelSrvsMapModelImpl">
+		<attributes>
+			<id name="id">
+				<column name="ID" />
+			</id>
+			<basic name="serviceId">
+				<column name="SERVICE_ID" />
+			</basic>
+			<basic name="channelId">
+				<column name="CHANNEL_ID" />
+			</basic>
+			<transient name="modelAttributes" />
+			<transient name="primaryKey" />
+			<transient name="primaryKeyObj" />
+		</attributes>
+	</mapped-superclass>
+	<mapped-superclass class="com.stc.echannels.epayments.model.impl.PaymentMethodModelImpl">
+		<attributes>
+			<id name="pmtMethodId">
+				<column name="PMT_METHOD_ID" />
+			</id>
+			<basic name="status" />
+			<basic name="lastUpdateTimestamp">
+				<column name="LAST_UPDATE_TIMESTAMP" />
+				<temporal>TIMESTAMP</temporal>
+			</basic>
+			<basic name="lastUpdateUserid">
+				<column name="LAST_UPDATE_USERID" />
+			</basic>
+			<basic name="lastUpdateUsername">
+				<column name="LAST_UPDATE_USERNAME" />
+			</basic>
+			<basic name="effectiveTimestamp">
+				<column name="EFFECTIVE_TIMESTAMP" />
+				<temporal>TIMESTAMP</temporal>
+			</basic>
+			<basic name="clientIp">
+				<column name="CLIENT_IP" />
+			</basic>
+			<basic name="serverIp">
+				<column name="SERVER_IP" />
+			</basic>
+			<basic name="userAgent">
+				<column name="USER_AGENT" />
+			</basic>
+			<basic name="operation">
+				<column name="OPERATION" />
+			</basic>
+			<basic name="descriptiveNameEn">
+				<column name="DESCRIPTIVE_NAME_EN" />
+			</basic>
+			<basic name="descriptiveNameAr">
+				<column name="DESCRIPTIVE_NAME_AR" />
+			</basic>
+			<basic name="pmtMethodIdType">
+				<column name="PMT_METHOD_ID_TYPE" />
+			</basic>
+			<transient name="modelAttributes" />
+			<transient name="primaryKey" />
+			<transient name="primaryKeyObj" />
+		</attributes>
+	</mapped-superclass>
+	<mapped-superclass class="com.stc.echannels.epayments.model.impl.PaymentMethodSrvsMapModelImpl">
+		<attributes>
+			<id name="id">
+				<column name="ID" />
+			</id>
+			<basic name="serviceId">
+				<column name="SERVICE_ID" />
+			</basic>
+			<basic name="paymentMethodId">
+				<column name="PMT_METHOD_ID" />
+			</basic>
+			<transient name="modelAttributes" />
+			<transient name="primaryKey" />
+			<transient name="primaryKeyObj" />
+		</attributes>
+	</mapped-superclass>
+	<mapped-superclass class="com.stc.echannels.epayments.model.impl.PaymentRuleModelImpl">
+		<id-class class="com.stc.echannels.epayments.service.persistence.PaymentRulePK" />
+		<attributes>
+			<id name="ruleId">
+				<column name="RULE_ID" />
+			</id>
+			<id name="transId">
+				<column name="TRANS_ID" />
+			</id>
+			<basic name="ruleName">
+				<column name="RULE_NAME" />
+			</basic>
+			<basic name="value">
+				<column name="VALUE" />
+			</basic>
+			<basic name="descriptionEN">
+				<column name="DESCRIPTION_EN" />
+			</basic>
+			<basic name="descriptionAR">
+				<column name="DESCRIPTION_AR" />
+			</basic>
+			<basic name="isEditable">
+				<column name="IS_EDITABLE" />
+			</basic>
+			<basic name="refundOnViolation">
+				<column name="REFUND_ON_VIOLATION" />
+			</basic>
+			<basic name="ruleCategory">
+				<column name="RULE_CATEGORY" />
+			</basic>
+			<basic name="clientIP">
+				<column name="CLIENT_IP" />
+			</basic>
+			<basic name="serverIP">
+				<column name="SERVER_IP" />
+			</basic>
+			<basic name="userAgent">
+				<column name="USER_AGENT" />
+			</basic>
+			<basic name="operation">
+				<column name="OPERATION" />
+			</basic>
+			<basic name="isList">
+				<column name="IS_LIST" />
+			</basic>
+			<basic name="serviceTypeId">
+				<column name="SERVICE_TYPE_ID" />
+			</basic>
+			<basic name="lastUpdateTimestamp">
+				<column name="LAST_UPDATE_TIMESTAMP" />
+				<temporal>TIMESTAMP</temporal>
+			</basic>
+			<basic name="lastUpdateUserid">
+				<column name="LAST_UPDATE_USERID" />
+			</basic>
+			<basic name="lastUpdateUsername">
+				<column name="LAST_UPDATE_USERNAME" />
+			</basic>
+			<basic name="status" />
+			<basic name="effectiveTimestamp">
+				<column name="EFFECTIVE_TIMESTAMP" />
+				<temporal>TIMESTAMP</temporal>
+			</basic>
+			<transient name="modelAttributes" />
+			<transient name="primaryKey" />
+			<transient name="primaryKeyObj" />
+		</attributes>
+	</mapped-superclass>
+	<mapped-superclass class="com.stc.echannels.epayments.model.impl.PaymentSystemModelImpl">
+		<attributes>
+			<id name="paymentSystemId">
+				<column name="IN_PAYMENT_SYSTEM" />
+			</id>
+			<basic name="lastUpdateTimestamp">
+				<column name="LAST_UPDATE_TIMESTAMP" />
+				<temporal>TIMESTAMP</temporal>
+			</basic>
+			<basic name="lastUpdateUserid">
+				<column name="LAST_UPDATE_USERID" />
+			</basic>
+			<basic name="lastUpdateUsername">
+				<column name="LAST_UPDATE_USERNAME" />
+			</basic>
+			<basic name="active" />
+			<basic name="effectiveTimestamp">
+				<column name="EFFECTIVE_TIMESTAMP" />
+				<temporal>TIMESTAMP</temporal>
+			</basic>
+			<basic name="systemName">
+				<column name="SYSTEM_NAME" />
+			</basic>
+			<basic name="dateFormat">
+				<column name="DATE_FORMAT" />
+			</basic>
+			<transient name="modelAttributes" />
+			<transient name="primaryKey" />
+			<transient name="primaryKeyObj" />
+		</attributes>
+	</mapped-superclass>
+	<mapped-superclass class="com.stc.echannels.epayments.model.impl.PaymentTransactionDetailsModelImpl">
+		<id-class class="com.stc.echannels.epayments.service.persistence.PaymentTransactionDetailsPK" />
+		<attributes>
+			<id name="epayTransId">
+				<column name="EPAY_TRANS_ID" />
+			</id>
+			<id name="epayInstanceId">
+				<column name="EPAY_INSTANCE_ID" />
+			</id>
+			<basic name="accountNumber">
+				<column name="ACCOUNT_NUMBER  " />
+			</basic>
+			<basic name="serviceTypeId">
+				<column name="SERVICE_TYPE_ID " />
+			</basic>
+			<basic name="transAmount">
+				<column name="TRANS_AMOUNT " />
+			</basic>
+			<basic name="transValue">
+				<column name="TRANS_VALUE" />
+			</basic>
+			<basic name="processDate">
+				<column name="PROCESS_DATE" />
+				<temporal>TIMESTAMP</temporal>
+			</basic>
+			<basic name="serviceNumber">
+				<column name="SERVICE_NUMBER" />
+			</basic>
+			<basic name="idType">
+				<column name="ID_TYPE " />
+			</basic>
+			<basic name="recipientId">
+				<column name="RECIPIENT_ID " />
+			</basic>
+			<basic name="recipientIdType">
+				<column name="RECIPIENT_ID_TYPE" />
+			</basic>
+			<basic name="notificationNumber">
+				<column name="NOTIFICATION_NUMBER" />
+			</basic>
+			<basic name="processStatus">
+				<column name="PROCESS_STATUS" />
+			</basic>
+			<basic name="serviceCategory">
+				<column name="SERVICE_CATEGORY" />
+			</basic>
+			<basic name="reasonCode">
+				<column name="REASON_CODE" />
+			</basic>
+			<basic name="nativeReasonCode">
+				<column name="NATIVE_REASON_CODE " />
+			</basic>
+			<transient name="modelAttributes" />
+			<transient name="primaryKey" />
+			<transient name="primaryKeyObj" />
+		</attributes>
+	</mapped-superclass>
+	<mapped-superclass class="com.stc.echannels.epayments.model.impl.PaymentTransactionsModelImpl">
+		<attributes>
+			<id name="epayTransId">
+				<column name="EPAY_TRANS_ID" />
+			</id>
+			<basic name="transAmount">
+				<column name="TRANS_AMOUNT " />
+			</basic>
+			<basic name="transValue">
+				<column name="TRANS_VALUE" />
+			</basic>
+			<basic name="transAmotChkDigit">
+				<column name="TRANS_AMT_CHK_DIGIT" />
+			</basic>
+			<basic name="processorReference">
+				<column name="PROCESSOR_REFERENCE" />
+			</basic>
+			<basic name="channelId">
+				<column name="CHANNEL_ID" />
+			</basic>
+			<basic name="pmtBankId">
+				<column name="PMT_BANK_ID" />
+			</basic>
+			<basic name="pmtBranchId">
+				<column name="PMT_BRANCH_ID" />
+			</basic>
+			<basic name="transProcessDate">
+				<column name="TRANS_PROCESS_DATE" />
+				<temporal>TIMESTAMP</temporal>
+			</basic>
+			<basic name="batchId">
+				<column name="BATCH_ID" />
+			</basic>
+			<basic name="serviceId">
+				<column name="SERVICE_ID" />
+			</basic>
+			<basic name="appliedDate">
+				<column name="APPLIED_DATE" />
+				<temporal>TIMESTAMP</temporal>
+			</basic>
+			<basic name="appliedAmount">
+				<column name="APPLIED_AMOUNT" />
+			</basic>
+			<basic name="processStatus">
+				<column name="PROCESS_STATUS" />
+			</basic>
+			<basic name="notificationNumber">
+				<column name="NOTIFICATION_NUMBER" />
+			</basic>
+			<basic name="currencyCode">
+				<column name="CURRENCY_CODE" />
+			</basic>
+			<basic name="confirmationNumber">
+				<column name="CONFIRMATION_NUMBER" />
+			</basic>
+			<basic name="pmtRecievedDate">
+				<column name="PMT_RECEIVED_DATE" />
+				<temporal>TIMESTAMP</temporal>
+			</basic>
+			<basic name="reasonCode">
+				<column name="REASON_CODE" />
+			</basic>
+			<basic name="eventTypeId">
+				<column name="EVENT_TYPE_ID" />
+			</basic>
+			<basic name="pmtMethodId">
+				<column name="PMT_METHOD_ID" />
+			</basic>
+			<basic name="pmtType">
+				<column name="PMT_TYPE" />
+			</basic>
+			<basic name="rpmId">
+				<column name="RPM_ID" />
+			</basic>
+			<basic name="nativeReasonCode">
+				<column name="NATIVE_REASON_CODE" />
+			</basic>
+			<basic name="feeId">
+				<column name="FEE_ID" />
+			</basic>
+			<basic name="requestLocation">
+				<column name="REQUEST_LOCATION" />
+			</basic>
+			<basic name="profileId">
+				<column name="PROFILE_ID" />
+			</basic>
+			<basic name="senderId">
+				<column name="SENDER_ID " />
+			</basic>
+			<basic name="last4Digits">
+				<column name="LAST4DIGITS" />
+			</basic>
+			<basic name="cardType">
+				<column name="CARD_TYPE " />
+			</basic>
+			<basic name="expiryDate">
+				<column name="EXPIRY_DATE" />
+				<temporal>TIMESTAMP</temporal>
+			</basic>
+			<basic name="sourceTransType">
+				<column name="SOURCE_TRANS_TYPE" />
+			</basic>
+			<transient name="modelAttributes" />
+			<transient name="primaryKey" />
+			<transient name="primaryKeyObj" />
+		</attributes>
+	</mapped-superclass>
+	<mapped-superclass class="com.stc.echannels.epayments.model.impl.ReconLogModelImpl">
+		<attributes>
+			<id name="paymentSystemTransId">
+				<column name="PMT_SYSTEM_TRANS_ID" />
+			</id>
+			<basic name="bankTransId">
+				<column name="BANK_TRANS_ID" />
+			</basic>
+			<basic name="transAmount">
+				<column name="TRANS_AMT" />
+			</basic>
+			<basic name="paymentMethod">
+				<column name="PAYMENT_METHOD" />
+			</basic>
+			<basic name="paymentChannel">
+				<column name="PAYMENT_CHANNEL" />
+			</basic>
+			<basic name="pmtBankId">
+				<column name="PMT_BANK_ID" />
+			</basic>
+			<basic name="bankTransDate">
+				<column name="BANK_TRANS_DATE" />
+				<temporal>TIMESTAMP</temporal>
+			</basic>
+			<basic name="beneficiaryServiceNo">
+				<column name="BENEFICIARY_SERVICENO" />
+			</basic>
+			<basic name="serviceId">
+				<column name="SERVICE_ID" />
+			</basic>
+			<basic name="paymentStatus">
+				<column name="PAYMENT_STATUS" />
+			</basic>
+			<transient name="modelAttributes" />
+			<transient name="primaryKey" />
+			<transient name="primaryKeyObj" />
+		</attributes>
+	</mapped-superclass>
+	<mapped-superclass class="com.stc.echannels.epayments.model.impl.RefundLogModelImpl">
+		<attributes>
+			<id name="epayTransId">
+				<column name="EPAY_TRANS_ID" />
+			</id>
+			<basic name="refundId">
+				<column name="REFUND_ID" />
+			</basic>
+			<basic name="amount">
+				<column name="AMOUNT" />
+			</basic>
+			<basic name="submissionDate">
+				<column name="SUBMISSION_DATE" />
+				<temporal>TIMESTAMP</temporal>
+			</basic>
+			<basic name="approvalDate">
+				<column name="APPROVAL_DATE" />
+				<temporal>TIMESTAMP</temporal>
+			</basic>
+			<basic name="status">
+				<column name="STATUS" />
+			</basic>
+			<transient name="modelAttributes" />
+			<transient name="primaryKey" />
+			<transient name="primaryKeyObj" />
+		</attributes>
+	</mapped-superclass>
+	<mapped-superclass class="com.stc.echannels.epayments.model.impl.RefundReconLogModelImpl">
+		<attributes>
+			<id name="batchId">
+				<column name="BATCH_ID" />
+			</id>
+			<basic name="serviceId">
+				<column name="SERVICE_ID" />
+			</basic>
+			<basic name="refundId">
+				<column name="REFUND_ID" />
+			</basic>
+			<basic name="pmtBankId">
+				<column name="PMT_BANK_ID" />
+			</basic>
+			<basic name="pmtSystemRefundTransId">
+				<column name="PMT_SYSTEM_REFUND_TRANS_ID" />
+			</basic>
+			<basic name="bankRefundTransId">
+				<column name="BANK_REFUND_TRANS_ID" />
+			</basic>
+			<basic name="effDt">
+				<column name="EFF_DT" />
+				<temporal>TIMESTAMP</temporal>
+			</basic>
+			<basic name="processDate">
+				<column name="PROCESS_DATE" />
+				<temporal>TIMESTAMP</temporal>
+			</basic>
+			<basic name="refundAmount">
+				<column name="REFUND_AMOUNT" />
+			</basic>
+			<basic name="refundStatusCode">
+				<column name="REFUND_STATUS_CODE" />
+			</basic>
+			<transient name="modelAttributes" />
+			<transient name="primaryKey" />
+			<transient name="primaryKeyObj" />
+		</attributes>
+	</mapped-superclass>
+	<mapped-superclass class="com.stc.echannels.epayments.model.impl.SrvTypesModelImpl">
+		<attributes>
+			<id name="serviceTypeId">
+				<column name="SERVICE_TYPE_ID" />
+			</id>
+			<basic name="serviceTypeName">
+				<column name="SERVICE_TYPE_NAME" />
+			</basic>
+			<basic name="serviceNameEN">
+				<column name="SERVICE_NAME_EN" />
+			</basic>
+			<basic name="serviceNameAR">
+				<column name="SERVICE_NAME_AR" />
+			</basic>
+			<transient name="modelAttributes" />
+			<transient name="primaryKey" />
+			<transient name="primaryKeyObj" />
+		</attributes>
+	</mapped-superclass>
+	<mapped-superclass class="com.stc.echannels.epayments.model.impl.SrvTypeSrvsMapModelImpl">
+		<attributes>
+			<id name="id">
+				<column name="ID" />
+			</id>
+			<basic name="serviceId">
+				<column name="SERVICE_ID" />
+			</basic>
+			<basic name="serviceTypeId">
+				<column name="SERVICE_TYPE_ID" />
+			</basic>
+			<transient name="modelAttributes" />
+			<transient name="primaryKey" />
+			<transient name="primaryKeyObj" />
+		</attributes>
+	</mapped-superclass>
+	<mapped-superclass class="com.stc.echannels.epayments.model.impl.SystemConfigModelImpl">
+		<attributes>
+			<id name="transId">
+				<column name="TRANS_ID" />
+			</id>
+			<basic name="lastUpdateTimestamp">
+				<column name="LAST_UPDATE_TIMESTAMP" />
+				<temporal>TIMESTAMP</temporal>
+			</basic>
+			<basic name="lastUpdateUserid">
+				<column name="LAST_UPDATE_USERID" />
+			</basic>
+			<basic name="lastUpdateUsername">
+				<column name="LAST_UPDATE_USERNAME" />
+			</basic>
+			<basic name="status" />
+			<basic name="effectiveTimestamp">
+				<column name="EFFECTIVE_TIMESTAMP" />
+				<temporal>TIMESTAMP</temporal>
+			</basic>
+			<basic name="clientIp">
+				<column name="CLIENT_IP" />
+			</basic>
+			<basic name="serverIp">
+				<column name="SERVER_IP" />
+			</basic>
+			<basic name="userAgent">
+				<column name="USER_AGENT" />
+			</basic>
+			<basic name="operation">
+				<column name="OPERATION" />
+			</basic>
+			<basic name="serviceId">
+				<column name="SERVICE_ID" />
+			</basic>
+			<basic name="bankId">
+				<column name="BANK_ID" />
+			</basic>
+			<basic name="config">
+				<column name="CONFIG_CODE" />
+			</basic>
+			<transient name="modelAttributes" />
+			<transient name="primaryKey" />
+			<transient name="primaryKeyObj" />
+		</attributes>
+	</mapped-superclass>
+	<mapped-superclass class="com.stc.echannels.epayments.model.impl.TransactionStatusModelImpl">
+		<attributes>
+			<id name="id">
+				<column name="ID" />
+			</id>
+			<basic name="description">
+				<column name="DESCRIPTION" />
+			</basic>
+			<basic name="descriptiveNameEn">
+				<column name="DESCRIPTIVE_NAME_EN" />
+			</basic>
+			<basic name="descriptiveNameAr">
+				<column name="DESCRIPTIVE_NAME_AR" />
+			</basic>
+			<transient name="modelAttributes" />
+			<transient name="primaryKey" />
+			<transient name="primaryKeyObj" />
+		</attributes>
+	</mapped-superclass>
+	<entity class="com.stc.echannels.epayments.model.impl.BankImpl" name="Bank">
+		<table name="BANK_CODES_MAP" />
+		<attributes>
+			<transient name="paymentTransactionRecorded" />
+		</attributes>
+	</entity>
+	<entity class="com.stc.echannels.epayments.model.impl.BankBranchImpl" name="BankBranch">
+		<table name="BRANCH_CODES_MAP" />
+		<attributes>
+			<transient name="bankNameAr" />
+			<transient name="bankNameEn" />
+			<transient name="paymentChannelNameAr" />
+			<transient name="paymentChannelNameEn" />
+			<transient name="paymentTransactionRecorded" />
+			<transient name="stcBankCode" />
+		</attributes>
+	</entity>
+	<entity class="com.stc.echannels.epayments.model.impl.BankServicesImpl" name="BankServices">
+		<table name="BANK_SERVICES_MAP" />
+		<attributes />
+	</entity>
+	<entity class="com.stc.echannels.epayments.model.impl.BizRuleConfigImpl" name="BizRuleConfig">
+		<table name="BIZ_RULE_CONFIG" />
+		<attributes />
+	</entity>
+	<entity class="com.stc.echannels.epayments.model.impl.BusinessSrvImpl" name="BusinessSrv">
+		<table name="SERVICES" />
+		<attributes>
+			<transient name="epayAccessControlPresent" />
+		</attributes>
+	</entity>
+	<entity class="com.stc.echannels.epayments.model.impl.CardGroupImpl" name="CardGroup">
+		<table name="IN_CARD_GROUPS" />
+		<attributes />
+	</entity>
+	<entity class="com.stc.echannels.epayments.model.impl.EPayAccessControlImpl" name="EPayAccessControl">
+		<table name="EPAY_ACCESS_CONTROL" />
+		<attributes />
+	</entity>
+	<entity class="com.stc.echannels.epayments.model.impl.InRechargeHistoryImpl" name="InRechargeHistory">
+		<table name="IN_RECHARGES_HISTORY" />
+		<attributes />
+	</entity>
+	<entity class="com.stc.echannels.epayments.model.impl.NotifConfigImpl" name="NotifConfig">
+		<table name="NOTIF_CONFIG_MGR" />
+		<attributes />
+	</entity>
+	<entity class="com.stc.echannels.epayments.model.impl.NotifParamImpl" name="NotifParam">
+		<table name="NOTIF_PARAMS" />
+		<attributes />
+	</entity>
+	<entity class="com.stc.echannels.epayments.model.impl.NotifParamSrvImpl" name="NotifParamSrv">
+		<table name="NOTIF_PARAMS_SERVICES" />
+		<attributes />
+	</entity>
+	<entity class="com.stc.echannels.epayments.model.impl.PaymentChannelImpl" name="PaymentChannel">
+		<table name="PAYMENT_CHANNELS" />
+		<attributes>
+			<transient name="paymentTransactionRecorded" />
+		</attributes>
+	</entity>
+	<entity class="com.stc.echannels.epayments.model.impl.PaymentChannelSrImpl" name="PaymentChannelSr">
+		<table name="PAYMENT_CHANNEL_SERVICES_MAP" />
+		<attributes />
+	</entity>
+	<entity class="com.stc.echannels.epayments.model.impl.PaymentChannelSrvsMapImpl" name="PaymentChannelSrvsMap">
+		<table name="PAYMENT_CHANNEL_SERVICES_MAP" />
+		<attributes />
+	</entity>
+	<entity class="com.stc.echannels.epayments.model.impl.PaymentMethodImpl" name="PaymentMethod">
+		<table name="PAYMENT_METHODS" />
+		<attributes />
+	</entity>
+	<entity class="com.stc.echannels.epayments.model.impl.PaymentMethodSrvsMapImpl" name="PaymentMethodSrvsMap">
+		<table name="PAYMENT_METHOD_SERVICES_MAP" />
+		<attributes />
+	</entity>
+	<entity class="com.stc.echannels.epayments.model.impl.PaymentRuleImpl" name="PaymentRule">
+		<table name="PAYMENT_RULES" />
+		<attributes />
+	</entity>
+	<entity class="com.stc.echannels.epayments.model.impl.PaymentSystemImpl" name="PaymentSystem">
+		<table name="PAYMENT_SYSTEMS" />
+		<attributes />
+	</entity>
+	<entity class="com.stc.echannels.epayments.model.impl.PaymentTransactionDetailsImpl" name="PaymentTransactionDetails">
+		<table name="PAYMENT_TRANSACTION_DETAILS" />
+		<attributes />
+	</entity>
+	<entity class="com.stc.echannels.epayments.model.impl.PaymentTransactionsImpl" name="PaymentTransactions">
+		<table name="PAYMENT_TRANSACTIONS" />
+		<attributes />
+	</entity>
+	<entity class="com.stc.echannels.epayments.model.impl.ReconLogImpl" name="ReconLog">
+		<table name="SADAD_RECON_LOG" />
+		<attributes />
+	</entity>
+	<entity class="com.stc.echannels.epayments.model.impl.RefundLogImpl" name="RefundLog">
+		<table name="REFUND_LOG" />
+		<attributes />
+	</entity>
+	<entity class="com.stc.echannels.epayments.model.impl.RefundReconLogImpl" name="RefundReconLog">
+		<table name="REFUND_RECON_LOG" />
+		<attributes />
+	</entity>
+	<entity class="com.stc.echannels.epayments.model.impl.SrvTypesImpl" name="SrvTypes">
+		<table name="SERVICE_TYPES" />
+		<attributes />
+	</entity>
+	<entity class="com.stc.echannels.epayments.model.impl.SrvTypeSrvsMapImpl" name="SrvTypeSrvsMap">
+		<table name="SERVICE_TYPE_SERVICES_MAP" />
+		<attributes />
+	</entity>
+	<entity class="com.stc.echannels.epayments.model.impl.SystemConfigImpl" name="SystemConfig">
+		<table name="SYSTEM_CONFIG_MGR" />
+		<attributes />
+	</entity>
+	<entity class="com.stc.echannels.epayments.model.impl.TransactionStatusImpl" name="TransactionStatus">
+		<table name="TRANSACTION_STATUS" />
+		<attributes />
+	</entity>
+</entity-mappings>

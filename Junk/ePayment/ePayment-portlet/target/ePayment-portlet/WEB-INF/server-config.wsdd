@@ -1,0 +1,188 @@
+<?xml version="1.0"?>
+
+<deployment xmlns="http://xml.apache.org/axis/wsdd/" xmlns:java="http://xml.apache.org/axis/wsdd/providers/java">
+	<globalConfiguration>
+		<parameter name="adminPassword" value="admin" />
+		<parameter name="attachments.implementation" value="org.apache.axis.attachments.AttachmentsImpl" />
+		<parameter name="sendXsiTypes" value="true" />
+		<parameter name="sendMultiRefs" value="true" />
+		<parameter name="sendXMLDeclaration" value="true" />
+		<parameter name="axis.sendMinimizedElements" value="true" />
+		<requestFlow>
+			<handler type="java:org.apache.axis.handlers.JWSHandler">
+				<parameter name="scope" value="session" />
+			</handler>
+			<handler type="java:org.apache.axis.handlers.JWSHandler">
+				<parameter name="scope" value="request" />
+				<parameter name="extension" value=".jwr" />
+			</handler>
+		</requestFlow>
+	</globalConfiguration>
+	<handler name="LocalResponder" type="java:org.apache.axis.transport.local.LocalResponder" />
+	<handler name="URLMapper" type="java:org.apache.axis.handlers.http.URLMapper" />
+	<handler name="Authenticate" type="java:org.apache.axis.handlers.SimpleAuthenticationHandler" />
+	<transport name="http">
+		<requestFlow>
+			<handler type="URLMapper" />
+			<handler type="java:org.apache.axis.handlers.http.HTTPAuthHandler" />
+		</requestFlow>
+	</transport>
+	<transport name="local">
+		<responseFlow>
+			<handler type="LocalResponder" />
+		</responseFlow>
+	</transport>
+	<service name="Plugin_epayments_BankBranchService" provider="java:RPC" style="rpc" use="encoded">
+		<parameter name="allowedMethods" value="*" />
+		<parameter name="className" value="com.stc.echannels.epayments.service.http.BankBranchServiceSoap" />
+		<parameter name="typeMappingVersion" value="1.2" />
+		<parameter name="wsdlPortType" value="BankBranchServiceSoap" />
+		<parameter name="wsdlServiceElement" value="BankBranchServiceSoapService" />
+		<parameter name="wsdlServicePort" value="Plugin_epayments_BankBranchService" />
+		<parameter name="wsdlTargetNamespace" value="urn:http.service.epayments.echannels.stc.com" />
+	</service>
+	<service name="Plugin_epayments_BankService" provider="java:RPC" style="rpc" use="encoded">
+		<parameter name="allowedMethods" value="*" />
+		<parameter name="className" value="com.stc.echannels.epayments.service.http.BankServiceSoap" />
+		<parameter name="typeMappingVersion" value="1.2" />
+		<parameter name="wsdlPortType" value="BankServiceSoap" />
+		<parameter name="wsdlServiceElement" value="BankServiceSoapService" />
+		<parameter name="wsdlServicePort" value="Plugin_epayments_BankService" />
+		<parameter name="wsdlTargetNamespace" value="urn:http.service.epayments.echannels.stc.com" />
+	</service>
+	<service name="Plugin_epayments_BusinessServiceService" provider="java:RPC" style="rpc" use="encoded">
+		<parameter name="allowedMethods" value="*" />
+		<parameter name="className" value="com.stc.echannels.epayments.service.http.BusinessServiceServiceSoap" />
+		<parameter name="typeMappingVersion" value="1.2" />
+		<parameter name="wsdlPortType" value="BusinessServiceServiceSoap" />
+		<parameter name="wsdlServiceElement" value="BusinessServiceServiceSoapService" />
+		<parameter name="wsdlServicePort" value="Plugin_epayments_BusinessServiceService" />
+		<parameter name="wsdlTargetNamespace" value="urn:http.service.epayments.echannels.stc.com" />
+	</service>
+	<service name="Plugin_epayments_CardGroupService" provider="java:RPC" style="rpc" use="encoded">
+		<parameter name="allowedMethods" value="*" />
+		<parameter name="className" value="com.stc.echannels.epayments.service.http.CardGroupServiceSoap" />
+		<parameter name="typeMappingVersion" value="1.2" />
+		<parameter name="wsdlPortType" value="CardGroupServiceSoap" />
+		<parameter name="wsdlServiceElement" value="CardGroupServiceSoapService" />
+		<parameter name="wsdlServicePort" value="Plugin_epayments_CardGroupService" />
+		<parameter name="wsdlTargetNamespace" value="urn:http.service.epayments.echannels.stc.com" />
+	</service>
+	<service name="Plugin_epayments_InRechargeHistoryService" provider="java:RPC" style="rpc" use="encoded">
+		<parameter name="allowedMethods" value="*" />
+		<parameter name="className" value="com.stc.echannels.epayments.service.http.InRechargeHistoryServiceSoap" />
+		<parameter name="typeMappingVersion" value="1.2" />
+		<parameter name="wsdlPortType" value="InRechargeHistoryServiceSoap" />
+		<parameter name="wsdlServiceElement" value="InRechargeHistoryServiceSoapService" />
+		<parameter name="wsdlServicePort" value="Plugin_epayments_InRechargeHistoryService" />
+		<parameter name="wsdlTargetNamespace" value="urn:http.service.epayments.echannels.stc.com" />
+	</service>
+	<service name="Plugin_epayments_NotifConfigService" provider="java:RPC" style="rpc" use="encoded">
+		<parameter name="allowedMethods" value="*" />
+		<parameter name="className" value="com.stc.echannels.epayments.service.http.NotifConfigServiceSoap" />
+		<parameter name="typeMappingVersion" value="1.2" />
+		<parameter name="wsdlPortType" value="NotifConfigServiceSoap" />
+		<parameter name="wsdlServiceElement" value="NotifConfigServiceSoapService" />
+		<parameter name="wsdlServicePort" value="Plugin_epayments_NotifConfigService" />
+		<parameter name="wsdlTargetNamespace" value="urn:http.service.epayments.echannels.stc.com" />
+	</service>
+	<service name="Plugin_epayments_NotifParamService" provider="java:RPC" style="rpc" use="encoded">
+		<parameter name="allowedMethods" value="*" />
+		<parameter name="className" value="com.stc.echannels.epayments.service.http.NotifParamServiceSoap" />
+		<parameter name="typeMappingVersion" value="1.2" />
+		<parameter name="wsdlPortType" value="NotifParamServiceSoap" />
+		<parameter name="wsdlServiceElement" value="NotifParamServiceSoapService" />
+		<parameter name="wsdlServicePort" value="Plugin_epayments_NotifParamService" />
+		<parameter name="wsdlTargetNamespace" value="urn:http.service.epayments.echannels.stc.com" />
+	</service>
+	<service name="Plugin_epayments_NotifParamServiceService" provider="java:RPC" style="rpc" use="encoded">
+		<parameter name="allowedMethods" value="*" />
+		<parameter name="className" value="com.stc.echannels.epayments.service.http.NotifParamServiceServiceSoap" />
+		<parameter name="typeMappingVersion" value="1.2" />
+		<parameter name="wsdlPortType" value="NotifParamServiceServiceSoap" />
+		<parameter name="wsdlServiceElement" value="NotifParamServiceServiceSoapService" />
+		<parameter name="wsdlServicePort" value="Plugin_epayments_NotifParamServiceService" />
+		<parameter name="wsdlTargetNamespace" value="urn:http.service.epayments.echannels.stc.com" />
+	</service>
+	<service name="Plugin_epayments_PaymentChannelService" provider="java:RPC" style="rpc" use="encoded">
+		<parameter name="allowedMethods" value="*" />
+		<parameter name="className" value="com.stc.echannels.epayments.service.http.PaymentChannelServiceSoap" />
+		<parameter name="typeMappingVersion" value="1.2" />
+		<parameter name="wsdlPortType" value="PaymentChannelServiceSoap" />
+		<parameter name="wsdlServiceElement" value="PaymentChannelServiceSoapService" />
+		<parameter name="wsdlServicePort" value="Plugin_epayments_PaymentChannelService" />
+		<parameter name="wsdlTargetNamespace" value="urn:http.service.epayments.echannels.stc.com" />
+	</service>
+	<service name="Plugin_epayments_PaymentMethodService" provider="java:RPC" style="rpc" use="encoded">
+		<parameter name="allowedMethods" value="*" />
+		<parameter name="className" value="com.stc.echannels.epayments.service.http.PaymentMethodServiceSoap" />
+		<parameter name="typeMappingVersion" value="1.2" />
+		<parameter name="wsdlPortType" value="PaymentMethodServiceSoap" />
+		<parameter name="wsdlServiceElement" value="PaymentMethodServiceSoapService" />
+		<parameter name="wsdlServicePort" value="Plugin_epayments_PaymentMethodService" />
+		<parameter name="wsdlTargetNamespace" value="urn:http.service.epayments.echannels.stc.com" />
+	</service>
+	<service name="Plugin_epayments_PaymentSystemService" provider="java:RPC" style="rpc" use="encoded">
+		<parameter name="allowedMethods" value="*" />
+		<parameter name="className" value="com.stc.echannels.epayments.service.http.PaymentSystemServiceSoap" />
+		<parameter name="typeMappingVersion" value="1.2" />
+		<parameter name="wsdlPortType" value="PaymentSystemServiceSoap" />
+		<parameter name="wsdlServiceElement" value="PaymentSystemServiceSoapService" />
+		<parameter name="wsdlServicePort" value="Plugin_epayments_PaymentSystemService" />
+		<parameter name="wsdlTargetNamespace" value="urn:http.service.epayments.echannels.stc.com" />
+	</service>
+	<service name="Plugin_epayments_ReconLogService" provider="java:RPC" style="rpc" use="encoded">
+		<parameter name="allowedMethods" value="*" />
+		<parameter name="className" value="com.stc.echannels.epayments.service.http.ReconLogServiceSoap" />
+		<parameter name="typeMappingVersion" value="1.2" />
+		<parameter name="wsdlPortType" value="ReconLogServiceSoap" />
+		<parameter name="wsdlServiceElement" value="ReconLogServiceSoapService" />
+		<parameter name="wsdlServicePort" value="Plugin_epayments_ReconLogService" />
+		<parameter name="wsdlTargetNamespace" value="urn:http.service.epayments.echannels.stc.com" />
+	</service>
+	<service name="Plugin_epayments_RefundLogService" provider="java:RPC" style="rpc" use="encoded">
+		<parameter name="allowedMethods" value="*" />
+		<parameter name="className" value="com.stc.echannels.epayments.service.http.RefundLogServiceSoap" />
+		<parameter name="typeMappingVersion" value="1.2" />
+		<parameter name="wsdlPortType" value="RefundLogServiceSoap" />
+		<parameter name="wsdlServiceElement" value="RefundLogServiceSoapService" />
+		<parameter name="wsdlServicePort" value="Plugin_epayments_RefundLogService" />
+		<parameter name="wsdlTargetNamespace" value="urn:http.service.epayments.echannels.stc.com" />
+	</service>
+	<service name="Plugin_epayments_RefundReconLogService" provider="java:RPC" style="rpc" use="encoded">
+		<parameter name="allowedMethods" value="*" />
+		<parameter name="className" value="com.stc.echannels.epayments.service.http.RefundReconLogServiceSoap" />
+		<parameter name="typeMappingVersion" value="1.2" />
+		<parameter name="wsdlPortType" value="RefundReconLogServiceSoap" />
+		<parameter name="wsdlServiceElement" value="RefundReconLogServiceSoapService" />
+		<parameter name="wsdlServicePort" value="Plugin_epayments_RefundReconLogService" />
+		<parameter name="wsdlTargetNamespace" value="urn:http.service.epayments.echannels.stc.com" />
+	</service>
+	<service name="Plugin_epayments_SddPaymentService" provider="java:RPC" style="rpc" use="encoded">
+		<parameter name="allowedMethods" value="*" />
+		<parameter name="className" value="com.stc.echannels.epayments.service.http.SddPaymentServiceSoap" />
+		<parameter name="typeMappingVersion" value="1.2" />
+		<parameter name="wsdlPortType" value="SddPaymentServiceSoap" />
+		<parameter name="wsdlServiceElement" value="SddPaymentServiceSoapService" />
+		<parameter name="wsdlServicePort" value="Plugin_epayments_SddPaymentService" />
+		<parameter name="wsdlTargetNamespace" value="urn:http.service.epayments.echannels.stc.com" />
+	</service>
+	<service name="Plugin_epayments_SystemConfigService" provider="java:RPC" style="rpc" use="encoded">
+		<parameter name="allowedMethods" value="*" />
+		<parameter name="className" value="com.stc.echannels.epayments.service.http.SystemConfigServiceSoap" />
+		<parameter name="typeMappingVersion" value="1.2" />
+		<parameter name="wsdlPortType" value="SystemConfigServiceSoap" />
+		<parameter name="wsdlServiceElement" value="SystemConfigServiceSoapService" />
+		<parameter name="wsdlServicePort" value="Plugin_epayments_SystemConfigService" />
+		<parameter name="wsdlTargetNamespace" value="urn:http.service.epayments.echannels.stc.com" />
+	</service>
+	<service name="Plugin_epayments_TransactionStatusService" provider="java:RPC" style="rpc" use="encoded">
+		<parameter name="allowedMethods" value="*" />
+		<parameter name="className" value="com.stc.echannels.epayments.service.http.TransactionStatusServiceSoap" />
+		<parameter name="typeMappingVersion" value="1.2" />
+		<parameter name="wsdlPortType" value="TransactionStatusServiceSoap" />
+		<parameter name="wsdlServiceElement" value="TransactionStatusServiceSoapService" />
+		<parameter name="wsdlServicePort" value="Plugin_epayments_TransactionStatusService" />
+		<parameter name="wsdlTargetNamespace" value="urn:http.service.epayments.echannels.stc.com" />
+	</service>
+</deployment>

@@ -1,0 +1,174 @@
+<?xml version="1.0"?>
+<custom-sql>
+<sql id="com.stc.echannels.service.persistence.PaymentRuleFinder.findActivePaymentRuleByServiceType">
+<![CDATA[
+	 SELECT RULE_ID as ruleId,TRANS_ID as transId, RULE_NAME as ruleName, DESCRIPTION_EN as descriptionEN, DESCRIPTION_AR as descriptionAR, 
+	 RULE_CATEGORY as ruleCategory, VALUE as value, EFFECTIVE_TIMESTAMP as effectiveTimestamp
+	 FROM PAYMENT_RULES 
+	 WHERE SERVICE_TYPE_ID=? AND STATUS LIKE ? AND OPERATION LIKE ?
+]]>
+</sql>
+<sql id="com.stc.echannels.service.persistence.PaymentRuleFinder.findCountActivePaymentRuleByServiceType">
+<![CDATA[
+	 SELECT count(*) 
+	 FROM PAYMENT_RULES 
+	 WHERE SERVICE_TYPE_ID=? AND STATUS LIKE ? AND OPERATION LIKE ?
+]]>
+</sql>
+
+
+<sql id="com.stc.echannels.service.persistence.BizRuleConfigFinder.findActiveBizRuleByServiceType">
+<![CDATA[
+	 SELECT BRC.BIZ_RULE_ID as ruleId, PR.RULE_NAME as ruleName, PR.DESCRIPTION_EN as descriptionEN, 
+	 		PR.DESCRIPTION_AR as descriptionAR, PR.VALUE as value, BRC.EFFECTIVE_TIMESTAMP as effectiveTimestanp,
+	 		PR.RULE_CATEGORY as ruleCategory, S.SERVICE_NAME_EN as ServiceNameEN, S.SERVICE_NAME_AR as ServiceNameAR, 
+	 		BRC.CUSTOM_VALUE as customValue, PC.CHANNEL_TYPE as channelType, PC.DESCRIPTIVE_NAME_AR as paymentChannelNameAR, 
+	 		PC.DESCRIPTIVE_NAME_EN as paymentChannelNameEN, PM.DESCRIPTIVE_NAME_EN as paymentModuleNameEN,
+	 	 	PM.DESCRIPTIVE_NAME_AR  as paymentModuleNameAR ,
+	 	 	BRC.STATUS as status
+	 	 	FROM BIZ_RULE_CONFIG  BRC
+	 	 	LEFT JOIN SERVICES S ON BRC.SERVICE_ID = S.SERVICE_ID 
+	 	 	LEFT JOIN PAYMENT_RULES PR ON BRC.RULE_ID = PR.RULE_ID AND PR.STATUS in ( ? , ? )	 	 	 
+	 	 	LEFT JOIN PAYMENT_CHANNELS PC ON PC.CHANNEL_ID = BRC.CHANNEL_ID AND PC.STATUS in ( ? , ? )  
+	 	 	LEFT JOIN PAYMENT_METHODS PM on PM.PMT_METHOD_ID = BRC.PMT_METHOD_ID 
+	 	 	WHERE BRC.STATUS in ( ? , ? ) AND PR.SERVICE_TYPE_ID=?   AND BRC.OPERATION LIKE ? order by S.SERVICE_NAME_EN,PR.RULE_NAME
+]]>
+</sql>
+
+<sql id="com.stc.echannels.service.persistence.BizRuleConfigFinder.findCountBizRuleByServiceType">
+<![CDATA[
+	 select count(*) as count 
+	 from BIZ_RULE_CONFIG LEFT JOIN PAYMENT_RULES on BIZ_RULE_CONFIG.RULE_ID=PAYMENT_RULES.RULE_ID and PAYMENT_RULES.STATUS in ( ? , ? )
+	 where BIZ_RULE_CONFIG.STATUS in ( ? , ? ) AND PAYMENT_RULES.SERVICE_TYPE_ID=?   AND BIZ_RULE_CONFIG.OPERATION LIKE ?
+]]>
+</sql>
+
+<sql id="com.stc.echannels.service.persistence.epayAccessContol.findByserviceIdAndStatus">
+<![CDATA[
+	SELECT
+	EPAC.EPAY_CONFIG_ID AS epayAccessControlId,
+	S.SERVICE_NAME_EN AS businessServiceEn,
+	S.SERVICE_NAME_AR AS businessServiceAr,
+	PC.DESCRIPTIVE_NAME_EN AS paymentChannelEn,
+	PC.DESCRIPTIVE_NAME_AR AS paymentChannelAr,
+	ST.SERVICE_NAME_EN AS serviceTypeNameEn,
+	PM.DESCRIPTIVE_NAME_EN AS paymentMethodEn,
+	PM.DESCRIPTIVE_NAME_AR AS paymentMethodAr,
+	EPAC.LAST_UPDATE_TIMESTAMP AS disabledTime,
+	EPAC.LAST_UPDATE_USERNAME AS disabledBy,
+	ST.SERVICE_NAME_AR AS serviceTypeNameAr
+	FROM
+	EPAY_ACCESS_CONTROL EPAC
+	LEFT JOIN SERVICES S ON EPAC.SERVICE_ID = S.SERVICE_ID AND S.SERVICE_ID = EPAC.SERVICE_ID
+	LEFT JOIN SERVICE_TYPES ST ON EPAC.SERVICE_TYPE_ID = ST.SERVICE_TYPE_ID AND ST.SERVICE_TYPE_ID = EPAC.SERVICE_TYPE_ID
+	LEFT JOIN PAYMENT_METHODS PM ON EPAC.PMT_METHOD_ID = PM.PMT_METHOD_ID AND PM.PMT_METHOD_ID = EPAC.PMT_METHOD_ID
+	LEFT JOIN PAYMENT_CHANNELS PC ON PC.CHANNEL_ID = EPAC.CHANNEL_ID AND PC.STATUS =?
+	WHERE
+	EPAC.STATUS=? AND EPAC.SERVICE_ID = ?  
+]]>
+</sql>
+<sql id="com.stc.echannels.epayments.service.persistence.BankBranchFinder.findCustomBankBranchByStatus">
+<![CDATA[
+	SELECT 
+	BN.STC_BANK_CODE AS stcBankCode, 
+	BN.BANK_NAME_EN AS bankNameEn,
+	BN.BANK_NAME_AR AS bankNameAr, 
+	BRN.STC_BRANCH_CODE AS stcBranchCode, 
+	BRN.BANK_ID AS bankId, 
+	PC.DESCRIPTIVE_NAME_EN AS paymentChannelNameEn,
+	PC.DESCRIPTIVE_NAME_AR AS paymentChannelNameAR, 
+	BRN.PAYMENT_CHANNEL_ID AS paymentChannelId,
+	BRN.TRANS_ID AS transId
+	FROM
+	BRANCH_CODES_MAP BRN 
+	LEFT JOIN BANK_CODES_MAP BN on BN.BANK_ID=BRN.BANK_ID AND BN.STATUS=?
+	LEFT JOIN PAYMENT_CHANNELS PC on PC.CHANNEL_ID=BRN.PAYMENT_CHANNEL_ID AND PC.STATUS= ?
+	WHERE BRN.STATUS=? 
+]]>
+</sql>
+
+<sql id="com.stc.echannels.service.persistence.epayAccessContol.updateStatusToPending">
+<![CDATA[
+	update EPAY_ACCESS_CONTROL set STATUS=? where EPAY_CONFIG_ID 
+]]>
+</sql>
+
+<sql id="com.stc.echannels.epayments.service.persistence.PaymentTransactionsFinder.findCustomPaymentTransactions">
+<![CDATA[
+
+SELECT  
+PTD.EPAY_TRANS_ID AS epayTransId,
+PTD.ACCOUNT_NUMBER AS accountNumber, 
+ST.SERVICE_NAME_EN AS serviceTypeNameEn, 
+PTD.TRANS_AMOUNT AS transAmount, 
+PM.DESCRIPTIVE_NAME_EN AS paymentMethodNameEn,
+PC.DESCRIPTIVE_NAME_EN AS paymentChannelNameEn,
+BCM.BANK_NAME_EN AS bankNameEn,
+PT.PMT_RECEIVED_DATE AS transDate,
+PT.TRANS_PROCESS_DATE AS processDate,
+PTD.PROCESS_STATUS AS paymentStatus,
+PTD.REASON_CODE AS reason,
+PTD.RECIPIENT_ID AS beneficiaryId,
+PTD.SERVICE_NUMBER AS beneficiaryServiceNumber,
+S.SERVICE_NAME_EN AS businessService
+FROM
+PAYMENT_TRANSACTIONS PT
+INNER JOIN PAYMENT_TRANSACTION_DETAILS PTD ON PTD.EPAY_TRANS_ID = PT.EPAY_TRANS_ID
+INNER JOIN SERVICES S ON PT.SERVICE_ID = S.SERVICE_ID    
+INNER JOIN SERVICE_TYPES ST ON  PTD.SERVICE_TYPE_ID = ST.SERVICE_TYPE_ID
+INNER JOIN BANK_CODES_MAP BCM ON  PT.PMT_BANK_ID = BCM.BANK_ID
+INNER JOIN PAYMENT_CHANNELS PC ON  PT.CHANNEL_ID = PC.CHANNEL_ID
+INNER JOIN PAYMENT_METHODS PM ON  PT.PMT_METHOD_ID = PM.PMT_METHOD_ID
+WHERE 
+PT.PMT_RECEIVED_DATE BETWEEN ? AND ? AND bcm.status = 'ACTIVE'
+AND pc.status ='ACTIVE'
+AND pm.status ='ACTIVE'
+AND s.status='ACTIVE'
+]]>
+</sql>
+
+<sql id="com.stc.echannels.epayments.service.persistence.PaymentTransactionsFinder.findCustomRefundTransactions">
+  <![CDATA[  
+SELECT  
+PTD.EPAY_TRANS_ID AS epayTransId,
+BCM.BANK_NAME_EN AS bankNameEn,
+PM.DESCRIPTIVE_NAME_EN AS paymentMethodNameEn,
+PC.DESCRIPTIVE_NAME_EN AS paymentChannelNameEn,
+PTD.ACCOUNT_NUMBER AS accountNumber, 
+PTD.RECIPIENT_ID AS beneficiaryId,
+PTD.SERVICE_NUMBER AS beneficiaryServiceNumber,
+ST.SERVICE_NAME_EN AS serviceTypeNameEn, 
+PTD.TRANS_AMOUNT AS transAmount, 
+PT.TRANS_PROCESS_DATE AS processDate,
+PTD.PROCESS_STATUS AS paymentStatus,
+RL.STATUS AS refundStatus,
+RL.REFUND_ID AS refundId,
+RL.AMOUNT AS refundAmount,
+RL.SUBMISSION_DATE AS refundSubmissionDate,
+RL.APPROVAL_DATE AS refundApprovalDate
+FROM    
+PAYMENT_TRANSACTIONS PT
+INNER JOIN PAYMENT_TRANSACTION_DETAILS PTD  ON  PTD.EPAY_TRANS_ID = PT.EPAY_TRANS_ID
+INNER JOIN SERVICES S  ON  PT.SERVICE_ID = S.SERVICE_ID    
+INNER JOIN SERVICE_TYPES ST  ON  PTD.SERVICE_TYPE_ID = ST.SERVICE_TYPE_ID
+INNER JOIN BANK_CODES_MAP BCM  ON  PT.PMT_BANK_ID = BCM.BANK_ID
+INNER JOIN PAYMENT_CHANNELS PC  ON  PT.CHANNEL_ID = PC.CHANNEL_ID
+INNER JOIN PAYMENT_METHODS PM ON  PT.PMT_METHOD_ID = PM.PMT_METHOD_ID
+INNER JOIN REFUND_LOG RL ON  PTD.EPAY_TRANS_ID = RL.EPAY_TRANS_ID
+WHERE 
+PT.PMT_RECEIVED_DATE BETWEEN ? AND ? AND bcm.status = 'ACTIVE'
+AND pc.status ='ACTIVE'
+AND pm.status ='ACTIVE'
+AND s.status='ACTIVE'
+ ]]>
+</sql>
+<sql id="com.stc.echannels.epayments.service.persistence.BankFinder.getBanksByBusinessServiceId">
+  <![CDATA[  
+  select * from  BANK_SERVICES_MAP a, BANK_CODES_MAP b
+where a.bank_id = b.bank_id and b.status = 'ACTIVE' and a.service_id = ? order by a.bank_id
+   ]]>
+</sql>
+
+
+</custom-sql>
+

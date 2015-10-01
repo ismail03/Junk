@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+
+<deployment xmlns="http://xml.apache.org/axis/wsdd/" xmlns:java="http://xml.apache.org/axis/wsdd/providers/java">
+	<service name="Plugin_epayments_RefundLogService" provider="java:RPC" style="rpc" use="encoded">
+		<parameter name="allowedMethods" value="*" />
+		<parameter name="className" value="com.stc.echannels.epayments.service.http.RefundLogServiceSoap" />
+		<parameter name="typeMappingVersion" value="1.2" />
+		<parameter name="wsdlPortType" value="RefundLogServiceSoap" />
+		<parameter name="wsdlServiceElement" value="RefundLogServiceSoapService" />
+		<parameter name="wsdlServicePort" value="Plugin_epayments_RefundLogService" />
+		<parameter name="wsdlTargetNamespace" value="urn:http.service.epayments.echannels.stc.com" />
+	</service>
+</deployment>

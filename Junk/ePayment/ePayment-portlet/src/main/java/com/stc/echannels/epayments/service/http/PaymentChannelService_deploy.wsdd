@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+
+<deployment xmlns="http://xml.apache.org/axis/wsdd/" xmlns:java="http://xml.apache.org/axis/wsdd/providers/java">
+	<service name="Plugin_epayments_PaymentChannelService" provider="java:RPC" style="rpc" use="encoded">
+		<parameter name="allowedMethods" value="*" />
+		<parameter name="className" value="com.stc.echannels.epayments.service.http.PaymentChannelServiceSoap" />
+		<parameter name="typeMappingVersion" value="1.2" />
+		<parameter name="wsdlPortType" value="PaymentChannelServiceSoap" />
+		<parameter name="wsdlServiceElement" value="PaymentChannelServiceSoapService" />
+		<parameter name="wsdlServicePort" value="Plugin_epayments_PaymentChannelService" />
+		<parameter name="wsdlTargetNamespace" value="urn:http.service.epayments.echannels.stc.com" />
+	</service>
+</deployment>

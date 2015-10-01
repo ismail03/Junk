@@ -1,0 +1,194 @@
+<?xml version="1.0"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" default-destroy-method="destroy" default-init-method="afterPropertiesSet" xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+	<bean id="com.stc.echannels.epayments.service.BankLocalService" class="com.stc.echannels.epayments.service.impl.BankLocalServiceImpl" />
+	<bean id="com.stc.echannels.epayments.service.BankService" class="com.stc.echannels.epayments.service.impl.BankServiceImpl" />
+	<bean id="com.stc.echannels.epayments.service.persistence.BankPersistence" class="com.stc.echannels.epayments.service.persistence.BankPersistenceImpl" parent="basePersistence">
+		<property name="dataSource" ref="anotherDataSource" />
+		<property name="sessionFactory" ref="anotherSessionFactory" />
+	</bean>
+	<bean id="com.stc.echannels.epayments.service.persistence.BankFinder" class="com.stc.echannels.epayments.service.persistence.BankFinderImpl" parent="basePersistence">
+		<property name="dataSource" ref="anotherDataSource" />
+		<property name="sessionFactory" ref="anotherSessionFactory" />
+	</bean>
+	<bean id="com.stc.echannels.epayments.service.BankBranchLocalService" class="com.stc.echannels.epayments.service.impl.BankBranchLocalServiceImpl" />
+	<bean id="com.stc.echannels.epayments.service.BankBranchService" class="com.stc.echannels.epayments.service.impl.BankBranchServiceImpl" />
+	<bean id="com.stc.echannels.epayments.service.persistence.BankBranchPersistence" class="com.stc.echannels.epayments.service.persistence.BankBranchPersistenceImpl" parent="basePersistence">
+		<property name="dataSource" ref="anotherDataSource" />
+		<property name="sessionFactory" ref="anotherSessionFactory" />
+	</bean>
+	<bean id="com.stc.echannels.epayments.service.persistence.BankBranchFinder" class="com.stc.echannels.epayments.service.persistence.BankBranchFinderImpl" parent="basePersistence">
+		<property name="dataSource" ref="anotherDataSource" />
+		<property name="sessionFactory" ref="anotherSessionFactory" />
+	</bean>
+	<bean id="com.stc.echannels.epayments.service.BankServicesLocalService" class="com.stc.echannels.epayments.service.impl.BankServicesLocalServiceImpl" />
+	<bean id="com.stc.echannels.epayments.service.BankServicesService" class="com.stc.echannels.epayments.service.impl.BankServicesServiceImpl" />
+	<bean id="com.stc.echannels.epayments.service.persistence.BankServicesPersistence" class="com.stc.echannels.epayments.service.persistence.BankServicesPersistenceImpl" parent="basePersistence">
+		<property name="dataSource" ref="anotherDataSource" />
+		<property name="sessionFactory" ref="anotherSessionFactory" />
+	</bean>
+	<bean id="com.stc.echannels.epayments.service.BizRuleConfigLocalService" class="com.stc.echannels.epayments.service.impl.BizRuleConfigLocalServiceImpl" />
+	<bean id="com.stc.echannels.epayments.service.BizRuleConfigService" class="com.stc.echannels.epayments.service.impl.BizRuleConfigServiceImpl" />
+	<bean id="com.stc.echannels.epayments.service.persistence.BizRuleConfigPersistence" class="com.stc.echannels.epayments.service.persistence.BizRuleConfigPersistenceImpl" parent="basePersistence">
+		<property name="dataSource" ref="anotherDataSource" />
+		<property name="sessionFactory" ref="anotherSessionFactory" />
+	</bean>
+	<bean id="com.stc.echannels.epayments.service.persistence.BizRuleConfigFinder" class="com.stc.echannels.epayments.service.persistence.BizRuleConfigFinderImpl" parent="basePersistence">
+		<property name="dataSource" ref="anotherDataSource" />
+		<property name="sessionFactory" ref="anotherSessionFactory" />
+	</bean>
+	<bean id="com.stc.echannels.epayments.service.BusinessSrvLocalService" class="com.stc.echannels.epayments.service.impl.BusinessSrvLocalServiceImpl" />
+	<bean id="com.stc.echannels.epayments.service.BusinessSrvService" class="com.stc.echannels.epayments.service.impl.BusinessSrvServiceImpl" />
+	<bean id="com.stc.echannels.epayments.service.persistence.BusinessSrvPersistence" class="com.stc.echannels.epayments.service.persistence.BusinessSrvPersistenceImpl" parent="basePersistence">
+		<property name="dataSource" ref="anotherDataSource" />
+		<property name="sessionFactory" ref="anotherSessionFactory" />
+	</bean>
+	<bean id="com.stc.echannels.epayments.service.persistence.BusinessSrvFinder" class="com.stc.echannels.epayments.service.persistence.BusinessSrvFinderImpl" parent="basePersistence">
+		<property name="dataSource" ref="anotherDataSource" />
+		<property name="sessionFactory" ref="anotherSessionFactory" />
+	</bean>
+	<bean id="com.stc.echannels.epayments.service.CardGroupLocalService" class="com.stc.echannels.epayments.service.impl.CardGroupLocalServiceImpl" />
+	<bean id="com.stc.echannels.epayments.service.CardGroupService" class="com.stc.echannels.epayments.service.impl.CardGroupServiceImpl" />
+	<bean id="com.stc.echannels.epayments.service.persistence.CardGroupPersistence" class="com.stc.echannels.epayments.service.persistence.CardGroupPersistenceImpl" parent="basePersistence">
+		<property name="dataSource" ref="anotherDataSource" />
+		<property name="sessionFactory" ref="anotherSessionFactory" />
+	</bean>
+	<bean id="com.stc.echannels.epayments.service.EPayAccessControlLocalService" class="com.stc.echannels.epayments.service.impl.EPayAccessControlLocalServiceImpl" />
+	<bean id="com.stc.echannels.epayments.service.EPayAccessControlService" class="com.stc.echannels.epayments.service.impl.EPayAccessControlServiceImpl" />
+	<bean id="com.stc.echannels.epayments.service.persistence.EPayAccessControlPersistence" class="com.stc.echannels.epayments.service.persistence.EPayAccessControlPersistenceImpl" parent="basePersistence">
+		<property name="dataSource" ref="anotherDataSource" />
+		<property name="sessionFactory" ref="anotherSessionFactory" />
+	</bean>
+	<bean id="com.stc.echannels.epayments.service.persistence.EPayAccessControlFinder" class="com.stc.echannels.epayments.service.persistence.EPayAccessControlFinderImpl" parent="basePersistence">
+		<property name="dataSource" ref="anotherDataSource" />
+		<property name="sessionFactory" ref="anotherSessionFactory" />
+	</bean>
+	<bean id="com.stc.echannels.epayments.service.InRechargeHistoryLocalService" class="com.stc.echannels.epayments.service.impl.InRechargeHistoryLocalServiceImpl" />
+	<bean id="com.stc.echannels.epayments.service.InRechargeHistoryService" class="com.stc.echannels.epayments.service.impl.InRechargeHistoryServiceImpl" />
+	<bean id="com.stc.echannels.epayments.service.persistence.InRechargeHistoryPersistence" class="com.stc.echannels.epayments.service.persistence.InRechargeHistoryPersistenceImpl" parent="basePersistence">
+		<property name="dataSource" ref="anotherDataSource" />
+		<property name="sessionFactory" ref="anotherSessionFactory" />
+	</bean>
+	<bean id="com.stc.echannels.epayments.service.NotifConfigLocalService" class="com.stc.echannels.epayments.service.impl.NotifConfigLocalServiceImpl" />
+	<bean id="com.stc.echannels.epayments.service.NotifConfigService" class="com.stc.echannels.epayments.service.impl.NotifConfigServiceImpl" />
+	<bean id="com.stc.echannels.epayments.service.persistence.NotifConfigPersistence" class="com.stc.echannels.epayments.service.persistence.NotifConfigPersistenceImpl" parent="basePersistence">
+		<property name="dataSource" ref="anotherDataSource" />
+		<property name="sessionFactory" ref="anotherSessionFactory" />
+	</bean>
+	<bean id="com.stc.echannels.epayments.service.NotifParamLocalService" class="com.stc.echannels.epayments.service.impl.NotifParamLocalServiceImpl" />
+	<bean id="com.stc.echannels.epayments.service.NotifParamService" class="com.stc.echannels.epayments.service.impl.NotifParamServiceImpl" />
+	<bean id="com.stc.echannels.epayments.service.persistence.NotifParamPersistence" class="com.stc.echannels.epayments.service.persistence.NotifParamPersistenceImpl" parent="basePersistence">
+		<property name="dataSource" ref="anotherDataSource" />
+		<property name="sessionFactory" ref="anotherSessionFactory" />
+	</bean>
+	<bean id="com.stc.echannels.epayments.service.NotifParamSrvLocalService" class="com.stc.echannels.epayments.service.impl.NotifParamSrvLocalServiceImpl" />
+	<bean id="com.stc.echannels.epayments.service.NotifParamSrvService" class="com.stc.echannels.epayments.service.impl.NotifParamSrvServiceImpl" />
+	<bean id="com.stc.echannels.epayments.service.persistence.NotifParamSrvPersistence" class="com.stc.echannels.epayments.service.persistence.NotifParamSrvPersistenceImpl" parent="basePersistence">
+		<property name="dataSource" ref="anotherDataSource" />
+		<property name="sessionFactory" ref="anotherSessionFactory" />
+	</bean>
+	<bean id="com.stc.echannels.epayments.service.PaymentChannelLocalService" class="com.stc.echannels.epayments.service.impl.PaymentChannelLocalServiceImpl" />
+	<bean id="com.stc.echannels.epayments.service.PaymentChannelService" class="com.stc.echannels.epayments.service.impl.PaymentChannelServiceImpl" />
+	<bean id="com.stc.echannels.epayments.service.persistence.PaymentChannelPersistence" class="com.stc.echannels.epayments.service.persistence.PaymentChannelPersistenceImpl" parent="basePersistence">
+		<property name="dataSource" ref="anotherDataSource" />
+		<property name="sessionFactory" ref="anotherSessionFactory" />
+	</bean>
+	<bean id="com.stc.echannels.epayments.service.PaymentChannelSrLocalService" class="com.stc.echannels.epayments.service.impl.PaymentChannelSrLocalServiceImpl" />
+	<bean id="com.stc.echannels.epayments.service.PaymentChannelSrService" class="com.stc.echannels.epayments.service.impl.PaymentChannelSrServiceImpl" />
+	<bean id="com.stc.echannels.epayments.service.persistence.PaymentChannelSrPersistence" class="com.stc.echannels.epayments.service.persistence.PaymentChannelSrPersistenceImpl" parent="basePersistence">
+		<property name="dataSource" ref="anotherDataSource" />
+		<property name="sessionFactory" ref="anotherSessionFactory" />
+	</bean>
+	<bean id="com.stc.echannels.epayments.service.PaymentChannelSrvsMapLocalService" class="com.stc.echannels.epayments.service.impl.PaymentChannelSrvsMapLocalServiceImpl" />
+	<bean id="com.stc.echannels.epayments.service.PaymentChannelSrvsMapService" class="com.stc.echannels.epayments.service.impl.PaymentChannelSrvsMapServiceImpl" />
+	<bean id="com.stc.echannels.epayments.service.persistence.PaymentChannelSrvsMapPersistence" class="com.stc.echannels.epayments.service.persistence.PaymentChannelSrvsMapPersistenceImpl" parent="basePersistence">
+		<property name="dataSource" ref="anotherDataSource" />
+		<property name="sessionFactory" ref="anotherSessionFactory" />
+	</bean>
+	<bean id="com.stc.echannels.epayments.service.PaymentMethodLocalService" class="com.stc.echannels.epayments.service.impl.PaymentMethodLocalServiceImpl" />
+	<bean id="com.stc.echannels.epayments.service.PaymentMethodService" class="com.stc.echannels.epayments.service.impl.PaymentMethodServiceImpl" />
+	<bean id="com.stc.echannels.epayments.service.persistence.PaymentMethodPersistence" class="com.stc.echannels.epayments.service.persistence.PaymentMethodPersistenceImpl" parent="basePersistence">
+		<property name="dataSource" ref="anotherDataSource" />
+		<property name="sessionFactory" ref="anotherSessionFactory" />
+	</bean>
+	<bean id="com.stc.echannels.epayments.service.PaymentMethodSrvsMapLocalService" class="com.stc.echannels.epayments.service.impl.PaymentMethodSrvsMapLocalServiceImpl" />
+	<bean id="com.stc.echannels.epayments.service.PaymentMethodSrvsMapService" class="com.stc.echannels.epayments.service.impl.PaymentMethodSrvsMapServiceImpl" />
+	<bean id="com.stc.echannels.epayments.service.persistence.PaymentMethodSrvsMapPersistence" class="com.stc.echannels.epayments.service.persistence.PaymentMethodSrvsMapPersistenceImpl" parent="basePersistence">
+		<property name="dataSource" ref="anotherDataSource" />
+		<property name="sessionFactory" ref="anotherSessionFactory" />
+	</bean>
+	<bean id="com.stc.echannels.epayments.service.PaymentRuleLocalService" class="com.stc.echannels.epayments.service.impl.PaymentRuleLocalServiceImpl" />
+	<bean id="com.stc.echannels.epayments.service.PaymentRuleService" class="com.stc.echannels.epayments.service.impl.PaymentRuleServiceImpl" />
+	<bean id="com.stc.echannels.epayments.service.persistence.PaymentRulePersistence" class="com.stc.echannels.epayments.service.persistence.PaymentRulePersistenceImpl" parent="basePersistence">
+		<property name="dataSource" ref="anotherDataSource" />
+		<property name="sessionFactory" ref="anotherSessionFactory" />
+	</bean>
+	<bean id="com.stc.echannels.epayments.service.persistence.PaymentRuleFinder" class="com.stc.echannels.epayments.service.persistence.PaymentRuleFinderImpl" parent="basePersistence">
+		<property name="dataSource" ref="anotherDataSource" />
+		<property name="sessionFactory" ref="anotherSessionFactory" />
+	</bean>
+	<bean id="com.stc.echannels.epayments.service.PaymentSystemLocalService" class="com.stc.echannels.epayments.service.impl.PaymentSystemLocalServiceImpl" />
+	<bean id="com.stc.echannels.epayments.service.PaymentSystemService" class="com.stc.echannels.epayments.service.impl.PaymentSystemServiceImpl" />
+	<bean id="com.stc.echannels.epayments.service.persistence.PaymentSystemPersistence" class="com.stc.echannels.epayments.service.persistence.PaymentSystemPersistenceImpl" parent="basePersistence">
+		<property name="dataSource" ref="anotherDataSource" />
+		<property name="sessionFactory" ref="anotherSessionFactory" />
+	</bean>
+	<bean id="com.stc.echannels.epayments.service.PaymentTransactionDetailsLocalService" class="com.stc.echannels.epayments.service.impl.PaymentTransactionDetailsLocalServiceImpl" />
+	<bean id="com.stc.echannels.epayments.service.PaymentTransactionDetailsService" class="com.stc.echannels.epayments.service.impl.PaymentTransactionDetailsServiceImpl" />
+	<bean id="com.stc.echannels.epayments.service.persistence.PaymentTransactionDetailsPersistence" class="com.stc.echannels.epayments.service.persistence.PaymentTransactionDetailsPersistenceImpl" parent="basePersistence">
+		<property name="dataSource" ref="anotherDataSource" />
+		<property name="sessionFactory" ref="anotherSessionFactory" />
+	</bean>
+	<bean id="com.stc.echannels.epayments.service.PaymentTransactionsLocalService" class="com.stc.echannels.epayments.service.impl.PaymentTransactionsLocalServiceImpl" />
+	<bean id="com.stc.echannels.epayments.service.PaymentTransactionsService" class="com.stc.echannels.epayments.service.impl.PaymentTransactionsServiceImpl" />
+	<bean id="com.stc.echannels.epayments.service.persistence.PaymentTransactionsPersistence" class="com.stc.echannels.epayments.service.persistence.PaymentTransactionsPersistenceImpl" parent="basePersistence">
+		<property name="dataSource" ref="anotherDataSource" />
+		<property name="sessionFactory" ref="anotherSessionFactory" />
+	</bean>
+	<bean id="com.stc.echannels.epayments.service.persistence.PaymentTransactionsFinder" class="com.stc.echannels.epayments.service.persistence.PaymentTransactionsFinderImpl" parent="basePersistence">
+		<property name="dataSource" ref="anotherDataSource" />
+		<property name="sessionFactory" ref="anotherSessionFactory" />
+	</bean>
+	<bean id="com.stc.echannels.epayments.service.ReconLogLocalService" class="com.stc.echannels.epayments.service.impl.ReconLogLocalServiceImpl" />
+	<bean id="com.stc.echannels.epayments.service.ReconLogService" class="com.stc.echannels.epayments.service.impl.ReconLogServiceImpl" />
+	<bean id="com.stc.echannels.epayments.service.persistence.ReconLogPersistence" class="com.stc.echannels.epayments.service.persistence.ReconLogPersistenceImpl" parent="basePersistence">
+		<property name="dataSource" ref="anotherDataSource" />
+		<property name="sessionFactory" ref="anotherSessionFactory" />
+	</bean>
+	<bean id="com.stc.echannels.epayments.service.RefundLogLocalService" class="com.stc.echannels.epayments.service.impl.RefundLogLocalServiceImpl" />
+	<bean id="com.stc.echannels.epayments.service.RefundLogService" class="com.stc.echannels.epayments.service.impl.RefundLogServiceImpl" />
+	<bean id="com.stc.echannels.epayments.service.persistence.RefundLogPersistence" class="com.stc.echannels.epayments.service.persistence.RefundLogPersistenceImpl" parent="basePersistence">
+		<property name="dataSource" ref="anotherDataSource" />
+		<property name="sessionFactory" ref="anotherSessionFactory" />
+	</bean>
+	<bean id="com.stc.echannels.epayments.service.RefundReconLogLocalService" class="com.stc.echannels.epayments.service.impl.RefundReconLogLocalServiceImpl" />
+	<bean id="com.stc.echannels.epayments.service.RefundReconLogService" class="com.stc.echannels.epayments.service.impl.RefundReconLogServiceImpl" />
+	<bean id="com.stc.echannels.epayments.service.persistence.RefundReconLogPersistence" class="com.stc.echannels.epayments.service.persistence.RefundReconLogPersistenceImpl" parent="basePersistence">
+		<property name="dataSource" ref="anotherDataSource" />
+		<property name="sessionFactory" ref="anotherSessionFactory" />
+	</bean>
+	<bean id="com.stc.echannels.epayments.service.SrvTypesLocalService" class="com.stc.echannels.epayments.service.impl.SrvTypesLocalServiceImpl" />
+	<bean id="com.stc.echannels.epayments.service.SrvTypesService" class="com.stc.echannels.epayments.service.impl.SrvTypesServiceImpl" />
+	<bean id="com.stc.echannels.epayments.service.persistence.SrvTypesPersistence" class="com.stc.echannels.epayments.service.persistence.SrvTypesPersistenceImpl" parent="basePersistence">
+		<property name="dataSource" ref="anotherDataSource" />
+		<property name="sessionFactory" ref="anotherSessionFactory" />
+	</bean>
+	<bean id="com.stc.echannels.epayments.service.SrvTypeSrvsMapLocalService" class="com.stc.echannels.epayments.service.impl.SrvTypeSrvsMapLocalServiceImpl" />
+	<bean id="com.stc.echannels.epayments.service.SrvTypeSrvsMapService" class="com.stc.echannels.epayments.service.impl.SrvTypeSrvsMapServiceImpl" />
+	<bean id="com.stc.echannels.epayments.service.persistence.SrvTypeSrvsMapPersistence" class="com.stc.echannels.epayments.service.persistence.SrvTypeSrvsMapPersistenceImpl" parent="basePersistence">
+		<property name="dataSource" ref="anotherDataSource" />
+		<property name="sessionFactory" ref="anotherSessionFactory" />
+	</bean>
+	<bean id="com.stc.echannels.epayments.service.SystemConfigLocalService" class="com.stc.echannels.epayments.service.impl.SystemConfigLocalServiceImpl" />
+	<bean id="com.stc.echannels.epayments.service.SystemConfigService" class="com.stc.echannels.epayments.service.impl.SystemConfigServiceImpl" />
+	<bean id="com.stc.echannels.epayments.service.persistence.SystemConfigPersistence" class="com.stc.echannels.epayments.service.persistence.SystemConfigPersistenceImpl" parent="basePersistence">
+		<property name="dataSource" ref="anotherDataSource" />
+		<property name="sessionFactory" ref="anotherSessionFactory" />
+	</bean>
+	<bean id="com.stc.echannels.epayments.service.TransactionStatusLocalService" class="com.stc.echannels.epayments.service.impl.TransactionStatusLocalServiceImpl" />
+	<bean id="com.stc.echannels.epayments.service.TransactionStatusService" class="com.stc.echannels.epayments.service.impl.TransactionStatusServiceImpl" />
+	<bean id="com.stc.echannels.epayments.service.persistence.TransactionStatusPersistence" class="com.stc.echannels.epayments.service.persistence.TransactionStatusPersistenceImpl" parent="basePersistence">
+		<property name="dataSource" ref="anotherDataSource" />
+		<property name="sessionFactory" ref="anotherSessionFactory" />
+	</bean>
+</beans>

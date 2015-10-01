@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<!DOCTYPE display PUBLIC "-//Liferay//DTD Display 6.2.0//EN" "http://www.liferay.com/dtd/liferay-display_6_2_0.dtd">
+
+<display>
+	<category name="category.stc">
+		<portlet id="ePayment"></portlet>
+		<portlet id="payment-channels"></portlet>
+		<portlet id="card-groups"></portlet>
+		<portlet id="banks"></portlet>
+		<portlet id="system-configs"></portlet>
+		<portlet id="notif-param-configs"></portlet>
+		<portlet id="payment-transactions"></portlet>
+		<portlet id="payment-reconciliation"></portlet>
+		<portlet id="refund-reconciliation"></portlet>
+		<portlet id="refund-transactions"></portlet>
+		<portlet id="business-rules-delete"></portlet>
+		<portlet id="payment-rules-configs"></portlet>
+		<portlet id="business-rules-customize-configs"></portlet>
+		<portlet id="access-control-configs"></portlet>
+		<portlet id="bank-branch"></portlet>
+	</category>
+</display>

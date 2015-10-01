@@ -1,0 +1,28 @@
+.access-control-configs .all-table-headers-bold .table thead th  {
+    /* to override aui style */
+    font-weight: bold;
+    font-size: 17px;
+}
+
+.access-control-configs table label {
+    width: auto;
+    margin-bottom: 0;
+}
+.payment-channels-portlet .all-table-headers-bold .table thead th  {
+    /* to override aui style */
+    font-weight: bold;
+    font-size: 17px;
+}
+.payment-channels-portlet table label {
+    width: auto;
+    margin-bottom: 0;
+}
+.banks-portlet .all-table-headers-bold .table thead th  {
+    /* to override aui style */
+    font-weight: bold;
+    font-size: 17px;
+}
+.banks-portlet table label {
+    width: auto;
+    margin-bottom: 0;
+}

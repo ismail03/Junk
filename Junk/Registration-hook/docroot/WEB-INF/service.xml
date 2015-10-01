@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE service-builder PUBLIC "-//Liferay//DTD Service Builder 6.2.0//EN" "http://www.liferay.com/dtd/liferay-service-builder_6_2_0.dtd">
+<service-builder package-path="com.liferay.practicle.slayer" auto-namespace-tables="false">
+	<author>Ismail</author>
+	<namespace>a</namespace>
+
+	<entity name="tops_user" local-service="true" remote-service="false">
+		<column name="tops_userId" type="long" primary="true" />
+		<column name="firstname" type="String" />
+		<column name="LastName" type="String" />
+		<column name="userName" type="String" />
+		<column name="password" type="String" />
+		<column name="email" type="String" />
+		<column name="phone" type="String" />
+	
+	</entity>
+</service-builder>

@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping default-lazy="false" auto-import="false">
+	<import class="com.liferay.practicle.slayer.model.tops_user" />
+	<class name="com.liferay.practicle.slayer.model.impl.tops_userImpl" table="tops_user">
+		<cache usage="read-write" />
+		<id name="tops_userId" type="long">
+			<generator class="assigned" />
+		</id>
+		<property name="firstname" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property name="LastName" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property name="userName" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property name="password" type="com.liferay.portal.dao.orm.hibernate.StringType" column="password_" />
+		<property name="email" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property name="phone" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+	</class>
+</hibernate-mapping>

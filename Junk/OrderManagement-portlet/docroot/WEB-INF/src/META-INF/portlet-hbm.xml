@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping default-lazy="false" auto-import="false">
+	<import class="com.liferay.practical.model.Category" />
+	<import class="com.liferay.practical.model.Orders" />
+	<class name="com.liferay.practical.model.impl.CategoryImpl" table="Category">
+		<cache usage="read-write" />
+		<id name="categoryid" type="long">
+			<generator class="assigned" />
+		</id>
+		<property name="categoryname" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+	</class>
+	<class name="com.liferay.practical.model.impl.OrdersImpl" table="Orders">
+		<cache usage="read-write" />
+		<id name="orderid" type="long">
+			<generator class="assigned" />
+		</id>
+		<property name="orderdate" type="org.hibernate.type.TimestampType" />
+		<property name="productname" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property name="productpackage" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property name="orderstatus" type="com.liferay.portal.dao.orm.hibernate.IntegerType" />
+		<property name="Subscription" type="com.liferay.portal.dao.orm.hibernate.BooleanType" />
+		<property name="documnetid" type="com.liferay.portal.dao.orm.hibernate.LongType" />
+		<property name="statusByUserId" type="com.liferay.portal.dao.orm.hibernate.LongType" />
+		<property name="statusDate" type="org.hibernate.type.TimestampType" />
+		<property name="companyId" type="com.liferay.portal.dao.orm.hibernate.LongType" />
+		<property name="groupId" type="com.liferay.portal.dao.orm.hibernate.LongType" />
+		<property name="userId" type="com.liferay.portal.dao.orm.hibernate.LongType" />
+	</class>
+</hibernate-mapping>

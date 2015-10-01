@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+
+<model-hints>
+	<model name="com.liferay.practical.model.Category">
+		<field name="categoryid" type="long" />
+		<field name="categoryname" type="String" />
+	</model>
+	<model name="com.liferay.practical.model.Orders">
+		<field name="orderid" type="long" />
+		<field name="orderdate" type="Date" />
+		<field name="productname" type="String" />
+		<field name="productpackage" type="String" />
+		<field name="orderstatus" type="int" />
+		<field name="Subscription" type="boolean" />
+		<field name="documnetid" type="long" />
+		<field name="statusByUserId" type="long" />
+		<field name="statusDate" type="Date" />
+		<field name="companyId" type="long" />
+		<field name="groupId" type="long" />
+		<field name="userId" type="long" />
+	</model>
+</model-hints>

@@ -1,0 +1,52 @@
+<?xml version="1.0"?>
+
+<entity-mappings xmlns="http://java.sun.com/xml/ns/persistence/orm" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="1.0" xsi:schemaLocation="http://java.sun.com/xml/ns/persistence/orm http://java.sun.com/xml/ns/persistence/orm_1_0.xsd">
+	<persistence-unit-metadata>
+		<xml-mapping-metadata-complete/>
+		<persistence-unit-defaults>
+			<access>PROPERTY</access>
+		</persistence-unit-defaults>
+	</persistence-unit-metadata>
+	<mapped-superclass class="com.liferay.practical.model.impl.CategoryModelImpl">
+		<attributes>
+			<id name="categoryid" />
+			<basic name="categoryname" />
+			<transient name="modelAttributes" />
+			<transient name="primaryKey" />
+			<transient name="primaryKeyObj" />
+		</attributes>
+	</mapped-superclass>
+	<mapped-superclass class="com.liferay.practical.model.impl.OrdersModelImpl">
+		<attributes>
+			<id name="orderid" />
+			<basic name="orderdate">
+				<temporal>TIMESTAMP</temporal>
+			</basic>
+			<basic name="productname" />
+			<basic name="productpackage" />
+			<basic name="orderstatus" />
+			<basic name="Subscription" />
+			<basic name="documnetid" />
+			<basic name="statusByUserId" />
+			<basic name="statusDate">
+				<temporal>TIMESTAMP</temporal>
+			</basic>
+			<basic name="companyId" />
+			<basic name="groupId" />
+			<basic name="userId" />
+			<transient name="modelAttributes" />
+			<transient name="primaryKey" />
+			<transient name="primaryKeyObj" />
+			<transient name="statusByUserUuid" />
+			<transient name="userUuid" />
+		</attributes>
+	</mapped-superclass>
+	<entity class="com.liferay.practical.model.impl.CategoryImpl" name="Category">
+		<table name="Category" />
+		<attributes />
+	</entity>
+	<entity class="com.liferay.practical.model.impl.OrdersImpl" name="Orders">
+		<table name="Orders" />
+		<attributes />
+	</entity>
+</entity-mappings>

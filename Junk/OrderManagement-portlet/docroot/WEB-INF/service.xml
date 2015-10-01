@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE service-builder PUBLIC "-//Liferay//DTD Service Builder 6.2.0//EN" "http://www.liferay.com/dtd/liferay-service-builder_6_2_0.dtd">
+<service-builder package-path="com.liferay.practical" auto-namespace-tables="false">
+	<author>saifulla</author>
+	<namespace>a</namespace>
+
+	<entity name="Orders" local-service="true" remote-service="true">
+
+			<column name="orderid" type="long" primary="true" />
+		<column name="orderdate" type="Date" />
+		<column name="productname" type="String" />
+		<column name="productpackage" type="String" />
+		<column name="orderstatus" type="int" />
+		<column name="categories" type="Collection" entity="Category" mapping-table="Orders_Category"/>
+		<column name="Subscription" type="boolean" />
+		<column name="documnetid" type="long" />
+		<column name="statusByUserId" type="long" />
+		<column name="statusDate" type="Date" />
+		<column name="companyId" type="long" />
+		<column name="groupId" type="long" />
+		<column name="userId" type="long" />
+		<order>
+			<order-column name="orderid" order-by="asc" />
+			<order-column name="orderdate" order-by="desc" />
+		</order>
+		<finder name="GroupId" return-type="Collection">
+			<finder-column name="groupId" />
+		</finder>
+		<finder name="CompanyId" return-type="Collection">
+			<finder-column name="companyId" />
+		</finder>
+		<finder name="productname" return-type="Collection">
+			<finder-column name="productname" />
+		</finder>
+		<finder name="G_O" return-type="Collection">
+			<finder-column name="groupId" />
+			<finder-column name="orderstatus" />
+		</finder>
+		<reference package-path="com.liferay.portal" entity="User" />
+		<reference package-path="com.liferay.portlet.asset" entity="AssetEntry" />
+		<reference package-path="com.liferay.portal" entity="WorkflowDefinitionLink"></reference>
+		<reference package-path="com.liferay.portal" entity="WorkflowInstanceLink"></reference>
+	</entity>
+	
+	<entity name="Category" local-service="true" remote-service="true">
+
+			<column name="categoryid" type="long" primary="true" />
+			
+			<column name="categoryname" type="String" />
+			<column name="orders" type="Collection" entity="Orders" mapping-table="Orders_Category" />
+		
+	</entity>
+</service-builder>
